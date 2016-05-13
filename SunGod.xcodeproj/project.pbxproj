@@ -119,6 +119,7 @@
 		41ABB0A01CD048BF00DF728A /* SunGod */ = {
 			isa = PBXGroup;
 			children = (
+				AB7B21B61CE628DC00B1C75A /* Info */,
 				41BB67831CE08CE100467584 /* M */,
 				41A975701CDA165E006B0DD6 /* V */,
 				413A44541CD2FBB400EAEB4B /* C */,
@@ -138,12 +139,19 @@
 		41DB3BB91CD2F03D0098F8DC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
 				41ABB0A81CD048BF00DF728A /* Assets.xcassets */,
-				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
-				41ABB0AD1CD048BF00DF728A /* Info.plist */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		AB7B21B61CE628DC00B1C75A /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
+				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
+				41ABB0AD1CD048BF00DF728A /* Info.plist */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
