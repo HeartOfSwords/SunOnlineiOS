@@ -1,0 +1,54 @@
+PODS:
+  - Alamofire (3.3.1)
+  - BMPlayer (0.1.5):
+    - SnapKit
+  - CryptoSwift (0.4.1)
+  - HanekeSwift (0.10.1)
+  - PageMenu (1.2.9)
+  - SDCycleScrollView (1.64):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SnapKit (0.15.0)
+  - SwiftyJSON (2.3.2)
+  - SwiftyUserDefaults (2.2.0)
+  - XWSwiftRefresh (0.1.9)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3)
+  - BMPlayer (~> 0.1.5)
+  - CryptoSwift
+  - HanekeSwift
+  - PageMenu
+  - SDCycleScrollView (~> 1.64)
+  - SnapKit (~> 0.15.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SwiftyUserDefaults
+  - XWSwiftRefresh (~> 0.1.9)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  BMPlayer: 05bd5492c620ef4bc9eacdf96951ddac7603edd1
+  CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
+  SDCycleScrollView: 806fedb9342ab03b58b84442f985517b42c7cbb7
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
+
+PODFILE CHECKSUM: b195eef07a16969e3ce0ea668ec56ce5a24400f1
+
+COCOAPODS: 1.0.0
