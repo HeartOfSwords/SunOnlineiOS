@@ -13,6 +13,7 @@ PODS:
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
+  - Wilddog (1.0.0)
   - XWSwiftRefresh (0.1.9)
 
 DEPENDENCIES:
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - SnapKit (~> 0.15.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
+  - Wilddog
   - XWSwiftRefresh (~> 0.1.9)
 
 EXTERNAL SOURCES:
@@ -47,8 +49,9 @@ SPEC CHECKSUMS:
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  Wilddog: 08618a6d5e9d774de7c4424119227b9392de2002
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: b195eef07a16969e3ce0ea668ec56ce5a24400f1
+PODFILE CHECKSUM: 90b79fafc336853e50e709e6757c737d3b41b76b
 
 COCOAPODS: 1.0.0
