@@ -29,5 +29,7 @@ pod 'PageMenu'
 pod 'CryptoSwift'
 #缓存
 pod 'HanekeSwift'
+# 野狗
+pod 'Wilddog'
 end
 
