@@ -32,5 +32,7 @@ pod 'CryptoSwift'
 pod 'HanekeSwift'
 # 野狗
 pod 'Wilddog'
+# UPYUN
+pod 'UPYUN', '~> 1.0.0'
 end
 

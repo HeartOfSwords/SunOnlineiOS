@@ -42,6 +42,7 @@ class VideoItemInformationViewController: UIViewController {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
         player.play()
+//        player.
     }
 
     func configBMPlayer() {
