@@ -9,6 +9,7 @@ target 'SunGod' do
 #pod "MobilePlayer"
 #pod "VKVideoPlayer", "~> 0.1.1"
 pod 'BMPlayer', '~> 0.1.5'
+#pod 'VideoSplashKit'
 # 网络请求库
 pod 'Alamofire', '~> 3.3'
 # JSON 解析库
