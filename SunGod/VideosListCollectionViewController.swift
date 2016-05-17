@@ -9,6 +9,8 @@
 import UIKit
 import SDCycleScrollView
 import SDWebImage
+import Alamofire
+import SwiftyJSON
 
 private let reuseIdentifier = "videoListItem"
 private let mainScreen = UIScreen.mainScreen().bounds
@@ -36,6 +38,37 @@ class VideosListCollectionViewController: UIViewController  {
             make.leading.top.trailing.equalTo(view)
             make.bottom.equalTo(view.snp_bottom).offset(-106)
         }
+        
+        Alamofire.request(.GET, "http://192.168.7.119:8081/DragonAlpha01/webapi/videos/all").responseData { (res) in
+            let data = res.data!
+            let jsonData = JSON(data: data)
+            print("video_id:",jsonData["messages",0,"video_id"])
+            print("video_name:",jsonData["messages",0,"video_name"])
+            print("video_url:",jsonData["messages",0,"video_url"])
+            print("video_playedtime:",jsonData["messages",0,"video_playedtime"])
+            print("date:",jsonData["messages",0,"date"])
+        }
+
+        print(NSHomeDirectory())
+        
+        Alamofire.download(.GET, "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4") { (url, response) -> NSURL in
+            
+            print(url)
+            print(response)
+            
+            let fileManger = NSFileManager.defaultManager()
+            let document = fileManger.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+            
+            let doc = document.URLByAppendingPathComponent("com.taiyangzx.videos",isDirectory: true)
+            try! fileManger.createDirectoryAtURL(doc, withIntermediateDirectories: true, attributes: nil)
+            
+            return doc.URLByAppendingPathComponent("test.mp4")
+        }.progress { (read, totalyRead, totaly) in
+//            print(totalyRead*100/totaly)
+        }.responseData { (response) in
+            
+        }
+        
     }
 }
 
