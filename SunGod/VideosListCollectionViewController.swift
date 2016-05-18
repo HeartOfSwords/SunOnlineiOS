@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Kingfisher
-import Alamofire
-import SwiftyJSON
+//import Kingfisher
+//import Alamofire
+//import SwiftyJSON
 import SlideMenuControllerSwift
 import SnapKit
 
@@ -27,7 +27,7 @@ class VideosListCollectionViewController: UIViewController  {
         super.viewDidLoad()
         print(NSHomeDirectory())
         setUpCollectionView()
-
+        setUpNavigation()
         
     }
 
@@ -46,16 +46,19 @@ extension VideosListCollectionViewController {
         collectionView.backgroundColor = UIColor.whiteColor()
         let cellNib = UINib(nibName: "VideoCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
-        
         view.addSubview(collectionView)
+        ///collection View 布局
         collectionView.snp_makeConstraints { (make) in
             make.leading.top.trailing.bottom.equalTo(view)
         }
     }
     
     func setUpNavigation() {
-        //添加左上角的侧滑按钮
+        ///添加左上角的侧滑按钮
         addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
+        //设置返回按钮的文字为空
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        
     }
     
     /**
@@ -93,23 +96,25 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: mainScreen.width, height: videoViewHeight)
+        /**
+         collection item 的大小
+         
+         - parameter width:  宽度为屏幕宽度
+         - parameter height: 高度为屏幕的 9 ／16
+         
+         - returns: 返回size
+         */
+        return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 
         return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        
     }
 }
 
 // MARK: UICollectionViewDataSource
 extension VideosListCollectionViewController: UICollectionViewDataSource {
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return 10
@@ -119,9 +124,7 @@ extension VideosListCollectionViewController: UICollectionViewDataSource {
 
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
-            cell.photo.kf_setImageWithURL(NSURL(string: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")!)
-            cell.time.text = String(NSDate())
-            cell.information.text = "这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS"
+            cell.setUpCell(String(NSDate), information: "太原理工大学", photoURL: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
             return cell
 
     }
@@ -131,16 +134,14 @@ extension VideosListCollectionViewController: UICollectionViewDataSource {
 extension VideosListCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-        navigationController?.pushViewController(videoItem, animated: true)
+        presentViewController(videoItem, animated: true) { 
+            
+        }
+//        navigationController?.pushViewController(videoItem, animated: true)
 
     }
-    
-    
-//    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
-
 }
 
 //MARK: -SlideMenuControllerDelegate
