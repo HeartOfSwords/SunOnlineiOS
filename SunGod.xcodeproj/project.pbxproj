@@ -8,23 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0A1EBDB0DCCD3A1B64C8AA11 /* Pods_SunGod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */; };
-		413A445A1CD3000800EAEB4B /* PageMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413A44591CD3000800EAEB4B /* PageMenuViewController.swift */; };
 		414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */; };
-		414B31A61CE1892D0011173D /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 414B31A41CE1892D0011173D /* VideoCollectionViewCell.xib */; };
 		414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A71CE193540011173D /* VideoItemInformationViewController.swift */; };
 		41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABB0A11CD048BF00DF728A /* AppDelegate.swift */; };
 		41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0A81CD048BF00DF728A /* Assets.xcassets */; };
 		41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */; };
 		41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB67841CE08D0000467584 /* VideoItemModel.swift */; };
-		41DB3BBB1CD2F0E60098F8DC /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DB3BBA1CD2F0E60098F8DC /* RootViewController.swift */; };
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
-		ABB55A641CE4C8F100D4DDEB /* ProgramaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB55A631CE4C8F100D4DDEB /* ProgramaViewController.swift */; };
+		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
+		AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */; };
+		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		413A44591CD3000800EAEB4B /* PageMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMenuViewController.swift; sourceTree = "<group>"; };
 		414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
-		414B31A41CE1892D0011173D /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		414B31A71CE193540011173D /* VideoItemInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemInformationViewController.swift; sourceTree = "<group>"; };
 		41ABB09E1CD048BF00DF728A /* SunGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41ABB0A11CD048BF00DF728A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,10 +29,11 @@
 		41ABB0AB1CD048BF00DF728A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41ABB0AD1CD048BF00DF728A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41BB67841CE08D0000467584 /* VideoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemModel.swift; sourceTree = "<group>"; };
-		41DB3BBA1CD2F0E60098F8DC /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosListCollectionViewController.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABB55A631CE4C8F100D4DDEB /* ProgramaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgramaViewController.swift; sourceTree = "<group>"; };
+		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEPageViewWithNavigationBar.swift; sourceTree = "<group>"; };
+		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		BD7F76BAD01D27AD983AB223 /* Pods-SunGod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1F80360CDCA48F9CD0B111 /* Pods-SunGod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +70,8 @@
 		413A44541CD2FBB400EAEB4B /* C */ = {
 			isa = PBXGroup;
 			children = (
+				AB4051401CEBF575004571E4 /* SlideMenuController */,
 				413A44551CD2FBCB00EAEB4B /* VideoViewController */,
-				41DB3BBA1CD2F0E60098F8DC /* RootViewController.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -83,8 +81,6 @@
 			children = (
 				41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */,
 				414B31A71CE193540011173D /* VideoItemInformationViewController.swift */,
-				413A44591CD3000800EAEB4B /* PageMenuViewController.swift */,
-				ABB55A631CE4C8F100D4DDEB /* ProgramaViewController.swift */,
 			);
 			name = VideoViewController;
 			sourceTree = "<group>";
@@ -93,7 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */,
-				414B31A41CE1892D0011173D /* VideoCollectionViewCell.xib */,
+				AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */,
+				AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -142,6 +139,14 @@
 				41ABB0A81CD048BF00DF728A /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		AB4051401CEBF575004571E4 /* SlideMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */,
+			);
+			name = SlideMenuController;
 			sourceTree = "<group>";
 		};
 		AB7B21B61CE628DC00B1C75A /* Info */ = {
@@ -217,8 +222,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */,
+				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
-				414B31A61CE1892D0011173D /* VideoCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,13 +283,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
-				413A445A1CD3000800EAEB4B /* PageMenuViewController.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
 				414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */,
+				AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */,
 				41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */,
-				41DB3BBB1CD2F0E60098F8DC /* RootViewController.swift in Sources */,
-				ABB55A641CE4C8F100D4DDEB /* ProgramaViewController.swift in Sources */,
+				AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
