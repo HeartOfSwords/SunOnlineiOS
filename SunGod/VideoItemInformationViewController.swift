@@ -47,6 +47,11 @@ extension VideoItemInformationViewController {
     }
     
     func setUpView() {
+        
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(downSwipe(_:)))
+        downSwipe.direction = .Down
+//        downSwipe.numberOfTouchesRequired = 3
+        view.addGestureRecognizer(downSwipe)
         player.addSubview(videoPhoto)
         videoPhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playVideo(_:))))
         videoPhoto.snp_makeConstraints { (make) in
@@ -59,7 +64,14 @@ extension VideoItemInformationViewController {
 //        videoPhoto.hidden = true
         print("sss")
     }
-        
+    
+    func downSwipe(tap:UISwipeGestureRecognizer) {
+        print("misis")
+        self.dismissViewControllerAnimated(true, completion: {
+            
+        })
+    }
+    
 
 }
 
@@ -73,6 +85,10 @@ extension VideoItemInformationViewController {
         setUpVideoPlayer()
 //        setUpView()
         setUpNav()
+    }
+    //隐藏 StatusBar
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
 }
