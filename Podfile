@@ -19,7 +19,7 @@ pod 'SnapKit', '~> 0.15.0'
 pod 'XWSwiftRefresh', '~> 0.1.9'
 # UserDefaults 操作库
 pod 'SwiftyUserDefaults'
-# 图片缓存库 没有使用，因为 SDCycleScrollView里已经下载了SDWebimage 这个十分好用的OC的库
+
 pod 'Kingfisher', '~> 2.3'
 # 图片轮播
 #pod 'SDCycleScrollView','~> 1.64'
@@ -37,5 +37,6 @@ pod 'UPYUN', '~> 1.0.0'
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
 #pod 'SEPageViewWithNavigationBar'
+#pod 'JSQMessagesViewController'
 end
 

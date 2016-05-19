@@ -42,16 +42,13 @@ extension VideoItemInformationViewController {
                 
             })
         }
+        
         player.playWithURL(NSURL(string: "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4")!)
-//        player.play()
+        player.play()
+
     }
     
     func setUpView() {
-        
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(downSwipe(_:)))
-        downSwipe.direction = .Down
-//        downSwipe.numberOfTouchesRequired = 3
-        view.addGestureRecognizer(downSwipe)
         player.addSubview(videoPhoto)
         videoPhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playVideo(_:))))
         videoPhoto.snp_makeConstraints { (make) in
@@ -61,15 +58,9 @@ extension VideoItemInformationViewController {
     }
     
     func playVideo(tap: UITapGestureRecognizer) {
-//        videoPhoto.hidden = true
+        videoPhoto.alpha = 0
+
         print("sss")
-    }
-    
-    func downSwipe(tap:UISwipeGestureRecognizer) {
-        print("misis")
-        self.dismissViewControllerAnimated(true, completion: {
-            
-        })
     }
     
 
