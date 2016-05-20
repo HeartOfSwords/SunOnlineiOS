@@ -7,23 +7,37 @@
 //
 
 import UIKit
-import SDCycleScrollView
-import SDWebImage
-import Alamofire
-import SwiftyJSON
+//import Kingfisher
+//import Alamofire
+//import SwiftyJSON
+import SlideMenuControllerSwift
+import SnapKit
 
 private let reuseIdentifier = "videoListItem"
-private let mainScreen = UIScreen.mainScreen().bounds
-private let sdCycleScrollViewHeight = mainScreen.width * (9.0 / 16.0)
+/// 屏幕的宽度
+let mainScreen = UIScreen.mainScreen().bounds
+/// 视频播放器的高度
+let videoViewHeight = mainScreen.width * (9.0 / 16.0)
 
 class VideosListCollectionViewController: UIViewController  {
     
     private var collectionView: UICollectionView!
     
-    weak var contantView: PageMenuViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(NSHomeDirectory())
+        setUpCollectionView()
+        setUpNavigation()
+        
+    }
+
+}
+
+
+// MARK: extension
+extension VideosListCollectionViewController {
+    
+    func setUpCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -32,52 +46,48 @@ class VideosListCollectionViewController: UIViewController  {
         collectionView.backgroundColor = UIColor.whiteColor()
         let cellNib = UINib(nibName: "VideoCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.registerClass(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "SDCycelScroll")
         view.addSubview(collectionView)
+        ///collection View 布局
         collectionView.snp_makeConstraints { (make) in
-            make.leading.top.trailing.equalTo(view)
-            make.bottom.equalTo(view.snp_bottom).offset(-106)
+            make.leading.top.trailing.bottom.equalTo(view)
         }
-        
-        Alamofire.request(.GET, "http://192.168.7.119:8081/DragonAlpha01/webapi/videos/all").responseData { (res) in
-            let data = res.data!
-            let jsonData = JSON(data: data)
-            print("video_id:",jsonData["messages",0,"video_id"])
-            print("video_name:",jsonData["messages",0,"video_name"])
-            print("video_url:",jsonData["messages",0,"video_url"])
-            print("video_playedtime:",jsonData["messages",0,"video_playedtime"])
-            print("date:",jsonData["messages",0,"date"])
-        }
-
-        print(NSHomeDirectory())
-        
-        Alamofire.download(.GET, "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4") { (url, response) -> NSURL in
-            
-            print(url)
-            print(response)
-            
-            let fileManger = NSFileManager.defaultManager()
-            let document = fileManger.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-            
-            let doc = document.URLByAppendingPathComponent("com.taiyangzx.videos",isDirectory: true)
-            try! fileManger.createDirectoryAtURL(doc, withIntermediateDirectories: true, attributes: nil)
-            
-            return doc.URLByAppendingPathComponent("test.mp4")
-        }.progress { (read, totalyRead, totaly) in
-//            print(totalyRead*100/totaly)
-        }.responseData { (response) in
-            
-        }
+    }
+    
+    func setUpNavigation() {
+        ///添加左上角的侧滑按钮
+        addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
+        //设置返回按钮的文字为空
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         
     }
-}
-
-
-// MARK: extension
-extension VideosListCollectionViewController {
+    
+    /**
+     计算label 文字的高度
+     
+     - parameter font:  文字所使用的字体
+     - parameter width: label 的宽度
+     
+     - returns: 计算出来的高度
+     */
+    
     func heightForComment(font: UIFont, width: CGFloat) -> CGFloat {
         let rect = NSString(string:"这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS").boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil)
         return ceil(rect.height)
+    }
+    
+    
+    func upYunConfig() {
+        
+        /*
+         curl http://v0.api.upyun.com/<bucket-name> \
+         -F file=@<filename> \
+         -F policy=<policy> \
+         -F signature=<signature>
+         */
+        let url = "http://v0.api.upyun.com/"
+        let bucket = "sunonlinevideos"
+        
+        
     }
 }
 
@@ -86,81 +96,36 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
     
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        /// 每个Cell的宽度为设备的宽度，高度为宽度的 9/16。这个高度不包括对视频的描述的文字高度 仅仅是视频图片的高度 最终的高度是图片的高度加上视频描述的文字的高度
-        
-        let width = mainScreen.width
-        let height = width * (9.0/16.0)
-        
-        switch indexPath.section {
-        case 0:
-            ///section 为0的cell 用来放轮播图
-            return CGSize(width: width, height: height)
-        default:
-            let commentHeight = heightForComment(UIFont.systemFontOfSize(22), width: mainScreen.width)
-            return CGSize(width: width, height: height + commentHeight)
-        }
-      
-       
+        /**
+         collection item 的大小
+         
+         - parameter width:  宽度为屏幕宽度
+         - parameter height: 高度为屏幕的 9 ／16
+         
+         - returns: 返回size
+         */
+        return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        switch section {
-        case 0:
-            return UIEdgeInsetsZero
-        default:
-            return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-        }
-        
+
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
 
 // MARK: UICollectionViewDataSource
 extension VideosListCollectionViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            return 1
-        default:
             return 10
-        }
-        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        switch indexPath.section {
-            
-        case 0:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SDCycelScroll", forIndexPath: indexPath)
-            //将轮播图插入到 内容视图中。
-            let urls = ["http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg","http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg","http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg"]
-            //初始化一个轮播图控件
-            
-            let imageScrollView = SDCycleScrollView(frame: CGRectMake(0, 0, mainScreen.width, CGFloat(sdCycleScrollViewHeight)))
-            imageScrollView.delegate = self
-            imageScrollView.imageURLStringsGroup = urls
-            imageScrollView.titlesGroup = ["太阳在线","我是杨晓磊", "杨晓磊是个大帅逼"]
-            imageScrollView.autoScrollTimeInterval = CGFloat(5.0)
-            cell.contentView.addSubview(imageScrollView)
-            return cell
-            
-        default:
+
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
-            
-            cell.photo.sd_setImageWithURL(NSURL(string: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")!)
-            cell.time.text = String(NSDate())
-            cell.information.text = "这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS"
+            cell.setUpCell(String(NSDate), information: "太原理工大学", photoURL: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
             return cell
-        }
 
     }
 }
@@ -169,33 +134,21 @@ extension VideosListCollectionViewController: UICollectionViewDataSource {
 extension VideosListCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-        contantView.presentViewController(videoItem, animated: true) { 
-            //跳转之后
+        presentViewController(videoItem, animated: true) { 
+            
         }
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
+//        navigationController?.pushViewController(videoItem, animated: true)
 
+    }
 }
 
-// MARK: SDCycleScrollViewDelegate
-extension VideosListCollectionViewController: SDCycleScrollViewDelegate {
-    /** 点击图片回调 */
-    func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
-        
-        let videoItem = VideoItemInformationViewController()
-        
-        contantView.presentViewController(videoItem, animated: true) { 
-            //跳转之后
-        }
-    }
-    
-    /** 图片滚动回调 */
-    func cycleScrollView(cycleScrollView: SDCycleScrollView!, didScrollToIndex index: Int) {
-        
-    }
+//MARK: -SlideMenuControllerDelegate
+extension VideosListCollectionViewController: SlideMenuControllerDelegate {
+    func leftWillOpen(){}
+    func leftDidOpen(){}
+    func leftWillClose(){}
+    func leftDidClose(){}
 }
+
