@@ -60,7 +60,7 @@ extension LeftMenuViewController {
             make.leading.trailing.equalTo(view)
         }
         
-        titleLabel.text = "ddddddd"
+//        titleLabel.text = "ddddddd"
     }
     
     func setUpTableView() {
