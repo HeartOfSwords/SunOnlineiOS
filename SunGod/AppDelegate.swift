@@ -22,12 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 private extension AppDelegate {
+    
     func createMenuView() {
-        
         let mainViewController = VideosListCollectionViewController()
         let leftMenuViewController = LeftMenuViewController()
         let nav = UINavigationController(rootViewController: mainViewController)
         //初始化一个 RootViewController 侧滑菜单
+        SlideMenuOptions.leftViewWidth = mainScreen.width / 2
+        //菜单出来之后的背景颜色
+        SlideMenuOptions.opacityViewBackgroundColor = UIColor.clearColor()
         let rootViewController = SlideMenuController(mainViewController: nav, leftMenuViewController: leftMenuViewController)
 //        SlideMenuOptions.
         rootViewController.delegate = mainViewController
