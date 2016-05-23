@@ -30,6 +30,10 @@ class VideosListCollectionViewController: UIViewController  {
         setUpNavigation()
         
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 
 }
 
@@ -58,7 +62,7 @@ extension VideosListCollectionViewController {
         addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
         //设置返回按钮的文字为空
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        
+        title = "太阳在线"
     }
     
     /**

@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 
 
+
 class LeftMenuViewController: UIViewController {
 
 
@@ -18,21 +19,31 @@ class LeftMenuViewController: UIViewController {
     lazy var mainScreenWidth = mainScreen.width / 4.0
     lazy var imageView = UIImageView()
     lazy var titleLabel = UILabel()
+    lazy var nameLabel = UILabel()
+    let menutitle = ["推荐","分类","Me","设置"]
+    
+    lazy var mainViewController: UINavigationController = SunOnlineNavigationViewController(rootViewController: VideosListCollectionViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
         setUpImageView()
+        setUpNameLabel()
         setUpLabel()
         setUpTableView()
     }
 
 }
 
+
+
 extension LeftMenuViewController {
     
     func setUpView() {
-        view.backgroundColor = UIColor.whiteColor()
+        //背景透明
+        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
+        view.opaque = false
+        
     }
     
 
@@ -43,7 +54,7 @@ extension LeftMenuViewController {
         imageView.snp_makeConstraints { (make) in
             
             make.width.height.equalTo(mainScreenWidth)
-            make.top.equalTo(self.view.snp_top).offset(20)
+            make.top.equalTo(self.view.snp_top).offset(40)
             make.leading.equalTo(mainScreenWidth / 2.0)
         }
         
@@ -51,16 +62,30 @@ extension LeftMenuViewController {
         imageView.layer.cornerRadius = mainScreenWidth / 2
     }
     
-    func setUpLabel() {
-        view.addSubview(titleLabel)
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .Center
-        titleLabel.snp_makeConstraints { (make) in
+    func setUpNameLabel() {
+        view.addSubview(nameLabel)
+        nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .Center
+        nameLabel.textColor = UIColor.whiteColor()
+        nameLabel.snp_makeConstraints { (make) in
             make.top.equalTo(imageView.snp_bottom).offset(25)
             make.leading.trailing.equalTo(view)
         }
         
-        titleLabel.text = "ddddddd"
+        nameLabel.text = "这块显卡有点冷"
+    }
+    
+    func setUpLabel() {
+        view.addSubview(titleLabel)
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(nameLabel.snp_bottom).offset(15)
+            make.leading.trailing.equalTo(view)
+        }
+        titleLabel.font = UIFont.systemFontOfSize(9)
+        titleLabel.text = "我是我，我就是杨晓磊"
     }
     
     func setUpTableView() {
@@ -74,6 +99,14 @@ extension LeftMenuViewController {
             make.top.equalTo(titleLabel.snp_bottom).offset(25)
             make.leading.trailing.bottom.equalTo(self.view)
         }
+        //隐藏多余的cell
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        //背景透明
+        tableView.backgroundView = nil
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.opaque = false
+        tableView.separatorStyle = .None
+        
     }
 }
 
@@ -84,12 +117,35 @@ extension LeftMenuViewController: UITableViewDelegate {
 extension  LeftMenuViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return menutitle.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier,forIndexPath: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = menutitle[indexPath.row]
+        cell.backgroundView = nil
+        cell.backgroundColor = UIColor.clearColor()
+        cell.opaque = false
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.selectionStyle = .None
+        cell.textLabel?.textAlignment = .Center
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            //推荐
+            self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
+        case 1:
+            //分类
+            print(indexPath.row)
+        case 2:
+            //Me
+            print(indexPath.row)
+        default:
+            //设置
+            print(indexPath.row)
+        }
     }
 }
