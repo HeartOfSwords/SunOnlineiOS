@@ -9,8 +9,6 @@
 import UIKit
 import SnapKit
 
-
-
 class LeftMenuViewController: UIViewController {
 
 
@@ -23,6 +21,9 @@ class LeftMenuViewController: UIViewController {
     let menutitle = ["推荐","分类","Me","设置"]
     
     lazy var mainViewController: UINavigationController = SunOnlineNavigationViewController(rootViewController: VideosListCollectionViewController())
+    lazy var videoKindsViewController: UIViewController = SunOnlineNavigationViewController(rootViewController: VideosKindsViewController())
+    lazy var meViewController: UIViewController = SunOnlineNavigationViewController(rootViewController: MeViewController())
+    lazy var settingViewController: UIViewController = SunOnlineNavigationViewController(rootViewController: SettingViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,6 +113,22 @@ extension LeftMenuViewController {
 
 extension LeftMenuViewController: UITableViewDelegate {
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            //推荐
+            slideMenuController()?.changeMainViewController(mainViewController, close: true)
+        case 1:
+            //分类
+            slideMenuController()?.changeMainViewController(videoKindsViewController, close: true)
+        case 2:
+            //Me
+            slideMenuController()?.changeMainViewController(meViewController, close: true)
+        default:
+            //设置
+            slideMenuController()?.changeMainViewController(settingViewController, close: true)
+        }
+    }
 }
 
 extension  LeftMenuViewController: UITableViewDataSource {
@@ -132,20 +149,5 @@ extension  LeftMenuViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
-            //推荐
-            self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-        case 1:
-            //分类
-            print(indexPath.row)
-        case 2:
-            //Me
-            print(indexPath.row)
-        default:
-            //设置
-            print(indexPath.row)
-        }
-    }
+
 }
