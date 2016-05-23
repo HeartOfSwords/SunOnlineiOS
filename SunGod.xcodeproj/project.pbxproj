@@ -10,6 +10,7 @@
 		0A1EBDB0DCCD3A1B64C8AA11 /* Pods_SunGod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */; };
 		414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */; };
 		414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A71CE193540011173D /* VideoItemInformationViewController.swift */; };
+		417842961CF2B7C800F4E4F3 /* SunOnlineNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417842951CF2B7C800F4E4F3 /* SunOnlineNavigationViewController.swift */; };
 		41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABB0A11CD048BF00DF728A /* AppDelegate.swift */; };
 		41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0A81CD048BF00DF728A /* Assets.xcassets */; };
 		41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		414B31A71CE193540011173D /* VideoItemInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemInformationViewController.swift; sourceTree = "<group>"; };
+		417842951CF2B7C800F4E4F3 /* SunOnlineNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SunOnlineNavigationViewController.swift; sourceTree = "<group>"; };
 		41ABB09E1CD048BF00DF728A /* SunGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41ABB0A11CD048BF00DF728A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41ABB0A81CD048BF00DF728A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */,
+				417842951CF2B7C800F4E4F3 /* SunOnlineNavigationViewController.swift */,
 			);
 			name = SlideMenuController;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
 				414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */,
+				417842961CF2B7C800F4E4F3 /* SunOnlineNavigationViewController.swift in Sources */,
 				AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */,
 				41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */,
 				AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */,

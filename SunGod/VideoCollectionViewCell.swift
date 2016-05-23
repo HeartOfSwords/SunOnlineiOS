@@ -19,15 +19,10 @@ class VideoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         let imageLayer = CALayer()
-        imageLayer.backgroundColor = UIColor.grayColor().CGColor
+        imageLayer.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6).CGColor
         imageLayer.frame = CGRect(x: 0, y: 0, width: mainScreen.width, height: videoViewHeight)
-        imageLayer.opacity = 0.4
         self.photo.layer.addSublayer(imageLayer)
-//        let blurEffect = UIBlurEffect(style: .Light)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        visualEffectView.frame = CGRect(x: 0, y: 0, width: mainScreen.width, height: videoViewHeight)
-//        self.addSubview(visualEffectView)
-//        self.insertSubview(visualEffectView, atIndex: 0)
+        
     }
     
     func setUpCell(time:String, information:String, photoURL: String) {
