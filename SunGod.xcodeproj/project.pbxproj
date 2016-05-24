@@ -22,8 +22,8 @@
 		41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB67841CE08D0000467584 /* VideoItemModel.swift */; };
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
 		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
+		41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1261CF3FB650045119E /* WilldogManger.swift */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
-		AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +44,9 @@
 		41BB67841CE08D0000467584 /* VideoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemModel.swift; sourceTree = "<group>"; };
 		41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosListCollectionViewController.swift; sourceTree = "<group>"; };
 		41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKingsListViewController.swift; sourceTree = "<group>"; };
+		41F4E1261CF3FB650045119E /* WilldogManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilldogManger.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
-		AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEPageViewWithNavigationBar.swift; sourceTree = "<group>"; };
 		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		BD7F76BAD01D27AD983AB223 /* Pods-SunGod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1F80360CDCA48F9CD0B111 /* Pods-SunGod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +117,7 @@
 		413A44541CD2FBB400EAEB4B /* C */ = {
 			isa = PBXGroup;
 			children = (
+				41F4E1251CF3FB4F0045119E /* Willdog */,
 				AB4051401CEBF575004571E4 /* SlideMenuController */,
 				413A44551CD2FBCB00EAEB4B /* VideoViewController */,
 			);
@@ -142,7 +143,6 @@
 				410B7E201CF30588002EDF77 /* VideoKindsCollectionViewCell.swift */,
 				410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */,
 				AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */,
-				AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -191,6 +191,14 @@
 				41ABB0A81CD048BF00DF728A /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		41F4E1251CF3FB4F0045119E /* Willdog */ = {
+			isa = PBXGroup;
+			children = (
+				41F4E1261CF3FB650045119E /* WilldogManger.swift */,
+			);
+			name = Willdog;
 			sourceTree = "<group>";
 		};
 		AB4051401CEBF575004571E4 /* SlideMenuController */ = {
@@ -339,6 +347,7 @@
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
+				41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */,
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
@@ -348,7 +357,6 @@
 				410B7E221CF30588002EDF77 /* VideoKindsCollectionViewCell.swift in Sources */,
 				AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */,
 				41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */,
-				AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

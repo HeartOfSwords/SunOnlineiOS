@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import BMPlayer
 import NVActivityIndicatorView
+import SwiftyJSON
 
 private let commitCellIdentifier = "commitCell"
 private let videoCellIdentifier = "videoCell"
@@ -22,6 +23,8 @@ class VideoItemInformationViewController: UIViewController {
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
     
+    var videoID = "123"
+    var commits = [WilddogCommiteModel]()
     
     deinit {
         // 使用手势返回的时候，调用下面方法手动销毁
@@ -40,6 +43,7 @@ extension VideoItemInformationViewController {
         setUpNav()
         setUpLabel()
         setUpTableView()
+        setUpWilldog()
     }
     //隐藏 StatusBar
     override func prefersStatusBarHidden() -> Bool {
@@ -66,6 +70,27 @@ extension VideoItemInformationViewController {
     
     func setUpNav() {
 
+    }
+    
+    func setUpWilldog() -> Void {
+        WilddogManager.wilddogLogin()
+        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
+        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: "这是我留的言")
+        let messageKey = one.commiteTime + one.autherID
+        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue]
+        videoRef.updateChildValues([messageKey:value])
+        
+        videoRef.observeEventType(.Value, withBlock: { (shot) in
+            let dataJSON = JSON(shot.value)
+            for (_,value) in dataJSON {
+            let teo = WilddogCommiteModel(autherName: value["autherName"].stringValue, autherID:  value["autherID"].stringValue, commiteTime: value["commiteTime"].stringValue, commiteValue: value["commiteValue"].stringValue)
+                self.commits.append(teo)
+                self.videoCommitTableView.reloadData()
+            }
+            
+            }) { (error) in
+                
+        }
     }
     
     func setUpVideoPlayer() {
@@ -144,12 +169,12 @@ extension VideoItemInformationViewController: UITableViewDelegate {
 //MARK: UITableViewDataSource
 extension VideoItemInformationViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return commits.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        cell.textLabel?.text = commits[indexPath.row].commiteValue
         return cell
     }
 }
