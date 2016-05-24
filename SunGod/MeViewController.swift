@@ -12,7 +12,7 @@ class MeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
+        addLeftBarButtonWithImage(UIImage(named: leftMenuImageName)!)
         title = "ME"
     }
 

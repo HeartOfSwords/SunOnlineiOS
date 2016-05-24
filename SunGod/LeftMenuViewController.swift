@@ -9,12 +9,15 @@
 import UIKit
 import SnapKit
 
+public let leftMenuImageName = "ic_view_headline_36pt"
+
+
 class LeftMenuViewController: UIViewController {
 
 
     lazy var tableView = UITableView()
     lazy var cellIdentifier = "leftMenuCellID"
-    lazy var mainScreenWidth = mainScreen.width / 4.0
+    lazy var mainScreenWidth = mainScreen.width / 3.0
     lazy var imageView = UIImageView()
     lazy var titleLabel = UILabel()
     lazy var nameLabel = UILabel()
@@ -32,8 +35,8 @@ class LeftMenuViewController: UIViewController {
         setUpNameLabel()
         setUpLabel()
         setUpTableView()
+        setNeedsStatusBarAppearanceUpdate()
     }
-
 }
 
 
@@ -44,7 +47,6 @@ extension LeftMenuViewController {
         //背景透明
         view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
         view.opaque = false
-        
     }
     
 

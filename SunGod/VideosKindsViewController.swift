@@ -32,7 +32,7 @@ extension VideosKindsViewController {
     
     func setUpNav() {
         ///添加左上角的侧滑按钮
-        addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
+        addLeftBarButtonWithImage(UIImage(named: leftMenuImageName)!)
     }
     
     func setUpCollectionView() -> Void {
@@ -59,7 +59,7 @@ extension VideosKindsViewController {
 extension VideosKindsViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let cv = VideosListCollectionViewController()
+        let cv = VideosKingsListViewController()
         navigationController?.pushViewController(cv, animated: true)
     }
 

@@ -21,6 +21,7 @@
 		41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */; };
 		41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB67841CE08D0000467584 /* VideoItemModel.swift */; };
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
+		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
 		AB4051481CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
@@ -42,6 +43,7 @@
 		41ABB0AD1CD048BF00DF728A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41BB67841CE08D0000467584 /* VideoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemModel.swift; sourceTree = "<group>"; };
 		41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosListCollectionViewController.swift; sourceTree = "<group>"; };
+		41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKingsListViewController.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB4051471CEC0FCC004571E4 /* SEPageViewWithNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEPageViewWithNavigationBar.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				410B7E161CF2FD53002EDF77 /* VideosKindsViewController.swift */,
+				41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */,
 			);
 			name = "栏目";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
