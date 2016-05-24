@@ -7,9 +7,6 @@
 //
 
 import UIKit
-//import Kingfisher
-//import Alamofire
-//import SwiftyJSON
 import SlideMenuControllerSwift
 import SnapKit
 
@@ -25,15 +22,11 @@ class VideosListCollectionViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSHomeDirectory())
+        
         setUpCollectionView()
         setUpNavigation()
-        
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
 
 }
 
@@ -58,8 +51,14 @@ extension VideosListCollectionViewController {
     }
     
     func setUpNavigation() {
-        ///添加左上角的侧滑按钮
-        addLeftBarButtonWithImage(UIImage(named: "ic_view_headline_36pt")!)
+        
+        if self is VideosKingsListViewController {
+            //如果是 VideosKingsListViewController 的话则不给他添加左上角的侧滑按钮
+        }else {
+            ///添加左上角的侧滑按钮
+            addLeftBarButtonWithImage(UIImage(named: leftMenuImageName)!)
+        }
+
         //设置返回按钮的文字为空
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         title = "太阳在线"
@@ -88,8 +87,8 @@ extension VideosListCollectionViewController {
          -F policy=<policy> \
          -F signature=<signature>
          */
-        let url = "http://v0.api.upyun.com/"
-        let bucket = "sunonlinevideos"
+//        let url = "http://v0.api.upyu÷n.com/"
+//        let bucket = "sunonlinevideos"
         
         
     }
@@ -111,9 +110,8 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
         return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-
-        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 }
 
@@ -143,7 +141,6 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
         presentViewController(videoItem, animated: true) { 
             
         }
-//        navigationController?.pushViewController(videoItem, animated: true)
 
     }
 }

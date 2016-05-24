@@ -17,7 +17,6 @@ class SunOnlineNavigationViewController: UINavigationController {
         UINavigationBar.appearance().translucent = true
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
     }
-
-
+    
 
 }
