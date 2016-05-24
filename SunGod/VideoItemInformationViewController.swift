@@ -16,7 +16,7 @@ private let videoCellIdentifier = "videoCell"
 class VideoItemInformationViewController: UIViewController {
 
     private lazy var player:BMPlayer = BMPlayer()
-    private let videoPhoto = UIImageView()
+    
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
@@ -49,20 +49,37 @@ extension VideoItemInformationViewController {
     }
     
     func setUpView() {
-        player.addSubview(videoPhoto)
-        videoPhoto.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(playVideo(_:))))
-        videoPhoto.snp_makeConstraints { (make) in
-            make.edges.equalTo(self.player)
-        }
-        videoPhoto.kf_setImageWithURL(NSURL(string: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")!)
-    }
-    
-    func playVideo(tap: UITapGestureRecognizer) {
-        videoPhoto.alpha = 0
 
-        print("sss")
     }
     
+    func setUpLabel() -> Void {
+        view.addSubview(videoTitleLabel)
+        view.addSubview(videoInformationLabel)
+        
+        videoTitleLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(player.snp_bottom).offset(2)
+            make.leading.trailing.equalTo(self.view)
+        }
+        
+        videoInformationLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(videoTitleLabel.snp_bottom)
+            make.leading.trailing.equalTo(self.view)
+        }
+        
+        videoTitleLabel.text = "Title"
+        videoInformationLabel.text = "InforMation"
+    }
+    
+    func setUpTableView() -> Void {
+        view.addSubview(videoCommitTableView)
+        videoCommitTableView.delegate = self
+        videoCommitTableView.dataSource = self
+        videoCommitTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: commitCellIdentifier)
+        videoCommitTableView.snp_makeConstraints { (make) in
+            make.top.equalTo(videoInformationLabel.snp_bottom)
+            make.bottom.leading.trailing.equalTo(self.view)
+        }
+    }
 
 }
 
@@ -74,14 +91,32 @@ extension VideoItemInformationViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         setUpVideoPlayer()
-//        setUpView()
+        setUpView()
         setUpNav()
+        setUpLabel()
+        setUpTableView()
     }
     //隐藏 StatusBar
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
+}
+//MARK: UITableViewDelegate
+extension VideoItemInformationViewController: UITableViewDelegate {
+    
+}
+//MARK: UITableViewDataSource
+extension VideoItemInformationViewController: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
 }
 
 

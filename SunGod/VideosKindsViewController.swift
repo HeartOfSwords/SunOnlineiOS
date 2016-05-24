@@ -39,7 +39,6 @@ extension VideosKindsViewController {
         let layout = UICollectionViewFlowLayout()
         let width = (mainScreen.width - 2) / 2
         layout.itemSize = CGSize(width: width, height: width)
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0)
         layout.minimumInteritemSpacing = 2
         layout.minimumLineSpacing = 2
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
@@ -67,9 +66,6 @@ extension VideosKindsViewController: UICollectionViewDelegate {
 }
 
 extension VideosKindsViewController: UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10

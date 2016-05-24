@@ -7,9 +7,6 @@
 //
 
 import UIKit
-//import Kingfisher
-//import Alamofire
-//import SwiftyJSON
 import SlideMenuControllerSwift
 import SnapKit
 
@@ -111,9 +108,8 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
         return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-
-        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 }
 
@@ -143,7 +139,6 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
         presentViewController(videoItem, animated: true) { 
             
         }
-//        navigationController?.pushViewController(videoItem, animated: true)
 
     }
 }
