@@ -38,10 +38,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-
-  BMPlayer:
-    :commit: 4150beef09faed52e04962ec6d46706e23824625
-    :git: https://github.com/BrikerMan/BMPlayer.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -63,7 +59,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: cc27def2c32265fc0ca0814860cb5b1fa22c2559
-
+PODFILE CHECKSUM: 38a52fa450d001157e9d5bfaf9c319e6d7deb99d
 
 COCOAPODS: 1.0.0

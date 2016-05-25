@@ -14,7 +14,7 @@ import SwiftyJSON
 import TextInputViewGroup
 
 private let commitCellIdentifier = "commitCell"
-private let videoCellIdentifier = "videoCell"
+//private let videoCellIdentifier = "videoCell"
 
 class VideoItemInformationViewController: UIViewController {
 
@@ -23,7 +23,7 @@ class VideoItemInformationViewController: UIViewController {
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
-//    private let inputTextView = ti]\]\
+    private let shareButton = UIButton()
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
@@ -44,6 +44,7 @@ extension VideoItemInformationViewController {
         setUpView()
         setUpNav()
         setUpLabel()
+        setUpButton()
         setUpTableView()
         setUpWilldog()
     }
@@ -147,6 +148,10 @@ extension VideoItemInformationViewController {
         
         videoTitleLabel.text = "Title"
         videoInformationLabel.text = "InforMation"
+    }
+    
+    func setUpButton() -> Void {
+        
     }
     
     func setUpTableView() -> Void {
