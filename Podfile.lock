@@ -1,16 +1,19 @@
 PODS:
-  - Alamofire (3.3.1)
-  - BMPlayer (0.1.5):
+  - Alamofire (3.4.0)
+  - BMPlayer (0.2.0):
+    - NVActivityIndicatorView (~> 2.6)
     - SnapKit
   - CryptoSwift (0.4.1)
   - HanekeSwift (0.10.1)
   - Kingfisher (2.4.1)
+  - NVActivityIndicatorView (2.6)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
+  - TextInputViewGroup (1.0.3)
   - UPYUN (1.0.0)
-  - Wilddog (1.0.0)
+  - Wilddog (1.0.1)
   - XLPagerTabStrip (5.0.0)
   - XWSwiftRefresh (0.1.9)
 
@@ -24,6 +27,7 @@ DEPENDENCIES:
   - SnapKit (~> 0.15.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
+  - TextInputViewGroup
   - UPYUN (~> 1.0.0)
   - Wilddog
   - XLPagerTabStrip (~> 5.0)
@@ -34,25 +38,32 @@ EXTERNAL SOURCES:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
+
+  BMPlayer:
+    :commit: 4150beef09faed52e04962ec6d46706e23824625
+    :git: https://github.com/BrikerMan/BMPlayer.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  BMPlayer: 05bd5492c620ef4bc9eacdf96951ddac7603edd1
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
   CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  TextInputViewGroup: b631c40b1a78d57af3b98816a5ab85b7d84b45f1
   UPYUN: 2da85016b99458d9c13227208cb56e4fddd54cd6
-  Wilddog: 08618a6d5e9d774de7c4424119227b9392de2002
+  Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: bfe8fbd586de715288097ad963b48588d6166012
+PODFILE CHECKSUM: cc27def2c32265fc0ca0814860cb5b1fa22c2559
+
 
 COCOAPODS: 1.0.0
