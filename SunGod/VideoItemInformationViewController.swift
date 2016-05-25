@@ -11,6 +11,7 @@ import Kingfisher
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON
+import TextInputViewGroup
 
 private let commitCellIdentifier = "commitCell"
 private let videoCellIdentifier = "videoCell"
@@ -22,6 +23,7 @@ class VideoItemInformationViewController: UIViewController {
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
+//    private let inputTextView = ti]\]\
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
@@ -80,7 +82,7 @@ extension VideoItemInformationViewController {
         let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue]
         videoRef.updateChildValues([messageKey:value])
         
-        videoRef.observeEventType(.Value, withBlock: { (shot) in
+        videoRef.queryLimitedToLast(3).observeEventType(.Value, withBlock: { (shot) in
             let dataJSON = JSON(shot.value)
             for (_,value) in dataJSON {
             let teo = WilddogCommiteModel(autherName: value["autherName"].stringValue, autherID:  value["autherID"].stringValue, commiteTime: value["commiteTime"].stringValue, commiteValue: value["commiteValue"].stringValue)

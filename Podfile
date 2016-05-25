@@ -36,6 +36,7 @@ pod 'Wilddog'
 pod 'UPYUN', '~> 1.0.0'
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
-
+#留言输入框
+pod 'TextInputViewGroup'
 end
 
