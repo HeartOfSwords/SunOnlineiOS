@@ -6,8 +6,8 @@
 
 target 'SunGod' do
 # 视频播放 view
-
-pod 'BMPlayer', :git => 'https://github.com/BrikerMan/BMPlayer.git'
+pod 'BMPlayer'
+#pod 'BMPlayer', :git => 'https://github.com/BrikerMan/BMPlayer.git'
 
 # 网络请求库
 pod 'Alamofire', '~> 3.3'
