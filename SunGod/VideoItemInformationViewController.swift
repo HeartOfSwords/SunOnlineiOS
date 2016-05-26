@@ -13,7 +13,6 @@ import NVActivityIndicatorView
 import SwiftyJSON
 
 private let commitCellIdentifier = "commitCell"
-//private let videoCellIdentifier = "videoCell"
 
 class VideoItemInformationViewController: UIViewController {
 

@@ -63,7 +63,7 @@ private extension AppDelegate {
          为什么不能改变 statusbarstyle
          */
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        setStatusBarBackgroundColor(UIColor.redColor())
+        setStatusBarBackgroundColor(UIColor.blackColor())
     }
     /**
      改变status bar 的背景颜色
