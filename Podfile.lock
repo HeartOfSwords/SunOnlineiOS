@@ -11,7 +11,6 @@ PODS:
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
-  - TextInputViewGroup (1.0.3)
   - UPYUN (1.0.0)
   - Wilddog (1.0.1)
   - XLPagerTabStrip (5.0.0)
@@ -27,7 +26,6 @@ DEPENDENCIES:
   - SnapKit (~> 0.15.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
-  - TextInputViewGroup
   - UPYUN (~> 1.0.0)
   - Wilddog
   - XLPagerTabStrip (~> 5.0)
@@ -53,12 +51,11 @@ SPEC CHECKSUMS:
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
-  TextInputViewGroup: b631c40b1a78d57af3b98816a5ab85b7d84b45f1
   UPYUN: 2da85016b99458d9c13227208cb56e4fddd54cd6
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
   XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: 38a52fa450d001157e9d5bfaf9c319e6d7deb99d
+PODFILE CHECKSUM: fd497487192e2fe84f8dcbf4ef267698fa415f96
 
 COCOAPODS: 1.0.0

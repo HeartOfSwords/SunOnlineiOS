@@ -11,7 +11,6 @@ import Kingfisher
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON
-import TextInputViewGroup
 
 private let commitCellIdentifier = "commitCell"
 //private let videoCellIdentifier = "videoCell"
