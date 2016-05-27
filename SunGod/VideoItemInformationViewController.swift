@@ -22,6 +22,7 @@ class VideoItemInformationViewController: UIViewController {
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
     private let shareButton = UIButton()
+    private let commitTextField = UITextField()
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
