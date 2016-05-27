@@ -31,6 +31,8 @@
 		ABEFFA571CF6F14F00CE323A /* AllowDownTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA551CF6F14F00CE323A /* AllowDownTableViewCell.swift */; };
 		ABEFFA581CF6F14F00CE323A /* AllowDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA561CF6F14F00CE323A /* AllowDownTableViewCell.xib */; };
 		ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */; };
+		ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */; };
+		ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		ABEFFA551CF6F14F00CE323A /* AllowDownTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllowDownTableViewCell.swift; sourceTree = "<group>"; };
 		ABEFFA561CF6F14F00CE323A /* AllowDownTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllowDownTableViewCell.xib; sourceTree = "<group>"; };
 		ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSeeCacheViewController.swift; sourceTree = "<group>"; };
+		ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
+		ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
 		BD7F76BAD01D27AD983AB223 /* Pods-SunGod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1F80360CDCA48F9CD0B111 /* Pods-SunGod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */,
+				ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */,
+				ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */,
 				410B7E201CF30588002EDF77 /* VideoKindsCollectionViewCell.swift */,
 				410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */,
 				AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */,
@@ -312,6 +318,7 @@
 				410B7E231CF30588002EDF77 /* VideoKindsCollectionViewCell.xib in Resources */,
 				41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */,
 				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
+				ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */,
 				ABEFFA581CF6F14F00CE323A /* AllowDownTableViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
 				ABEFFA541CF6F05900CE323A /* StoreTableViewCell.xib in Resources */,
@@ -373,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				ABEFFA4E1CF6EEC500CE323A /* MeTableViewCell.swift in Sources */,
