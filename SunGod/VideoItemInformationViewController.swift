@@ -45,7 +45,7 @@ extension VideoItemInformationViewController {
         setUpLabel()
         setUpButton()
         setUpTableView()
-        setUpText()
+//        setUpText()
         setUpWilldog()
     }
     //隐藏 StatusBar
@@ -87,7 +87,7 @@ extension VideoItemInformationViewController {
         
         videoRef.updateChildValues([messageKey:value])
         //监听节点的变化
-        videoRef.queryLimitedToLast(3).observeEventType(.Value, withBlock: { (shot) in
+        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
             let dataJSON = JSON(shot.value)
             for (_,value) in dataJSON {
             let teo = WilddogCommiteModel(
@@ -164,6 +164,13 @@ extension VideoItemInformationViewController {
         
     }
     
+    func setUpText() -> Void {
+        view.addSubview(commitTextField)
+        commitTextField.snp_makeConstraints { (make) in
+            make.top.equalTo(self.videoInformationLabel.snp_bottom)
+            make.leading.bottom.equalTo(self.view)
+        }
+    }
     func setUpTableView() -> Void {
         view.addSubview(videoCommitTableView)
         videoCommitTableView.estimatedRowHeight = 88
@@ -173,17 +180,11 @@ extension VideoItemInformationViewController {
         videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
         videoCommitTableView.snp_makeConstraints { (make) in
             make.top.equalTo(videoInformationLabel.snp_bottom)
-            make.leading.trailing.equalTo(self.view)
+            make.leading.trailing.bottom.equalTo(self.view)
         }
     }
     
-    func setUpText() -> Void {
-        view.addSubview(commitTextField)
-        commitTextField.snp_makeConstraints { (make) in
-            make.top.equalTo(self.videoCommitTableView.snp_bottom)
-            make.leading.bottom.equalTo(self.view)
-        }
-    }
+
 
 }
 

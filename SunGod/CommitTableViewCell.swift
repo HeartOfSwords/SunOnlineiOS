@@ -18,6 +18,7 @@ class CommitTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .None
     }
 
     func configCell(imageURL image: String, commitDate: String, userName: String, commitValue: String) {
