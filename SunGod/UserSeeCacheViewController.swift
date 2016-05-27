@@ -15,6 +15,10 @@ class UserSeeCacheViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         setUpView()
     }
 }
@@ -25,9 +29,11 @@ extension UserSeeCacheViewController {
         view.backgroundColor = UIColor.whiteColor()
         switch type {
         case 0:
-            print("")
+            title = "离线缓存"
+        case 1:
+            title = "我的收藏"
         default:
-            print("")
+            title = "播放记录"
         }
     }
 }
