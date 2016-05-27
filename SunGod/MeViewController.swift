@@ -23,6 +23,7 @@ class MeViewController: UIViewController {
         setUpNav()
         setUpTableView()
         title = "ME"
+
     }
     
     func setUpNav() -> Void {
@@ -49,6 +50,7 @@ class MeViewController: UIViewController {
     
 }
 
+//MARK: UITableViewDelegate
 extension MeViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -59,24 +61,27 @@ extension MeViewController: UITableViewDelegate {
 
             switch indexPath.row {
             case 0:
-                presentViewController(con, animated: true, completion: {
-                    
-                })
+                con.type = 0
+                navigationController?.pushViewController(con, animated: true)
             case 1:
-                presentViewController(con, animated: true, completion: {
-                    
-                })
+                con.type = 1
+                navigationController?.pushViewController(con, animated: true)
             default:
-                presentViewController(con, animated: true, completion: {
-                    
-                })
+                con.type = 2
+                navigationController?.pushViewController(con, animated: true)
             }
         default:
             return
         }
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 66
+    }
 }
 
+
+//MARK: UITableViewDataSource
 extension MeViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -117,6 +122,7 @@ extension MeViewController: UITableViewDataSource {
     }
 }
 
+//MARK: Function
 extension MeViewController {
     
     func configStoreCell(cell: StoreTableViewCell, indexPath: NSIndexPath) -> Void {
