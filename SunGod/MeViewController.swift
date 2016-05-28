@@ -12,6 +12,7 @@ import SnapKit
 private let userCell = "userCell"
 private let storeCell = "storeCell"
 private let allowCell = "allowCell"
+private let loginCell = "loginCell"
 
 class MeViewController: UIViewController {
 
@@ -40,6 +41,7 @@ class MeViewController: UIViewController {
         tablView.registerNib(meNib, forCellReuseIdentifier: userCell)
         tablView.registerNib(storNib, forCellReuseIdentifier: storeCell)
         tablView.registerNib(downNib, forCellReuseIdentifier: allowCell)
+        tablView.registerClass(UITableViewCell.self, forCellReuseIdentifier: loginCell)
         view.addSubview(tablView)
         
         tablView.snp_makeConstraints { (make) in
@@ -70,6 +72,8 @@ extension MeViewController: UITableViewDelegate {
                 con.type = 2
                 navigationController?.pushViewController(con, animated: true)
             }
+        case 2:
+            return
         default:
             return
         }
@@ -85,7 +89,7 @@ extension MeViewController: UITableViewDelegate {
 extension MeViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,7 +102,7 @@ extension MeViewController: UITableViewDataSource {
         case 2:
             return 2
         default:
-            return 0
+            return 1
         }
     }
     
@@ -114,9 +118,13 @@ extension MeViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCellWithIdentifier(storeCell, forIndexPath: indexPath) as! StoreTableViewCell
             configStoreCell(cell, indexPath: indexPath)
             return cell
-        default:
+        case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(allowCell, forIndexPath: indexPath) as! AllowDownTableViewCell
             configAllowDownCell(cell, indexPath: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier(loginCell, forIndexPath: indexPath)
+            cell.textLabel?.text = "登录"
             return cell
         }
     }
