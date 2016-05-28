@@ -121,9 +121,8 @@ extension VideoItemInformationViewController {
         player = BMPlayer()
         view.addSubview(player)
         player.snp_makeConstraints { (make) in
-            make.trailing.leading.equalTo(self.view)
-            make.top.equalTo(self.view)
-            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0).priority(750)
+            make.top.trailing.leading.equalTo(self.view)
+            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0)
         }
         player.backBlock =  { [unowned self] in
             self.dismissViewControllerAnimated(true, completion: { 
@@ -139,7 +138,7 @@ extension VideoItemInformationViewController {
     }
     
     func setUpView() {
-
+        view.backgroundColor = UIColor.whiteColor()
     }
     
     func setUpLabel() -> Void {
