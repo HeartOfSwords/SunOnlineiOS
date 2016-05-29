@@ -44,8 +44,8 @@ extension VideoItemInformationViewController {
         setUpNav()
         setUpLabel()
         setUpButton()
+        setUpText()
         setUpTableView()
-//        setUpText()
         setUpWilldog()
     }
     //隐藏 StatusBar
@@ -167,9 +167,12 @@ extension VideoItemInformationViewController {
         view.addSubview(commitTextField)
         commitTextField.snp_makeConstraints { (make) in
             make.top.equalTo(self.videoInformationLabel.snp_bottom)
-            make.leading.bottom.equalTo(self.view)
+            make.leading.trailing.equalTo(self.view)
         }
+        
+        commitTextField.placeholder = "我要"
     }
+    
     func setUpTableView() -> Void {
         view.addSubview(videoCommitTableView)
         videoCommitTableView.estimatedRowHeight = 88
@@ -178,7 +181,7 @@ extension VideoItemInformationViewController {
         videoCommitTableView.dataSource = self
         videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
         videoCommitTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(videoInformationLabel.snp_bottom)
+            make.top.equalTo(commitTextField.snp_bottom)
             make.leading.trailing.bottom.equalTo(self.view)
         }
     }
