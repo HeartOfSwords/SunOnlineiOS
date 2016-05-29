@@ -1,61 +1,81 @@
 PODS:
-  - Alamofire (3.4.0)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - BMPlayer (0.2.0):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
   - CryptoSwift (0.4.1)
   - HanekeSwift (0.10.1)
+  - HappyDNS (0.2.4)
   - Kingfisher (2.4.1)
   - NVActivityIndicatorView (2.6)
+  - Qiniu (7.0.19.1):
+    - AFNetworking (~> 3)
+    - HappyDNS (~> 0.2)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
-  - UPYUN (1.0.0)
   - Wilddog (1.0.1)
-  - XLPagerTabStrip (5.0.0)
   - XWSwiftRefresh (0.1.9)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.3)
   - BMPlayer
   - CryptoSwift
   - HanekeSwift
   - Kingfisher (~> 2.3)
+  - Qiniu (from `https://github.com/qiniu/objc-sdk.git`, branch `AFNetworking-3.x`)
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
-  - UPYUN (~> 1.0.0)
   - Wilddog
-  - XLPagerTabStrip (~> 5.0)
   - XWSwiftRefresh (~> 0.1.9)
 
 EXTERNAL SOURCES:
+  Qiniu:
+    :branch: AFNetworking-3.x
+    :git: https://github.com/qiniu/objc-sdk.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
+  Qiniu:
+    :commit: aafddf1e5c93a39ff7e4d3ccd73ce26ba84afd28
+    :git: https://github.com/qiniu/objc-sdk.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
   CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  HappyDNS: 86ab4be498cc5cc884002b248979cd130cfbe10e
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
+  Qiniu: fba2244a7f3a1356882430e1e2761a7d70340994
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
-  UPYUN: 2da85016b99458d9c13227208cb56e4fddd54cd6
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
-  XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: fd497487192e2fe84f8dcbf4ef267698fa415f96
+PODFILE CHECKSUM: 11ca62195259b6828cbb3a16048b86cdf04724e7
 
 COCOAPODS: 1.0.0
