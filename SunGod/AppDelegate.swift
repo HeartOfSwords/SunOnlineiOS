@@ -8,8 +8,8 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import Alamofire
 import SwiftyJSON
+import AFNetworking
 
 let baseURL =  "http://119.29.3.138:8080/SunOnline/"
 
@@ -25,15 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configNav()
         print(NSHomeDirectory())
         
-        request(.GET, baseURL + "webapi").responseJSON { (res) in
-            let jsonData = JSON(data: res.data!)["links",0]
-            let higoHref = baseURL + jsonData["href"].stringValue
-            print(higoHref)
-            request(.GET, higoHref).responseJSON(completionHandler: { (res) in
-                print(res.result.value)
-            })
-            
+       HYBNetworking.getWithUrl(baseURL + "webapi", refreshCache: true, success: { (data) in
+                let data = JSON(data)
+            print(data)
+            }) { (error) in
+                print(error.description)
         }
+        
+        
+        
         return true
     }
 }
