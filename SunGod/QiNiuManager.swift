@@ -10,17 +10,20 @@ import Qiniu
 import SwiftyJSON
 
 class QiNiuManager {
+    
     private let kQiniuBucket = "yangxiaolei"
     private let kQiniuAccessKey = "8jg3EmivN_pfmy-lRs_RPRhKPNPinuJ2PgbfJUUY"
     private let kQiniuSecretKey = "_C0SXewPsWtVdECch9snbhzHVIzhLu9nMMrB-Fcj"
-
+    
+    private let baseURL = "http://7s1rp2.com1.z0.glb.clouddn.com"
+    //七牛 上传管理
     private let upManager = QNUploadManager()
 
     private init() {}
     //构造一个单例
     static let sharedQiNiu = QiNiuManager()
     
-    //客户端生成 token
+    //客户端生成 put token
     //http://blog.lessfun.com/blog/2015/12/29/swift-create-qiniu-upload-token/
     // 辅助方法
     private func hmacsha1WithString(str: String, secretKey: String) -> NSData {
@@ -33,8 +36,15 @@ class QiNiuManager {
         let hmacData: NSData = NSData(bytes: result, length: (Int(CC_SHA1_DIGEST_LENGTH)))
         return hmacData
     }
-    //定义生成 Token 方法
-    private func createQiniuToken(fileName: String) -> String {
+    
+    /**
+     生成 Put Token
+     
+     - parameter fileName: 文件要上传的子目录
+     
+     - returns: 生成的TOKEN
+     */
+    private func createQiniuPutToken(fileName: String) -> String {
         
         let oneHourLater = NSDate().timeIntervalSince1970 + 3600
         // 上传策略中，只有scope和deadline是必填的
@@ -47,15 +57,33 @@ class QiNiuManager {
         
         return kQiniuAccessKey + ":" + encodedSign + ":" + encodedPutPolicy
     }
+    /**
+     生成 DownLoad Token
+     
+     - returns: DownloadToken
+     */
+    private func createQiniuDownloadToken() -> String {
+        let e = NSDate().timeIntervalSince1970.description
+        print(e)
+        let downURL = baseURL + "?e=" + e
+        let sign = hmacsha1WithString(downURL, secretKey: kQiniuSecretKey)
+        let encodedSign = QNUrlSafeBase64.encodeData(sign)
+        return kQiniuAccessKey + ":" + encodedSign
+    }
+
+}
+
+
+extension QiNiuManager {
     //上传示例
     func uploadWithName() {
-        
-        // 如果覆盖已有的文件，则指定文件名。否则如果同名文件已存在，会上传失败
-        let token = createQiniuToken("")
-        let string = NSString(string: "杨晓磊").dataUsingEncoding(NSUTF8StringEncoding)
-        
-        upManager.putData(string!, key: "name1", token: token, complete: { (info, key, resp) in
-            print(info,"!!!!")
+        createQiniuDownloadToken()
+        let token = createQiniuPutToken("")
+        let filePath = NSBundle.mainBundle().pathForResource("HTML", ofType: "mp4")
+        print(filePath)
+        upManager
+        upManager.putFile(filePath, key: "name5", token: token, complete: { (info, key, resp) in
+            print(info)
             }, option: nil)
     }
 }
