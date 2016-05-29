@@ -3,3 +3,4 @@
 //
 
 #import "HYBNetworking.h"
+#import <CommonCrypto/CommonCrypto.h>

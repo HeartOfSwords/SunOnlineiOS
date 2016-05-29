@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configStatusBar()
         configNav()
         print(NSHomeDirectory())
-
+        QiNiuManager.sharedQiNiu.uploadWithName()
         return true
     }
 }
