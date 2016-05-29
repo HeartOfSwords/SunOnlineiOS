@@ -10,8 +10,6 @@ import UIKit
 import SlideMenuControllerSwift
 
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configStatusBar()
         configNav()
         print(NSHomeDirectory())
-        VideosKindsModel.videosKinds()
+
         return true
     }
 }

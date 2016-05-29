@@ -36,6 +36,7 @@
 		ABEFFA691CFA8E2C00CE323A /* HYBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA681CFA8E2C00CE323A /* HYBNetworking.m */; };
 		ABEFFA6B1CFA939100CE323A /* NetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */; };
 		ABEFFA6D1CFA97B100CE323A /* VideosKindsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */; };
+		ABEFFA6F1CFAFC8800CE323A /* QiNiuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		ABEFFA681CFA8E2C00CE323A /* HYBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBNetworking.m; sourceTree = "<group>"; };
 		ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkingManager.swift; sourceTree = "<group>"; };
 		ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKindsModel.swift; sourceTree = "<group>"; };
+		ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiNiuManager.swift; sourceTree = "<group>"; };
 		BD7F76BAD01D27AD983AB223 /* Pods-SunGod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1F80360CDCA48F9CD0B111 /* Pods-SunGod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				41BB67841CE08D0000467584 /* VideoItemModel.swift */,
+				ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */,
 				ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */,
 				ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */,
 			);
@@ -411,6 +414,7 @@
 				410B7E221CF30588002EDF77 /* VideoKindsCollectionViewCell.swift in Sources */,
 				ABEFFA6B1CFA939100CE323A /* NetWorkingManager.swift in Sources */,
 				ABEFFA691CFA8E2C00CE323A /* HYBNetworking.m in Sources */,
+				ABEFFA6F1CFAFC8800CE323A /* QiNiuManager.swift in Sources */,
 				AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */,
 				41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */,
 			);

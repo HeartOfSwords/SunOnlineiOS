@@ -14,6 +14,14 @@ struct VideosKindsModel {
     var URL: String
     var imageURL: String
     
+    
+    init(name: String, des: String, URL: String, imageURL: String){
+        self.name = name
+        self.des = des
+        self.URL = URL
+        self.imageURL = imageURL
+    }
+    
     /**
      通过获取服务器的数据来初始化
      
@@ -21,21 +29,24 @@ struct VideosKindsModel {
      
      - returns:
      */
-    init(VideoData: AnyObject) {
-        let videoJSONData = JSON(VideoData)
-        name = videoJSONData[""].stringValue
-        des = videoJSONData[""].stringValue
-        URL = videoJSONData[""].stringValue
-        imageURL = videoJSONData[""].stringValue
+    init(VideoData: JSON) {
+        let videoJSONData = VideoData
+        name = videoJSONData["title"].stringValue
+        des = videoJSONData["title"].stringValue
+        URL = videoJSONData["title"].stringValue
+        imageURL = videoJSONData["title"].stringValue
     }
     
-    static func videosKinds() -> [VideosKindsModel] {
-        let videosKinds = [VideosKindsModel]()
+    static func videosKinds(success:(videoskinds:[VideosKindsModel]) -> Void) {
+        var videosKinds = [VideosKindsModel]()
         NetWorkingManager.VideosKinds.requestData { (data) in
-            guard let data = data else {return}
-            let jsonData = JSON(data)
-            print(jsonData)
+            guard let data = data else {print("Error");return}
+            let jsonData = JSON(data)["links"]
+            for (_, subJSON) in jsonData {
+                let kind = VideosKindsModel(VideoData:subJSON)
+                videosKinds.append(kind)
+            }
+            success(videoskinds: videosKinds)
         }
-        return videosKinds
     }
 }
