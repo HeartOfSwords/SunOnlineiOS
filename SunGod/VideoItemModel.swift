@@ -11,7 +11,7 @@ import SwiftyJSON
 struct VideoItemModel {
     var videoTitle: String
     var videoImageURL: String
-    var videoTime: String
+    var videoTime: String?
     var videoSeeNumber: Int
     var videoDescription: String
     
@@ -29,8 +29,8 @@ struct VideoItemModel {
      
      - returns:
      */
-    init(VideoData: NSData) {
-        let videoJSONData = JSON(data: VideoData)
+    init(VideoData: AnyObject) {
+        let videoJSONData = JSON(VideoData)
         videoTitle = videoJSONData[""].stringValue
         videoImageURL = videoJSONData[""].stringValue
         videoTime = videoJSONData[""].stringValue

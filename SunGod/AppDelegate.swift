@@ -8,10 +8,9 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import SwiftyJSON
-import AFNetworking
 
-let baseURL =  "http://119.29.3.138:8080/SunOnline/"
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,16 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configStatusBar()
         configNav()
         print(NSHomeDirectory())
-        
-       HYBNetworking.getWithUrl(baseURL + "webapi", refreshCache: true, success: { (data) in
-                let data = JSON(data)
-            print(data)
-            }) { (error) in
-                print(error.description)
-        }
-        
-        
-        
+        VideosKindsModel.videosKinds()
         return true
     }
 }
