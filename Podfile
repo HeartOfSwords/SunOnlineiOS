@@ -27,9 +27,9 @@ pod 'Kingfisher', '~> 2.3'
 #pod 'PageMenu'
 #pod 'XLPagerTabStrip', '~> 5.0'
 #加密
-pod 'CryptoSwift'
+#pod 'CryptoSwift'
 #缓存
-pod 'HanekeSwift'
+#pod 'HanekeSwift'
 # 野狗
 pod 'Wilddog'
 #  七牛
@@ -37,6 +37,7 @@ pod 'Qiniu', :git => 'https://github.com/qiniu/objc-sdk.git', :branch => 'AFNetw
 
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
-
+# CoreData 操作
+pod 'SugarRecord/CoreData'
 end
 

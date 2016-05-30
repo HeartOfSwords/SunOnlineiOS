@@ -17,16 +17,17 @@ PODS:
   - BMPlayer (0.2.0):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
-  - CryptoSwift (0.4.1)
-  - HanekeSwift (0.10.1)
   - HappyDNS (0.2.4)
   - Kingfisher (2.4.1)
   - NVActivityIndicatorView (2.6)
   - Qiniu (7.0.19.1):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.2)
+  - Result (2.0.0)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
+  - SugarRecord/CoreData (2.2.8):
+    - Result (~> 2.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
   - Wilddog (1.0.1)
@@ -34,12 +35,11 @@ PODS:
 
 DEPENDENCIES:
   - BMPlayer
-  - CryptoSwift
-  - HanekeSwift
   - Kingfisher (~> 2.3)
   - Qiniu (from `https://github.com/qiniu/objc-sdk.git`, branch `AFNetworking-3.x`)
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
+  - SugarRecord/CoreData
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
   - Wilddog
@@ -63,19 +63,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
-  CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
-  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   HappyDNS: 86ab4be498cc5cc884002b248979cd130cfbe10e
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
   Qiniu: fba2244a7f3a1356882430e1e2761a7d70340994
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SugarRecord: 2338098ccefc055764c968b2c469b450f63fcc53
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
   XWSwiftRefresh: 1981ad8f7579da94c94a8e7720803f2579dcde46
 
-PODFILE CHECKSUM: 11ca62195259b6828cbb3a16048b86cdf04724e7
+PODFILE CHECKSUM: bfa919a9f2be293ea83405bb5015a7e04d1449bd
 
 COCOAPODS: 1.0.0
