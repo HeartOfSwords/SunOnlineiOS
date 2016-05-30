@@ -24,6 +24,12 @@
 		41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1261CF3FB650045119E /* WilldogManger.swift */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
+		AB85834D1CFBDC9D0032BC0E /* MeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85834B1CFBDC9D0032BC0E /* MeSettingViewController.swift */; };
+		AB8583511CFBDFD10032BC0E /* UserPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85834F1CFBDFD10032BC0E /* UserPhotoTableViewCell.swift */; };
+		AB8583521CFBDFD10032BC0E /* UserPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8583501CFBDFD10032BC0E /* UserPhotoTableViewCell.xib */; };
+		AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */; };
+		AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */; };
+		AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583571CFBE6B10032BC0E /* UserDefaults.swift */; };
 		ABEFFA4E1CF6EEC500CE323A /* MeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA4C1CF6EEC500CE323A /* MeTableViewCell.swift */; };
 		ABEFFA4F1CF6EEC500CE323A /* MeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA4D1CF6EEC500CE323A /* MeTableViewCell.xib */; };
 		ABEFFA531CF6F05900CE323A /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA511CF6F05900CE323A /* StoreTableViewCell.swift */; };
@@ -59,6 +65,12 @@
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB85834B1CFBDC9D0032BC0E /* MeSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeSettingViewController.swift; sourceTree = "<group>"; };
+		AB85834F1CFBDFD10032BC0E /* UserPhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		AB8583501CFBDFD10032BC0E /* UserPhotoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
+		AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
+		AB8583571CFBE6B10032BC0E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		ABEFFA4C1CF6EEC500CE323A /* MeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeTableViewCell.swift; sourceTree = "<group>"; };
 		ABEFFA4D1CF6EEC500CE323A /* MeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeTableViewCell.xib; sourceTree = "<group>"; };
 		ABEFFA511CF6F05900CE323A /* StoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				410B7E1C1CF300FD002EDF77 /* MeViewController.swift */,
+				AB85834B1CFBDC9D0032BC0E /* MeSettingViewController.swift */,
 				ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */,
 				ABEFFA501CF6EFED00CE323A /* Cell */,
 			);
@@ -168,6 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */,
+				AB85834F1CFBDFD10032BC0E /* UserPhotoTableViewCell.swift */,
+				AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */,
+				AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */,
+				AB8583501CFBDFD10032BC0E /* UserPhotoTableViewCell.xib */,
 				ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */,
 				ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */,
 				410B7E201CF30588002EDF77 /* VideoKindsCollectionViewCell.swift */,
@@ -211,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				41BB67841CE08D0000467584 /* VideoItemModel.swift */,
+				AB8583571CFBE6B10032BC0E /* UserDefaults.swift */,
 				ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */,
 				ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */,
 				ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */,
@@ -333,9 +351,11 @@
 				ABEFFA4F1CF6EEC500CE323A /* MeTableViewCell.xib in Resources */,
 				410B7E231CF30588002EDF77 /* VideoKindsCollectionViewCell.xib in Resources */,
 				41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */,
+				AB8583521CFBDFD10032BC0E /* UserPhotoTableViewCell.xib in Resources */,
 				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
 				ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */,
 				ABEFFA581CF6F14F00CE323A /* AllowDownTableViewCell.xib in Resources */,
+				AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
 				ABEFFA541CF6F05900CE323A /* StoreTableViewCell.xib in Resources */,
 			);
@@ -397,12 +417,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */,
+				AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				ABEFFA4E1CF6EEC500CE323A /* MeTableViewCell.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
+				AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */,
+				AB8583511CFBDFD10032BC0E /* UserPhotoTableViewCell.swift in Sources */,
 				ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */,
 				41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */,
+				AB85834D1CFBDC9D0032BC0E /* MeSettingViewController.swift in Sources */,
 				ABEFFA531CF6F05900CE323A /* StoreTableViewCell.swift in Sources */,
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,

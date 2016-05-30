@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON

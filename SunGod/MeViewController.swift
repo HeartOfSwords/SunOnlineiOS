@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+import SwiftyUserDefaults
 
 private let userCell = "userCell"
 private let storeCell = "storeCell"
@@ -18,7 +18,8 @@ class MeViewController: UIViewController {
 
     
     var tablView: UITableView!
-    let con = UserSeeCacheViewController()
+    lazy var con:UserSeeCacheViewController = UserSeeCacheViewController()
+    lazy var meSetting: MeSettingViewController = MeSettingViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNav()
@@ -58,13 +59,13 @@ extension MeViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.section {
         case 0:
-            return
+            navigationController?.pushViewController(meSetting, animated: true)
         case 1:
 
             switch indexPath.row {
             case 0:
                 con.type = 0
-                navigationController?.pushViewController(con, animated: true)
+                navigationController?.pushViewController(meSetting, animated: true)
             case 1:
                 con.type = 1
                 navigationController?.pushViewController(con, animated: true)
@@ -124,7 +125,13 @@ extension MeViewController: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(loginCell, forIndexPath: indexPath)
-            cell.textLabel?.text = "登录"
+            
+            if Defaults[.userisLogin].boolValue {
+                cell.textLabel?.text = "退出登录"
+            }else {
+                cell.textLabel?.text = "登录"
+            }
+            
             return cell
         }
     }
@@ -161,10 +168,12 @@ extension MeViewController {
     }
     
     func allSee(sender: UISwitch) {
-        print(sender.on)
+        Defaults[.allowSee] = sender.on
+        Defaults.synchronize()
     }
     
     func allDown(sender: UISwitch) {
-        print(sender.on)
+        Defaults[.allowDown] = sender.on
+        Defaults.synchronize()
     }
 }

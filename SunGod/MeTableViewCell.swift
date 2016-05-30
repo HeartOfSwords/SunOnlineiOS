@@ -14,7 +14,7 @@ class MeTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selected = false
+//        self.selected = false
         self.selectionStyle = .None
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+
 
 
 class VideosKindsViewController: UIViewController {

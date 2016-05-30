@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import SnapKit
+
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -78,19 +78,6 @@ extension VideosListCollectionViewController {
     }
     
     
-    func upYunConfig() {
-        
-        /*
-         curl http://v0.api.upyun.com/<bucket-name> \
-         -F file=@<filename> \
-         -F policy=<policy> \
-         -F signature=<signature>
-         */
-//        let url = "http://v0.api.upyu÷n.com/"
-//        let bucket = "sunonlinevideos"
-        
-        
-    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

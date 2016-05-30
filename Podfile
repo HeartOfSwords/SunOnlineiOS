@@ -19,8 +19,8 @@ pod 'SnapKit', '~> 0.15.0'
 pod 'XWSwiftRefresh', '~> 0.1.9'
 # UserDefaults 操作库
 pod 'SwiftyUserDefaults'
-
-pod 'Kingfisher', '~> 2.3'
+#AFNetworking 具有类似的功能
+#pod 'Kingfisher', '~> 2.3'
 # 图片轮播
 #pod 'SDCycleScrollView','~> 1.64'
 # Page menu

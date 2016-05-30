@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import AFNetworking
 
 class VideoCollectionViewCell: UICollectionViewCell {
 
@@ -28,7 +28,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
     func setUpCell(time:String, information:String, photoURL: String) {
         self.time.text = time
         self.information.text = information
-        self.photo.kf_setImageWithURL(NSURL(string:photoURL)!, placeholderImage: nil, optionsInfo: nil, progressBlock: nil, completionHandler: nil)
+        self.photo.setImageWithURL(NSURL(string:photoURL)!, placeholderImage: nil)
     }
     
     
