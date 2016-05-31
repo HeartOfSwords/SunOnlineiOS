@@ -6,11 +6,11 @@
 
 target 'SunGod' do
 # 视频播放 view
-
-pod 'BMPlayer', :git => 'https://github.com/BrikerMan/BMPlayer.git'
-
+pod 'BMPlayer'
+#pod 'BMPlayer', :git => 'https://github.com/BrikerMan/BMPlayer.git'
 # 网络请求库
-pod 'Alamofire', '~> 3.3'
+# 七牛的SDK 中使用了 AFNetworking
+#pod 'Alamofire', '~> 3.3'
 # JSON 解析库
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 # 视图布局库
@@ -25,18 +25,18 @@ pod 'Kingfisher', '~> 2.3'
 #pod 'SDCycleScrollView','~> 1.64'
 # Page menu
 #pod 'PageMenu'
-pod 'XLPagerTabStrip', '~> 5.0'
+#pod 'XLPagerTabStrip', '~> 5.0'
 #加密
 pod 'CryptoSwift'
 #缓存
 pod 'HanekeSwift'
 # 野狗
 pod 'Wilddog'
-# UPYUN
-pod 'UPYUN', '~> 1.0.0'
+#  七牛
+pod 'Qiniu', :git => 'https://github.com/qiniu/objc-sdk.git', :branch => 'AFNetworking-3.x'
+
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
-#留言输入框
-pod 'TextInputViewGroup'
+
 end
 

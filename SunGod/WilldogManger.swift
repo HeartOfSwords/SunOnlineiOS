@@ -40,6 +40,7 @@ struct WilddogCommiteModel {
     var autherID = ""
     var commiteTime = ""
     var commiteValue = ""
+    var autherImageURL = ""
 }
 
 

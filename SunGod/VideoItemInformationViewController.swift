@@ -11,10 +11,8 @@ import Kingfisher
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON
-import TextInputViewGroup
 
 private let commitCellIdentifier = "commitCell"
-private let videoCellIdentifier = "videoCell"
 
 class VideoItemInformationViewController: UIViewController {
 
@@ -23,7 +21,8 @@ class VideoItemInformationViewController: UIViewController {
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
-//    private let inputTextView = ti]\]\
+    private let shareButton = UIButton()
+    private let commitTextField = UITextField()
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
@@ -44,6 +43,8 @@ extension VideoItemInformationViewController {
         setUpView()
         setUpNav()
         setUpLabel()
+        setUpButton()
+        setUpText()
         setUpTableView()
         setUpWilldog()
     }
@@ -77,15 +78,25 @@ extension VideoItemInformationViewController {
     func setUpWilldog() -> Void {
         WilddogManager.wilddogLogin()
         let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
-        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: "这是我留的言")
+                /// 添加新的留言
+        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: "这是我留的言", autherImageURL: "")
+                /// 生成一个唯一的 Key 值
         let messageKey = one.commiteTime + one.autherID
-        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue]
-        videoRef.updateChildValues([messageKey:value])
+                /// JSON
+        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
         
-        videoRef.queryLimitedToLast(3).observeEventType(.Value, withBlock: { (shot) in
+        videoRef.updateChildValues([messageKey:value])
+        //监听节点的变化
+        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
             let dataJSON = JSON(shot.value)
             for (_,value) in dataJSON {
-            let teo = WilddogCommiteModel(autherName: value["autherName"].stringValue, autherID:  value["autherID"].stringValue, commiteTime: value["commiteTime"].stringValue, commiteValue: value["commiteValue"].stringValue)
+            let teo = WilddogCommiteModel(
+                autherName: value["autherName"].stringValue,
+                autherID:  value["autherID"].stringValue,
+                commiteTime: value["commiteTime"].stringValue,
+                commiteValue: value["commiteValue"].stringValue,
+                autherImageURL: value["imageURL"].stringValue
+                )
                 self.commits.append(teo)
                 self.videoCommitTableView.reloadData()
             }
@@ -99,7 +110,7 @@ extension VideoItemInformationViewController {
         
         BMPlayerConf.allowLog = false
         // 是否自动播放，默认true
-        BMPlayerConf.shouldAutoPlay = true
+        BMPlayerConf.shouldAutoPlay = false
         // 主体颜色，默认白色
         BMPlayerConf.tintColor = UIColor.whiteColor()
         // 顶部返回和标题显示选项，默认.Always，可选.HorizantalOnly、.None
@@ -110,9 +121,8 @@ extension VideoItemInformationViewController {
         player = BMPlayer()
         view.addSubview(player)
         player.snp_makeConstraints { (make) in
-            make.trailing.leading.equalTo(self.view)
-            make.top.equalTo(self.view)
-            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0).priority(750)
+            make.top.trailing.leading.equalTo(self.view)
+            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0)
         }
         player.backBlock =  { [unowned self] in
             self.dismissViewControllerAnimated(true, completion: { 
@@ -128,7 +138,7 @@ extension VideoItemInformationViewController {
     }
     
     func setUpView() {
-
+        view.backgroundColor = UIColor.whiteColor()
     }
     
     func setUpLabel() -> Void {
@@ -149,16 +159,34 @@ extension VideoItemInformationViewController {
         videoInformationLabel.text = "InforMation"
     }
     
+    func setUpButton() -> Void {
+        
+    }
+    
+    func setUpText() -> Void {
+        view.addSubview(commitTextField)
+        commitTextField.snp_makeConstraints { (make) in
+            make.top.equalTo(self.videoInformationLabel.snp_bottom)
+            make.leading.trailing.equalTo(self.view)
+        }
+        
+        commitTextField.placeholder = "我要"
+    }
+    
     func setUpTableView() -> Void {
         view.addSubview(videoCommitTableView)
+        videoCommitTableView.estimatedRowHeight = 88
+        videoCommitTableView.rowHeight = UITableViewAutomaticDimension
         videoCommitTableView.delegate = self
         videoCommitTableView.dataSource = self
-        videoCommitTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: commitCellIdentifier)
+        videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
         videoCommitTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(videoInformationLabel.snp_bottom)
-            make.bottom.leading.trailing.equalTo(self.view)
+            make.top.equalTo(commitTextField.snp_bottom)
+            make.leading.trailing.bottom.equalTo(self.view)
         }
     }
+    
+
 
 }
 
@@ -166,7 +194,7 @@ extension VideoItemInformationViewController {
 
 //MARK: UITableViewDelegate
 extension VideoItemInformationViewController: UITableViewDelegate {
-    
+
 }
 //MARK: UITableViewDataSource
 extension VideoItemInformationViewController: UITableViewDataSource {
@@ -175,8 +203,9 @@ extension VideoItemInformationViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = commits[indexPath.row].commiteValue
+        let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath) as! CommitTableViewCell
+        let indexCommit = commits[indexPath.row]
+        cell.configCell(imageURL: indexCommit.autherImageURL, commitDate: indexCommit.commiteTime, userName: indexCommit.autherName, commitValue: indexCommit.commiteValue)
         return cell
     }
 }
