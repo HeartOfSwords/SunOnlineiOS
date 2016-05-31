@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+import MJRefresh
 
 
 class VideosKindsViewController: UIViewController {
@@ -51,6 +51,17 @@ extension VideosKindsViewController {
         collectionView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
+        
+        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
+    }
+    
+    
+    func pullDownRefresh() -> Void {
+        
+    }
+    
+    func pullUpRefresh() -> Void {
         
     }
 }

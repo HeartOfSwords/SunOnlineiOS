@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-
+import AFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configStatusBar()
         configNav()
         print(NSHomeDirectory())
-
         return true
     }
 }
@@ -76,5 +75,8 @@ private extension AppDelegate {
         guard let statusBar = UIApplication.sharedApplication().valueForKey("statusBarWindow")?.valueForKey("statusBar") as? UIView else { return }
         statusBar.backgroundColor = color
     }
+    
+    
+
 }
 

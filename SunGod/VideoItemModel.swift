@@ -14,7 +14,17 @@ struct VideoItemModel {
     var videoTime: String?
     var videoSeeNumber: Int
     var videoDescription: String
-    
+    /**
+     通过值来进行初始化
+     
+     - parameter videoTitle:       videoTitle
+     - parameter videoImageURL:    videoImageURL
+     - parameter videoTime:        videoTime
+     - parameter videoSeeNumber:   videoSeeNumber
+     - parameter videoDescription: videoDescription
+     
+     - returns: VideoItemModel
+     */
     init(videoTitle: String, videoImageURL: String, videoTime: String, videoSeeNumber: Int, videoDescription: String){
         self.videoTitle = videoTitle
         self.videoImageURL = videoImageURL
