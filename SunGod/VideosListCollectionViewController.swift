@@ -48,16 +48,18 @@ extension VideosListCollectionViewController {
         }
         
         //添加下拉刷新
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        header.lastUpdatedTimeLabel.hidden = true
+        collectionView.mj_header = header
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
     }
     
     func pullDownLoad() -> Void {
-        
+        collectionView.mj_header.endRefreshing()
     }
     
-    func pullFooter() -> Void {
-        
+     func pullFooter() -> Void {
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
     
     func setUpNavigation() {

@@ -52,17 +52,21 @@ extension VideosKindsViewController {
             make.edges.equalTo(self.view)
         }
         
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        
+        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        header.lastUpdatedTimeLabel.hidden = true
+        collectionView.mj_header = header
+        
         collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
     }
     
     
     func pullDownRefresh() -> Void {
-        
+        collectionView.mj_header.endRefreshing()
     }
     
     func pullUpRefresh() -> Void {
-        
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
 }
 

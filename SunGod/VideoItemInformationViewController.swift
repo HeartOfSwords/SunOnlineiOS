@@ -154,8 +154,8 @@ extension VideoItemInformationViewController {
             make.leading.trailing.equalTo(self.view)
         }
         
-        videoTitleLabel.text = "Title"
-        videoInformationLabel.text = "InforMation"
+        videoTitleLabel.text = "这里是视频的标题"
+        videoInformationLabel.text = "这里是视频的详细描述"
     }
     
     func setUpButton() -> Void {

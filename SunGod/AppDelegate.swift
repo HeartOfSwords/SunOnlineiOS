@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createMenuView()
         configStatusBar()
         configNav()
+    
+        
         print(NSHomeDirectory())
         return true
     }
