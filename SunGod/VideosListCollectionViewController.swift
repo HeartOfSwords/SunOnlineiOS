@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import SnapKit
+import MJRefresh
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -46,6 +46,18 @@ extension VideosListCollectionViewController {
         collectionView.snp_makeConstraints { (make) in
             make.leading.top.trailing.bottom.equalTo(view)
         }
+        
+        //添加下拉刷新
+        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+    }
+    
+    func pullDownLoad() -> Void {
+        
+    }
+    
+    func pullFooter() -> Void {
+        
     }
     
     func setUpNavigation() {
@@ -78,19 +90,6 @@ extension VideosListCollectionViewController {
     }
     
     
-    func upYunConfig() {
-        
-        /*
-         curl http://v0.api.upyun.com/<bucket-name> \
-         -F file=@<filename> \
-         -F policy=<policy> \
-         -F signature=<signature>
-         */
-//        let url = "http://v0.api.upyu÷n.com/"
-//        let bucket = "sunonlinevideos"
-        
-        
-    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout

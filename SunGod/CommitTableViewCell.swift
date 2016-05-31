@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+
 
 class CommitTableViewCell: UITableViewCell {
 
@@ -22,7 +22,7 @@ class CommitTableViewCell: UITableViewCell {
     }
 
     func configCell(imageURL image: String, commitDate: String, userName: String, commitValue: String) {
-        photoImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: Image(named: leftMenuImageName))
+        photoImage.setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named:leftMenuImageName ))
         commitTime.text = commitDate
         name.text = userName
         self.commitValue.text = commitValue

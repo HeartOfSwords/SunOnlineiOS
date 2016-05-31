@@ -9,12 +9,22 @@
 import SwiftyJSON
 
 struct VideosKindsModel {
+    
     var name: String
     var des: String
     var URL: String
     var imageURL: String
     
-    
+    /**
+     通过值来进行初始化一个栏目
+     
+     - parameter name:     name
+     - parameter des:      des
+     - parameter URL:      URL
+     - parameter imageURL: imageURL
+     
+     - returns: VideosKindsModel
+     */
     init(name: String, des: String, URL: String, imageURL: String){
         self.name = name
         self.des = des
@@ -27,7 +37,7 @@ struct VideosKindsModel {
      
      - parameter VideoData: Video Data
      
-     - returns:
+     - returns: VideosKindsModel
      */
     init(VideoData: JSON) {
         let videoJSONData = VideoData
@@ -36,7 +46,11 @@ struct VideosKindsModel {
         URL = videoJSONData["title"].stringValue
         imageURL = videoJSONData["title"].stringValue
     }
-    
+    /**
+     通过网络获取数据来生成一个 VideosKindsModel 数组
+     
+     - parameter success: success 返回闭包，如果获取不成功的话将会返回一个空的数组
+     */
     static func videosKinds(success:(videoskinds:[VideosKindsModel]) -> Void) {
         var videosKinds = [VideosKindsModel]()
         NetWorkingManager.VideosKinds.requestData { (data) in

@@ -31,7 +31,7 @@ enum NetWorkingManager {
             }) { (error) in
                 success(data: nil)
             }
-
+            
         case .VideosKinds:
             HYBNetworking.getWithUrl(reuqestURL(), refreshCache: true, success: { (data) in
                 success(data: data)
