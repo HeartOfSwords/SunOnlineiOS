@@ -58,11 +58,11 @@ extension VideosKindsViewController {
     
     
     func pullDownRefresh() -> Void {
-        
+        collectionView.mj_header.endRefreshing()
     }
     
     func pullUpRefresh() -> Void {
-        
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
 }
 

@@ -53,11 +53,11 @@ extension VideosListCollectionViewController {
     }
     
     func pullDownLoad() -> Void {
-        
+        collectionView.mj_header.endRefreshing()
     }
     
     func pullFooter() -> Void {
-        
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
     
     func setUpNavigation() {
@@ -136,9 +136,9 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-        presentViewController(videoItem, animated: true) { 
+            presentViewController(videoItem, animated: true) {
             
-        }
+            }
 
     }
 }

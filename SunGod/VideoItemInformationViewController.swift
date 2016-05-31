@@ -25,6 +25,7 @@ class VideoItemInformationViewController: UIViewController {
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
+    var commitValue = ""
     
     deinit {
         // 使用手势返回的时候，调用下面方法手动销毁
@@ -46,6 +47,7 @@ extension VideoItemInformationViewController {
         setUpText()
         setUpTableView()
         setUpWilldog()
+        
     }
     //隐藏 StatusBar
     override func prefersStatusBarHidden() -> Bool {
@@ -77,17 +79,11 @@ extension VideoItemInformationViewController {
     func setUpWilldog() -> Void {
         WilddogManager.wilddogLogin()
         let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
-                /// 添加新的留言
-        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: "这是我留的言", autherImageURL: "")
-                /// 生成一个唯一的 Key 值
-        let messageKey = one.commiteTime + one.autherID
-                /// JSON
-        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
         
-        videoRef.updateChildValues([messageKey:value])
         //监听节点的变化
         videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
-            let dataJSON = JSON(shot.value)
+            guard let value = shot.value else {return}
+            let dataJSON = JSON(value)
             for (_,value) in dataJSON {
             let teo = WilddogCommiteModel(
                 autherName: value["autherName"].stringValue,
@@ -96,7 +92,9 @@ extension VideoItemInformationViewController {
                 commiteValue: value["commiteValue"].stringValue,
                 autherImageURL: value["imageURL"].stringValue
                 )
+                
                 self.commits.append(teo)
+                
                 self.videoCommitTableView.reloadData()
             }
             
@@ -154,8 +152,8 @@ extension VideoItemInformationViewController {
             make.leading.trailing.equalTo(self.view)
         }
         
-        videoTitleLabel.text = "Title"
-        videoInformationLabel.text = "InforMation"
+        videoTitleLabel.text = "这里是视频的标题"
+        videoInformationLabel.text = "这里是视频的详细内容"
     }
     
     func setUpButton() -> Void {
@@ -168,8 +166,8 @@ extension VideoItemInformationViewController {
             make.top.equalTo(self.videoInformationLabel.snp_bottom)
             make.leading.trailing.equalTo(self.view)
         }
-        
-        commitTextField.placeholder = "我要"
+        commitTextField.delegate = self
+        commitTextField.placeholder = "留言"
     }
     
     func setUpTableView() -> Void {
@@ -206,6 +204,29 @@ extension VideoItemInformationViewController: UITableViewDataSource {
         let indexCommit = commits[indexPath.row]
         cell.configCell(imageURL: indexCommit.autherImageURL, commitDate: indexCommit.commiteTime, userName: indexCommit.autherName, commitValue: indexCommit.commiteValue)
         return cell
+    }
+}
+
+
+extension VideoItemInformationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        commitValue = textField.text!
+        
+        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
+        
+        /// 添加新的留言
+        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: commitValue, autherImageURL: "")
+        /// 生成一个唯一的 Key 值
+        let messageKey = one.commiteTime + one.autherID
+        /// JSON
+        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
+        
+        videoRef.updateChildValues([messageKey:value])
+        textField.text = ""
+        commitValue = ""
+        commits = []
+        return true
     }
 }
 

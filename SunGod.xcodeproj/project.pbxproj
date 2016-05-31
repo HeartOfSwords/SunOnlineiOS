@@ -15,6 +15,7 @@
 		410B7E231CF30588002EDF77 /* VideoKindsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */; };
 		414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */; };
 		414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B31A71CE193540011173D /* VideoItemInformationViewController.swift */; };
+		418563221CFD7797006FB4DE /* IMG_5716.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 418563211CFD7797006FB4DE /* IMG_5716.JPG */; };
 		41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABB0A11CD048BF00DF728A /* AppDelegate.swift */; };
 		41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0A81CD048BF00DF728A /* Assets.xcassets */; };
 		41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */; };
@@ -53,6 +54,7 @@
 		410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoKindsCollectionViewCell.xib; sourceTree = "<group>"; };
 		414B31A31CE1892D0011173D /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		414B31A71CE193540011173D /* VideoItemInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemInformationViewController.swift; sourceTree = "<group>"; };
+		418563211CFD7797006FB4DE /* IMG_5716.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_5716.JPG; sourceTree = "<group>"; };
 		41ABB09E1CD048BF00DF728A /* SunGod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunGod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41ABB0A11CD048BF00DF728A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41ABB0A81CD048BF00DF728A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
+				418563211CFD7797006FB4DE /* IMG_5716.JPG */,
 				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
 				41ABB0AD1CD048BF00DF728A /* Info.plist */,
 				ABEFFA671CFA8E2C00CE323A /* HYBNetworking.h */,
@@ -350,6 +353,7 @@
 			files = (
 				ABEFFA4F1CF6EEC500CE323A /* MeTableViewCell.xib in Resources */,
 				410B7E231CF30588002EDF77 /* VideoKindsCollectionViewCell.xib in Resources */,
+				418563221CFD7797006FB4DE /* IMG_5716.JPG in Resources */,
 				41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */,
 				AB8583521CFBDFD10032BC0E /* UserPhotoTableViewCell.xib in Resources */,
 				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
