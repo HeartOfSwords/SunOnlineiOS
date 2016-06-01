@@ -40,5 +40,7 @@ pod 'Qiniu', :git => 'https://github.com/qiniu/objc-sdk.git', :branch => 'AFNetw
 pod 'SlideMenuControllerSwift'
 # CoreData 操作
 pod 'SugarRecord/CoreData'
+
+pod 'SlackTextViewController'
 end
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Video" representedClassName=".Video" syncable="YES">
+        <attribute name="des" attributeType="String" syncable="YES"/>
+        <attribute name="downurl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="imageurl" attributeType="String" syncable="YES"/>
+        <attribute name="iscare" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isdown" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isplay" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Video" positionX="-54" positionY="36" width="128" height="195"/>
+    </elements>
+</model>

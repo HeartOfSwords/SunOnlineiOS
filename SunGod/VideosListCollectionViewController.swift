@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import MJRefresh
+import NVActivityIndicatorView
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -49,7 +50,8 @@ extension VideosListCollectionViewController {
         
         //添加下拉刷新
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
-        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        
     }
     
     func pullDownLoad() -> Void {

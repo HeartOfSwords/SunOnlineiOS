@@ -10,6 +10,7 @@ import UIKit
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON
+import SlackTextViewController
 
 private let commitCellIdentifier = "commitCell"
 
@@ -21,7 +22,7 @@ class VideoItemInformationViewController: UIViewController {
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
     private let shareButton = UIButton()
-    private let commitTextField = UITextField()
+    private let commitTextView = UITextField()
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
@@ -107,7 +108,7 @@ extension VideoItemInformationViewController {
         
         BMPlayerConf.allowLog = false
         // 是否自动播放，默认true
-        BMPlayerConf.shouldAutoPlay = false
+        BMPlayerConf.shouldAutoPlay = true
         // 主体颜色，默认白色
         BMPlayerConf.tintColor = UIColor.whiteColor()
         // 顶部返回和标题显示选项，默认.Always，可选.HorizantalOnly、.None
@@ -122,6 +123,8 @@ extension VideoItemInformationViewController {
             make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0)
         }
         player.backBlock =  { [unowned self] in
+            
+            self.commitTextView.resignFirstResponder()
             self.dismissViewControllerAnimated(true, completion: { 
                 
             })
@@ -161,16 +164,19 @@ extension VideoItemInformationViewController {
     }
     
     func setUpText() -> Void {
-        view.addSubview(commitTextField)
-        commitTextField.snp_makeConstraints { (make) in
+        view.addSubview(commitTextView)
+        commitTextView.snp_makeConstraints { (make) in
             make.top.equalTo(self.videoInformationLabel.snp_bottom)
             make.leading.trailing.equalTo(self.view)
+            make.height.equalTo(50)
         }
-        commitTextField.delegate = self
-        commitTextField.placeholder = "留言"
+        commitTextView.delegate = self
+        commitTextView.returnKeyType = .Send
+        commitTextView.enablesReturnKeyAutomatically = true
     }
     
     func setUpTableView() -> Void {
+        
         view.addSubview(videoCommitTableView)
         videoCommitTableView.estimatedRowHeight = 88
         videoCommitTableView.rowHeight = UITableViewAutomaticDimension
@@ -178,28 +184,25 @@ extension VideoItemInformationViewController {
         videoCommitTableView.dataSource = self
         videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
         videoCommitTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(commitTextField.snp_bottom)
+            make.top.equalTo(commitTextView.snp_bottom)
             make.leading.trailing.bottom.equalTo(self.view)
         }
     }
-    
-
-
 }
 
 
 
 //MARK: UITableViewDelegate
-extension VideoItemInformationViewController: UITableViewDelegate {
+extension VideoItemInformationViewController: UITableViewDelegate{
 
 }
 //MARK: UITableViewDataSource
 extension VideoItemInformationViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commits.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath) as! CommitTableViewCell
         let indexCommit = commits[indexPath.row]
         cell.configCell(imageURL: indexCommit.autherImageURL, commitDate: indexCommit.commiteTime, userName: indexCommit.autherName, commitValue: indexCommit.commiteValue)
@@ -207,8 +210,8 @@ extension VideoItemInformationViewController: UITableViewDataSource {
     }
 }
 
-
 extension VideoItemInformationViewController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         commitValue = textField.text!
@@ -229,6 +232,8 @@ extension VideoItemInformationViewController: UITextFieldDelegate {
         return true
     }
 }
+
+
 
 
 

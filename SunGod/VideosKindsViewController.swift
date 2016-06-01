@@ -53,7 +53,7 @@ extension VideosKindsViewController {
         }
         
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
-        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
+        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
     }
     
     
