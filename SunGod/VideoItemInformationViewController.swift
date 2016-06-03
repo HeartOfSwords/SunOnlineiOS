@@ -10,7 +10,7 @@ import UIKit
 import BMPlayer
 import NVActivityIndicatorView
 import SwiftyJSON
-import SlackTextViewController
+
 
 private let commitCellIdentifier = "commitCell"
 
@@ -21,8 +21,15 @@ class VideoItemInformationViewController: UIViewController {
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
-    private let shareButton = UIButton()
     private let commitTextView = UITextField()
+    private let userImage = UIImageView()
+    
+    private let sendButton = UIButton()
+    
+    private let storeButton = UIButton()
+    private let shareButton = UIButton()
+    private let downButton = UIButton()
+    private let delyButton = UIButton()
     
     var videoID = "123"
     var commits = [WilddogCommiteModel]()
@@ -44,8 +51,10 @@ extension VideoItemInformationViewController {
         setUpView()
         setUpNav()
         setUpLabel()
-        setUpButton()
+        setUpButtons()
+        setUpImage()
         setUpText()
+        setUpSendButton()
         setUpTableView()
         setUpWilldog()
         
@@ -147,32 +156,91 @@ extension VideoItemInformationViewController {
         
         videoTitleLabel.snp_makeConstraints { (make) in
             make.top.equalTo(player.snp_bottom)
-            make.leading.trailing.equalTo(self.view)
+            make.leading.trailing.equalTo(self.view).offset(8)
         }
         
         videoInformationLabel.snp_makeConstraints { (make) in
             make.top.equalTo(videoTitleLabel.snp_bottom)
-            make.leading.trailing.equalTo(self.view)
+            make.leading.trailing.equalTo(self.view).offset(8)
         }
         
         videoTitleLabel.text = "这里是视频的标题"
         videoInformationLabel.text = "这里是视频的详细内容"
     }
     
-    func setUpButton() -> Void {
+    func setUpButtons() -> Void {
+        view.addSubview(storeButton)
+        view.addSubview(shareButton)
+        view.addSubview(downButton)
+        view.addSubview(delyButton)
         
+        storeButton.snp_makeConstraints { (make) in
+            
+            make.width.height.equalTo(25)
+            make.top.equalTo(videoInformationLabel.snp_bottom).offset(18)
+            make.trailing.equalTo(shareButton.snp_leading).offset(-8)
+        }
+        
+        shareButton.snp_makeConstraints { (make) in
+            make.top.bottom.equalTo(storeButton)
+            make.width.height.equalTo(storeButton)
+            make.trailing.equalTo(downButton.snp_leading).offset(-8)
+        }
+        
+        downButton.snp_makeConstraints { (make) in
+            make.top.bottom.equalTo(storeButton)
+            make.width.height.equalTo(storeButton)
+            make.trailing.equalTo(delyButton.snp_leading).offset(-8)
+        }
+        
+        delyButton.snp_makeConstraints { (make) in
+            make.trailing.equalTo(self.view).offset(-8)
+            make.width.height.equalTo(storeButton)
+            make.top.bottom.equalTo(storeButton)
+        }
+        
+        storeButton.backgroundColor = UIColor.blueColor()
+        shareButton.backgroundColor = UIColor.blueColor()
+        downButton.backgroundColor = UIColor.blueColor()
+        delyButton.backgroundColor = UIColor.blueColor()
+    }
+    
+    func setUpImage() -> Void {
+        view.addSubview(userImage)
+        userImage.snp_makeConstraints { (make) in
+            
+            make.top.equalTo(self.storeButton.snp_bottom).offset(18)
+            make.leading.equalTo(self.view).offset(8)
+            make.height.width.equalTo(25)
+        }
+        
+        userImage.backgroundColor = UIColor.blueColor()
     }
     
     func setUpText() -> Void {
         view.addSubview(commitTextView)
         commitTextView.snp_makeConstraints { (make) in
-            make.top.equalTo(self.videoInformationLabel.snp_bottom)
-            make.leading.trailing.equalTo(self.view)
-            make.height.equalTo(50)
+            make.top.equalTo(userImage.snp_top)
+            make.leading.equalTo(self.userImage.snp_trailing).offset(8)
+            make.height.equalTo(userImage.snp_height)
         }
         commitTextView.delegate = self
         commitTextView.returnKeyType = .Send
         commitTextView.enablesReturnKeyAutomatically = true
+        commitTextView.placeholder = "写下你的评论"
+    }
+    
+    func setUpSendButton() -> Void {
+        view.addSubview(sendButton)
+        sendButton.snp_makeConstraints { (make) in
+            make.leading.equalTo(commitTextView.snp_trailing).offset(8)
+            make.top.equalTo(userImage.snp_top)
+            make.trailing.equalTo(self.view).offset(-8)
+            make.height.width.equalTo(userImage)
+        }
+        
+        sendButton.setTitle("发送", forState: UIControlState.Highlighted)
+        sendButton.backgroundColor = UIColor.blueColor()
     }
     
     func setUpTableView() -> Void {
@@ -184,7 +252,7 @@ extension VideoItemInformationViewController {
         videoCommitTableView.dataSource = self
         videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
         videoCommitTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(commitTextView.snp_bottom)
+            make.top.equalTo(userImage.snp_bottom).offset(10)
             make.leading.trailing.bottom.equalTo(self.view)
         }
     }
