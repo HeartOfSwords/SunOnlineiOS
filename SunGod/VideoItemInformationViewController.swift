@@ -155,12 +155,12 @@ extension VideoItemInformationViewController {
         view.addSubview(videoInformationLabel)
         
         videoTitleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(player.snp_bottom)
+            make.top.equalTo(player.snp_bottom).offset(8)
             make.leading.trailing.equalTo(self.view).offset(8)
         }
         
         videoInformationLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(videoTitleLabel.snp_bottom)
+            make.top.equalTo(videoTitleLabel.snp_bottom).offset(8)
             make.leading.trailing.equalTo(self.view).offset(8)
         }
         
@@ -182,13 +182,13 @@ extension VideoItemInformationViewController {
         }
         
         shareButton.snp_makeConstraints { (make) in
-            make.top.bottom.equalTo(storeButton)
+            make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
             make.trailing.equalTo(downButton.snp_leading).offset(-8)
         }
         
         downButton.snp_makeConstraints { (make) in
-            make.top.bottom.equalTo(storeButton)
+            make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
             make.trailing.equalTo(delyButton.snp_leading).offset(-8)
         }
@@ -196,7 +196,7 @@ extension VideoItemInformationViewController {
         delyButton.snp_makeConstraints { (make) in
             make.trailing.equalTo(self.view).offset(-8)
             make.width.height.equalTo(storeButton)
-            make.top.bottom.equalTo(storeButton)
+            make.top.equalTo(storeButton.snp_top)
         }
         
         storeButton.backgroundColor = UIColor.blueColor()
@@ -208,7 +208,6 @@ extension VideoItemInformationViewController {
     func setUpImage() -> Void {
         view.addSubview(userImage)
         userImage.snp_makeConstraints { (make) in
-            
             make.top.equalTo(self.storeButton.snp_bottom).offset(18)
             make.leading.equalTo(self.view).offset(8)
             make.height.width.equalTo(25)
