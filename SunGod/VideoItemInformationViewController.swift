@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import SwiftyJSON
 import BMPlayer
 import NVActivityIndicatorView
-import SwiftyJSON
-
 
 private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
 
     private var player:BMPlayer!
+    
+
     
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
@@ -46,6 +47,8 @@ extension VideoItemInformationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         view.backgroundColor = UIColor.whiteColor()
         setUpVideoPlayer()
         setUpView()
@@ -67,14 +70,14 @@ extension VideoItemInformationViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
-        player.pause(allowAutoPlay: true)
+//        player.pause(allowAutoPlay: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
         // 使用手势返回的时候，调用下面方法
-        player.autoPlay()
+//        player.autoPlay()
     }
 }
 
@@ -129,15 +132,16 @@ extension VideoItemInformationViewController {
         view.addSubview(player)
         player.snp_makeConstraints { (make) in
             make.top.trailing.leading.equalTo(self.view)
-            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0)
+            make.height.equalTo(self.view.snp_width).multipliedBy(9.0 / 16.0).priority(750)
         }
-        player.backBlock =  { [unowned self] in
-            
+        
+        player.backBlock = { [unowned self] in
             self.commitTextView.resignFirstResponder()
-            self.dismissViewControllerAnimated(true, completion: { 
+            self.dismissViewControllerAnimated(true, completion: {
                 
             })
         }
+        
         //配置视频播放资源
         let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4")!, definitionName: "超清")
         let item = BMPlayerItem(title: "视频的Title", resource: [videoResource], cover: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
@@ -199,9 +203,6 @@ extension VideoItemInformationViewController {
             make.top.equalTo(storeButton.snp_top)
         }
         
-
-        videoTitleLabel.text = "这里是视频的标题"
-
         storeButton.backgroundColor = UIColor.blueColor()
         shareButton.backgroundColor = UIColor.blueColor()
         downButton.backgroundColor = UIColor.blueColor()
@@ -254,10 +255,10 @@ extension VideoItemInformationViewController {
         videoCommitTableView.delegate = self
         videoCommitTableView.dataSource = self
         videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
-        videoCommitTableView.snp_makeConstraints { (make) in
-            make.top.equalTo(userImage.snp_bottom).offset(10)
-            make.leading.trailing.bottom.equalTo(self.view)
-        }
+//        videoCommitTableView.snp_makeConstraints { (make) in
+//            make.top.equalTo(userImage.snp_bottom).offset(10)
+//            make.leading.trailing.bottom.equalTo(self.view)
+//        }
     }
 }
 

@@ -1,30 +1,12 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
+  - Alamofire (3.4.0)
   - BMPlayer (0.2.0):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
-  - HappyDNS (0.2.4)
+  - Kingfisher (2.4.1)
   - MJRefresh (3.1.0)
-  - NVActivityIndicatorView (2.6)
-  - Qiniu (7.0.19.1):
-    - AFNetworking (~> 3)
-    - HappyDNS (~> 0.2)
+  - NVActivityIndicatorView (2.7)
   - Result (2.0.0)
-  - SlackTextViewController (1.9.3)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
   - SugarRecord/CoreData (2.2.8):
@@ -34,10 +16,10 @@ PODS:
   - Wilddog (1.0.1)
 
 DEPENDENCIES:
-  - BMPlayer
+  - Alamofire (~> 3.3)
+  - BMPlayer (~> 0.2.0)
+  - Kingfisher (~> 2.3)
   - MJRefresh
-  - Qiniu (from `https://github.com/qiniu/objc-sdk.git`, branch `AFNetworking-3.x`)
-  - SlackTextViewController
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
   - SugarRecord/CoreData
@@ -46,29 +28,21 @@ DEPENDENCIES:
   - Wilddog
 
 EXTERNAL SOURCES:
-  Qiniu:
-    :branch: AFNetworking-3.x
-    :git: https://github.com/qiniu/objc-sdk.git
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-  Qiniu:
-    :commit: aafddf1e5c93a39ff7e4d3ccd73ce26ba84afd28
-    :git: https://github.com/qiniu/objc-sdk.git
   SwiftyJSON:
     :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
-  HappyDNS: 86ab4be498cc5cc884002b248979cd130cfbe10e
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
-  NVActivityIndicatorView: b8207b369c012af32da0916a8346a56d16a5fbbe
-  Qiniu: fba2244a7f3a1356882430e1e2761a7d70340994
+  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
-  SlackTextViewController: bd2a34c188d4f7dec93cf42388f38551263fac82
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SugarRecord: 2338098ccefc055764c968b2c469b450f63fcc53
@@ -76,6 +50,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
 
-PODFILE CHECKSUM: ae8963ca07c3823831a3875d1ff0910bd34ff31e
+PODFILE CHECKSUM: 4474cc0d7aad8fe2acfd9800d9db5ad5dbbace48
 
 COCOAPODS: 1.0.0

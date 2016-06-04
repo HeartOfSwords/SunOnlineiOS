@@ -16,8 +16,4 @@ class SettingViewController: UIViewController {
         title = "设置"
     }
 
-
-
-
-
 }

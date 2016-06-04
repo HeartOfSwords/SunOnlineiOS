@@ -24,7 +24,7 @@ class VideoKindsCollectionViewCell: UICollectionViewCell {
     func setUpCell(information:String, photoURL: String) {
         
         self.titleLabel.text = information
-        self.photo.setImageWithURL(NSURL(string: photoURL)!, placeholderImage: nil)
+        self.photo.kf_setImageWithURL(NSURL(string: photoURL)!, placeholderImage: nil)
     }
 
 }

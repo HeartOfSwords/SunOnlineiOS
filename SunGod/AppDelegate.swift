@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import AFNetworking
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createMenuView()
         configStatusBar()
         configNav()
-    
-        
         print(NSHomeDirectory())
         return true
     }

@@ -12,7 +12,7 @@ struct VideosKindsModel {
     
     var name: String
     var des: String
-    var URL: String
+    var allVideosURL: String
     var imageURL: String
     
     /**
@@ -28,7 +28,7 @@ struct VideosKindsModel {
     init(name: String, des: String, URL: String, imageURL: String){
         self.name = name
         self.des = des
-        self.URL = URL
+        self.allVideosURL = URL
         self.imageURL = imageURL
     }
     
@@ -40,11 +40,11 @@ struct VideosKindsModel {
      - returns: VideosKindsModel
      */
     init(VideoData: JSON) {
-        let videoJSONData = VideoData
-        name = videoJSONData["title"].stringValue
-        des = videoJSONData["title"].stringValue
-        URL = videoJSONData["title"].stringValue
-        imageURL = videoJSONData["title"].stringValue
+        
+        name = VideoData["title"].stringValue
+        des = VideoData["title"].stringValue
+        allVideosURL = baseURL + VideoData["href"].stringValue
+        imageURL = VideoData["title"].stringValue
     }
     /**
      通过网络获取数据来生成一个 VideosKindsModel 数组
