@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import MJRefresh
+import SnapKit
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -19,7 +20,8 @@ let videoViewHeight = mainScreen.width * (9.0 / 16.0)
 class VideosListCollectionViewController: UIViewController  {
     
     private var collectionView: UICollectionView!
-    
+    private var videos  = [VideoItemModel]()
+    private var requestPage = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,21 +45,27 @@ extension VideosListCollectionViewController {
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
         view.addSubview(collectionView)
         ///collection View 布局
+
         collectionView.snp_makeConstraints { (make) in
             make.leading.top.trailing.bottom.equalTo(view)
         }
         
         //添加下拉刷新
+
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
-        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        
     }
     
     func pullDownLoad() -> Void {
         
+//        requestVideos(1, back: (videos: [VideoItemModel]) -> Void)
+        collectionView.mj_header.endRefreshing()
     }
-    
-    func pullFooter() -> Void {
-        
+
+     func pullFooter() -> Void {
+
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
     
     func setUpNavigation() {
@@ -89,7 +97,9 @@ extension VideosListCollectionViewController {
         return ceil(rect.height)
     }
     
-    
+    func requestVideos(page: Int , back: (videos: [VideoItemModel]) -> Void) {
+        
+    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -117,7 +127,7 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
 extension VideosListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 10
+            return videos.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -136,9 +146,9 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-        presentViewController(videoItem, animated: true) { 
+            presentViewController(videoItem, animated: true) {
             
-        }
+            }
 
     }
 }

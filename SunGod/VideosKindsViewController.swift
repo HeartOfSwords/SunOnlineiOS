@@ -8,12 +8,19 @@
 
 import UIKit
 import MJRefresh
-
+import SwiftyJSON
 
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private let kindsCellidentifier = "kindsCell"
+    private var kinds = [VideosKindsModel]() {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +28,6 @@ class VideosKindsViewController: UIViewController {
         setUpNav()
         setUpCollectionView()
     }
-
-
 }
 
 extension VideosKindsViewController {
@@ -52,17 +57,35 @@ extension VideosKindsViewController {
             make.edges.equalTo(self.view)
         }
         
+
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
-        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
+        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
     }
     
     
     func pullDownRefresh() -> Void {
-        
+        collectionView.mj_header.endRefreshing()
     }
     
     func pullUpRefresh() -> Void {
-        
+        collectionView.mj_footer.endRefreshingWithNoMoreData()
+    }
+    
+    func requestKinds() -> Void {
+        NetWorkingManager.VideosKinds.requestData { (data) in
+            guard let data = data else {
+                return
+            }
+            /// 获取到数据之后对数据进行进行解析,转化成对应的模型
+            let jsonData = JSON(data:data)
+            /**
+             *  对请求回来的JSON 数组进行遍历
+             */
+            for (_, subJSON) in jsonData {
+                let kind = VideosKindsModel(VideoData:subJSON)
+                self.kinds.append(kind)
+            }
+        }
     }
 }
 

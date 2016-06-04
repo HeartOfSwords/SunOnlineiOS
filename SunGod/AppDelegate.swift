@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-import AFNetworking
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

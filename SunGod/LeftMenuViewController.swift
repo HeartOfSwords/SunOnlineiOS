@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SnapKit
+
 
 public let leftMenuImageName = "ic_view_headline_36pt"
 
@@ -54,6 +54,7 @@ extension LeftMenuViewController {
     func setUpImageView() {
         
         view.addSubview(imageView)
+        
         imageView.snp_makeConstraints { (make) in
             
             make.width.height.equalTo(mainScreenWidth)

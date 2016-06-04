@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AFNetworking
+
 
 class VideoCollectionViewCell: UICollectionViewCell {
 
@@ -28,7 +28,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
     func setUpCell(time:String, information:String, photoURL: String) {
         self.time.text = time
         self.information.text = information
-        self.photo.setImageWithURL(NSURL(string:photoURL)!, placeholderImage: nil)
+        self.photo.kf_setImageWithURL(NSURL(string: photoURL)!, placeholderImage: nil)
     }
     
     

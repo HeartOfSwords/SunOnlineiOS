@@ -6,38 +6,35 @@
 //  Copyright © 2016年 太阳在线. All rights reserved.
 //
 import SwiftyJSON
+import Alamofire
+
+let baseURL = "http://119.29.3.138:8080/sunonlineAlpha1/webapi/videos/"
 
 enum NetWorkingManager {
     
     case Videos
     case VideosKinds
     
-    private var baseURL: String { return "http://119.29.3.138:8080/SunOnline/" }
-    
     private func reuqestURL() -> String {
         switch self {
         case .Videos:
-            return baseURL + "webapi"
+            return baseURL + ""
         case .VideosKinds:
-            return baseURL + "webapi"
+            return baseURL
         }
     }
     
-    func requestData(success:(data:AnyObject?) -> Void) {
+    func requestData(success:(data:NSData?) -> Void) {
         switch self {
         case .Videos:
-            HYBNetworking.getWithUrl(reuqestURL(), refreshCache: true, success: { (data) in
-                success(data: data)
-            }) { (error) in
-                success(data: nil)
-            }
-            
+            request(.GET, reuqestURL()).responseJSON(completionHandler: { (res) in
+                success(data:res.data)
+            })
         case .VideosKinds:
-            HYBNetworking.getWithUrl(reuqestURL(), refreshCache: true, success: { (data) in
-                success(data: data)
-            }) { (error) in
-                success(data: nil)
-            }
+            request(.GET, reuqestURL()).responseJSON(completionHandler: { (res) in
+                success(data:res.data)
+            })
+            
         }
     }
 }
