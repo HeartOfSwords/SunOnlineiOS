@@ -11,11 +11,11 @@ import SwiftyJSON
 
 class QiNiuManager {
     
-    private let kQiniuBucket = "yangxiaolei"
-    private let kQiniuAccessKey = "8jg3EmivN_pfmy-lRs_RPRhKPNPinuJ2PgbfJUUY"
-    private let kQiniuSecretKey = "_C0SXewPsWtVdECch9snbhzHVIzhLu9nMMrB-Fcj"
+    private let kQiniuBucket = "sunonline"
+    private let kQiniuAccessKey = "BF-p41waoQRT4VsYE0EYDIRsEaL48_hMKg-tbNYV"
+    private let kQiniuSecretKey = "OlqlS_EWMHJMipYDvfH6FqAd0Kth1luL4gfqfivI"
     
-    private let baseURL = "http://7s1rp2.com1.z0.glb.clouddn.com"
+    private let baseURL = "http://o7zv69viu.bkt.clouddn.com/"
     //七牛 上传管理
     private let upManager = QNUploadManager()
 
@@ -58,17 +58,20 @@ class QiNiuManager {
         return kQiniuAccessKey + ":" + encodedSign + ":" + encodedPutPolicy
     }
     /**
-     生成 DownLoad Token
+     生成 DownLoad URL
      
      - returns: DownloadToken
      */
-    private func createQiniuDownloadToken() -> String {
-        let e = NSDate().timeIntervalSince1970.description
-        print(e)
-        let downURL = baseURL + "?e=" + e
+     func createQiniuDownloadToken(fileName: String) -> String {
+        //http://7s1rp2.com1.z0.glb.clouddn.com/2014.png 
+        
+        // 过期时间 3600
+        let e = NSNumber(unsignedLongLong: UInt64(NSDate().timeIntervalSince1970 + 3600))
+        let downURL = baseURL + fileName + "?e=" + "\(e)"
         let sign = hmacsha1WithString(downURL, secretKey: kQiniuSecretKey)
         let encodedSign = QNUrlSafeBase64.encodeData(sign)
-        return kQiniuAccessKey + ":" + encodedSign
+        let token = "MY_ACCESS_KEY" + ":" + encodedSign
+        return downURL + "&" + "token=" + token
     }
 
 }
@@ -77,13 +80,12 @@ class QiNiuManager {
 extension QiNiuManager {
     //上传示例
     func uploadWithName() {
-        createQiniuDownloadToken()
         let token = createQiniuPutToken("")
-        let filePath = NSBundle.mainBundle().pathForResource("HTML", ofType: "mp4")
-        print(filePath)
-        upManager
-        upManager.putFile(filePath, key: "name5", token: token, complete: { (info, key, resp) in
+        let filePath = NSBundle.mainBundle().pathForResource("IMG_5716", ofType: "JPG")
+        upManager.putFile(filePath, key: "xiaolei", token: token, complete: { (info, key, resp) in
             print(info)
             }, option: nil)
     }
+    
+
 }

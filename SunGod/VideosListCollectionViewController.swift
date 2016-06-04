@@ -9,6 +9,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import MJRefresh
+import NVActivityIndicatorView
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -48,17 +49,18 @@ extension VideosListCollectionViewController {
         }
         
         //添加下拉刷新
-        let header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
-        header.lastUpdatedTimeLabel.hidden = true
-        collectionView.mj_header = header
-        collectionView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+
+        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        
     }
     
     func pullDownLoad() -> Void {
         collectionView.mj_header.endRefreshing()
     }
-    
+
      func pullFooter() -> Void {
+
         collectionView.mj_footer.endRefreshingWithNoMoreData()
     }
     
@@ -138,9 +140,9 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-        presentViewController(videoItem, animated: true) { 
+            presentViewController(videoItem, animated: true) {
             
-        }
+            }
 
     }
 }
