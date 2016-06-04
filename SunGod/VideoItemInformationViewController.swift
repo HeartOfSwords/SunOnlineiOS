@@ -15,10 +15,9 @@ private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
 
+    var video: VideoItemModel!
+    
     private var player:BMPlayer!
-    
-
-    
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
     private let videoCommitTableView = UITableView()
@@ -70,14 +69,14 @@ extension VideoItemInformationViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
-//        player.pause(allowAutoPlay: true)
+        player.pause(allowAutoPlay: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
         // 使用手势返回的时候，调用下面方法
-//        player.autoPlay()
+        player.autoPlay()
     }
 }
 
@@ -143,8 +142,8 @@ extension VideoItemInformationViewController {
         }
         
         //配置视频播放资源
-        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4")!, definitionName: "超清")
-        let item = BMPlayerItem(title: "视频的Title", resource: [videoResource], cover: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
+        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "超清")
+        let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoURL)
         player.playWithPlayerItem(item)
         
 
@@ -168,8 +167,7 @@ extension VideoItemInformationViewController {
             make.leading.trailing.equalTo(self.view).offset(8)
         }
         
-        videoTitleLabel.text = "这里是视频的标题"
-        videoInformationLabel.text = "这里是视频的详细内容"
+
     }
     
     func setUpButtons() -> Void {
@@ -203,10 +201,7 @@ extension VideoItemInformationViewController {
             make.top.equalTo(storeButton.snp_top)
         }
         
-        storeButton.backgroundColor = UIColor.blueColor()
-        shareButton.backgroundColor = UIColor.blueColor()
-        downButton.backgroundColor = UIColor.blueColor()
-        delyButton.backgroundColor = UIColor.blueColor()
+
 
     }
     
@@ -218,7 +213,7 @@ extension VideoItemInformationViewController {
             make.height.width.equalTo(25)
         }
         
-        userImage.backgroundColor = UIColor.blueColor()
+        
     }
     
     func setUpText() -> Void {
@@ -228,10 +223,7 @@ extension VideoItemInformationViewController {
             make.leading.equalTo(self.userImage.snp_trailing).offset(8)
             make.height.equalTo(userImage.snp_height)
         }
-        commitTextView.delegate = self
-        commitTextView.returnKeyType = .Send
-        commitTextView.enablesReturnKeyAutomatically = true
-        commitTextView.placeholder = "写下你的评论"
+
     }
     
     func setUpSendButton() -> Void {
@@ -242,9 +234,6 @@ extension VideoItemInformationViewController {
             make.trailing.equalTo(self.view).offset(-8)
             make.height.width.equalTo(userImage)
         }
-        
-        sendButton.setTitle("发送", forState: UIControlState.Highlighted)
-        sendButton.backgroundColor = UIColor.blueColor()
     }
     
     func setUpTableView() -> Void {
@@ -260,6 +249,26 @@ extension VideoItemInformationViewController {
 //            make.leading.trailing.bottom.equalTo(self.view)
 //        }
     }
+    
+    func setupValue() -> Void {
+        videoTitleLabel.text = video.videoTitle
+        videoInformationLabel.text = video.videoDescription
+        
+        sendButton.setTitle("发送", forState: UIControlState.Highlighted)
+        sendButton.backgroundColor = UIColor.blueColor()
+        
+        commitTextView.delegate = self
+        commitTextView.returnKeyType = .Send
+        commitTextView.enablesReturnKeyAutomatically = true
+        commitTextView.placeholder = "写下你的评论"
+        
+        userImage.backgroundColor = UIColor.blueColor()
+        
+        storeButton.backgroundColor = UIColor.blueColor()
+        shareButton.backgroundColor = UIColor.blueColor()
+        downButton.backgroundColor = UIColor.blueColor()
+        delyButton.backgroundColor = UIColor.blueColor()
+    }
 }
 
 
@@ -270,6 +279,7 @@ extension VideoItemInformationViewController: UITableViewDelegate{
 }
 //MARK: UITableViewDataSource
 extension VideoItemInformationViewController: UITableViewDataSource {
+    
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commits.count
     }

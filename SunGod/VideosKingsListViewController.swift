@@ -9,9 +9,9 @@
 import UIKit
 
 class VideosKingsListViewController: VideosListCollectionViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Kings"
     }
 }

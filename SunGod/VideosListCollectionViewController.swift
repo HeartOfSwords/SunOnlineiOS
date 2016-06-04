@@ -22,6 +22,7 @@ class VideosListCollectionViewController: UIViewController  {
     private var collectionView: UICollectionView!
     private var videos  = [VideoItemModel]()
     private var requestPage = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,7 +135,8 @@ extension VideosListCollectionViewController: UICollectionViewDataSource {
 
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
-            cell.setUpCell(String(NSDate), information: "太原理工大学", photoURL: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
+            let item = videos[indexPath.row]
+            cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
             return cell
 
     }
@@ -146,9 +148,11 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
         let videoItem = VideoItemInformationViewController()
-            presentViewController(videoItem, animated: true) {
+        let item = videos[indexPath.row]
+        videoItem.video = item
+        presentViewController(videoItem, animated: true) {
             
-            }
+        }
 
     }
 }

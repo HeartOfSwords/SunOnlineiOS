@@ -21,7 +21,6 @@ class VideosKindsViewController: UIViewController {
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -53,27 +52,38 @@ extension VideosKindsViewController {
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: kindsCellidentifier)
         collectionView.backgroundColor = UIColor.whiteColor()
         view.addSubview(collectionView)
+        
         collectionView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
         
-
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
-        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullUpRefresh))
     }
     
-    
+    /**
+      下拉刷新动作
+     */
     func pullDownRefresh() -> Void {
-        collectionView.mj_header.endRefreshing()
+        requestKinds { (res) in
+            if res {
+                self.collectionView.mj_header.endRefreshing()
+            }else {
+                print("Error")
+            }
+        }
+        
     }
     
-    func pullUpRefresh() -> Void {
-        collectionView.mj_footer.endRefreshingWithNoMoreData()
-    }
-    
-    func requestKinds() -> Void {
+
+    /**
+     获取栏目的信息
+     
+     - parameter back: 是否请求成功
+     */
+    private func requestKinds(back:(res: Bool) -> Void) -> Void {
         NetWorkingManager.VideosKinds.requestData { (data) in
             guard let data = data else {
+                back(res:false)
                 return
             }
             /// 获取到数据之后对数据进行进行解析,转化成对应的模型
@@ -85,6 +95,7 @@ extension VideosKindsViewController {
                 let kind = VideosKindsModel(VideoData:subJSON)
                 self.kinds.append(kind)
             }
+            back(res:true)
         }
     }
 }
@@ -94,6 +105,7 @@ extension VideosKindsViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cv = VideosKingsListViewController()
+        cv.title = kinds[indexPath.row].name
         navigationController?.pushViewController(cv, animated: true)
     }
 
@@ -102,12 +114,13 @@ extension VideosKindsViewController: UICollectionViewDelegate {
 extension VideosKindsViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return kinds.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(kindsCellidentifier, forIndexPath: indexPath) as! VideoKindsCollectionViewCell
-        cell.setUpCell("yangxiaolei", photoURL: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
+        let item = kinds[indexPath.row]
+        cell.setUpCell(item.name, photoURL: item.imageURL)
         return cell
     }
 }
