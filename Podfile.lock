@@ -3,6 +3,7 @@ PODS:
   - BMPlayer (0.2.0):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
+  - HanekeSwift (0.10.1)
   - Kingfisher (2.4.1)
   - MJRefresh (3.1.0)
   - NVActivityIndicatorView (2.7)
@@ -18,6 +19,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.3)
   - BMPlayer (~> 0.2.0)
+  - HanekeSwift
   - Kingfisher (~> 2.3)
   - MJRefresh
   - SlideMenuControllerSwift
@@ -39,6 +41,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
+  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
@@ -50,6 +53,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
 
-PODFILE CHECKSUM: 4474cc0d7aad8fe2acfd9800d9db5ad5dbbace48
+PODFILE CHECKSUM: bd02dfbde6dc3f9ddb056efeb3016854f6a8e6ba
 
 COCOAPODS: 1.0.0

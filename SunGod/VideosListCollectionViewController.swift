@@ -10,6 +10,7 @@ import UIKit
 import SlideMenuControllerSwift
 import MJRefresh
 import SnapKit
+import Haneke
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -100,6 +101,16 @@ extension VideosListCollectionViewController {
     
     func requestVideos(page: Int , back: (videos: [VideoItemModel]) -> Void) {
         
+    }
+    
+    func cacheData() -> Void {
+        let cache = Cache<NSData>(name: "SunOnlineAllVideo")
+        cache.fetch(key: "SunOnlineAllVideo").onSuccess { (data) in
+            
+        }
+        .onFailure { (error) in
+            
+        }
     }
 }
 

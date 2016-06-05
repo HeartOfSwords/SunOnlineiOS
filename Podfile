@@ -28,7 +28,7 @@ pod 'Kingfisher', '~> 2.3'
 #加密
 #pod 'CryptoSwift'
 #缓存
-#pod 'HanekeSwift'
+pod 'HanekeSwift'
 #野狗
 pod 'Wilddog'
 #  七牛
@@ -38,7 +38,5 @@ pod 'Wilddog'
 pod 'SlideMenuControllerSwift'
 # CoreData 操作
 pod 'SugarRecord/CoreData'
-
-#pod 'SlackTextViewController'
 end
 
