@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 import SwiftyJSON
-
+import PKHUD
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -68,7 +68,9 @@ extension VideosKindsViewController {
             if res {
                 self.collectionView.mj_header.endRefreshing()
             }else {
-                print("Error")
+                HUD.show(HUDContentType.LabeledError(title: "发生错误", subtitle: "原谅我"))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
+                self.collectionView.mj_header.endRefreshing()
             }
         }
         
@@ -95,7 +97,12 @@ extension VideosKindsViewController {
                 let kind = VideosKindsModel(VideoData:subJSON)
                 self.kinds.append(kind)
             }
-            back(res:true)
+            if self.kinds.isEmpty {
+                back(res:false)
+            }else {
+                back(res:true)
+            }
+            
         }
     }
 }

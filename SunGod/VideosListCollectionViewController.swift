@@ -71,7 +71,7 @@ extension VideosListCollectionViewController {
      下啦刷新从网络中获取数据
      */
     func pullDownLoad() -> Void {
-        print("下拉获取数据")
+        
         /**
          总是从第一页中来获取数据
          */
@@ -82,7 +82,8 @@ extension VideosListCollectionViewController {
                 /**
                  如果从网络中没有获取到数据，给用户提示错误信息
                  */
-                print("获取数据发生了错误")
+                HUD.show(HUDContentType.LabeledError(title: "发生错误", subtitle: "原谅我"))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
                 return
             }
             /**
@@ -118,7 +119,6 @@ extension VideosListCollectionViewController {
 
         //设置返回按钮的文字为空
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-//        navigationController?.hidesBarsOnSwipe = true
         title = "太阳在线"
     }
     
@@ -160,7 +160,7 @@ extension VideosListCollectionViewController {
             self.paseData(data)
         }
         .onFailure { (error) in
-            print("没有缓存")
+            
             ///如果没有缓存的话从网络中获取,调用 collectionView.mj_header 来进行获取数据
             self.collectionView.mj_header.beginRefreshing()
         }
@@ -174,7 +174,8 @@ extension VideosListCollectionViewController {
         let jsonData = JSON(data:data)
         
         guard jsonData != nil else {
-            print("JSONData 是 Null")
+            HUD.show(HUDContentType.LabeledError(title: "发生错误", subtitle: "原谅我"))
+            HUD.hide(afterDelay: NSTimeInterval(1.5))
             return
         }
 
@@ -185,7 +186,8 @@ extension VideosListCollectionViewController {
         }
 
         if requestVideos.isEmpty {
-            print("videos is empty")
+            HUD.show(HUDContentType.LabeledError(title: "发生错误", subtitle: "原谅我"))
+            HUD.hide(afterDelay: NSTimeInterval(1.5))
         }else{
             /**
              把第一次获取到的数据赋值给 页面的数据源
