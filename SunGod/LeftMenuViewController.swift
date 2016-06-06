@@ -25,7 +25,8 @@ class LeftMenuViewController: UIViewController {
     
     lazy var mainViewController: UINavigationController = UINavigationController(rootViewController: VideosListCollectionViewController())
     lazy var videoKindsViewController: UIViewController = UINavigationController(rootViewController: VideosKindsViewController())
-    lazy var meViewController: UIViewController = UINavigationController(rootViewController: MeViewController())
+    lazy var meViewController = UIStoryboard(name: "Me", bundle: nil).instantiateInitialViewController() as! UINavigationController
+    
     lazy var settingViewController: UIViewController = UINavigationController(rootViewController: SettingViewController())
     
     override func viewDidLoad() {

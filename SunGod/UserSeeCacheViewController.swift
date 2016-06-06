@@ -17,15 +17,14 @@ class UserSeeCacheViewController: UIViewController {
     var type = 0
     var videos = [VideoItemModel]()
     private var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         setUpView()
         setUpCollectionView()
     }
+    
+    
 }
 
 // MARK: Function
@@ -65,6 +64,7 @@ extension UserSeeCacheViewController: UICollectionViewDelegate {
 }
 
 extension UserSeeCacheViewController: UICollectionViewDataSource {
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
