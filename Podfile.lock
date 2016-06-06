@@ -14,6 +14,7 @@ PODS:
     - Result (~> 2.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
+  - TransitionTreasury (3.0.4)
   - Wilddog (1.0.1)
 
 DEPENDENCIES:
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - SugarRecord/CoreData
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
+  - TransitionTreasury (~> 3.0.4)
   - Wilddog
 
 EXTERNAL SOURCES:
@@ -51,8 +53,9 @@ SPEC CHECKSUMS:
   SugarRecord: 2338098ccefc055764c968b2c469b450f63fcc53
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
+  TransitionTreasury: 7228b7758ba4b742e152a198dbe6ca1e46b43949
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
 
-PODFILE CHECKSUM: bd02dfbde6dc3f9ddb056efeb3016854f6a8e6ba
+PODFILE CHECKSUM: d8ab1f6e99ff15c473fddb280249104508803d5c
 
 COCOAPODS: 1.0.0
