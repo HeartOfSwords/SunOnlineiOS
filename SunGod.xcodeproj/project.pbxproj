@@ -35,6 +35,7 @@
 		AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */; };
 		AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */; };
 		AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583571CFBE6B10032BC0E /* UserDefaults.swift */; };
+		ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */; };
 		ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */; };
 		ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */; };
 		ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */; };
@@ -74,6 +75,7 @@
 		AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
 		AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
 		AB8583571CFBE6B10032BC0E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownVideo.swift; sourceTree = "<group>"; };
 		ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSeeCacheViewController.swift; sourceTree = "<group>"; };
 		ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */,
 				ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */,
 				ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */,
+				ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				AB85834D1CFBDC9D0032BC0E /* MeSettingViewController.swift in Sources */,
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
+				ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
 				415136451CFE97A900676D59 /* Video+CoreDataProperties.swift in Sources */,
 				410B7E171CF2FD53002EDF77 /* VideosKindsViewController.swift in Sources */,
