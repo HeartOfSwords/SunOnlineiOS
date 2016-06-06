@@ -40,5 +40,10 @@ pod 'SlideMenuControllerSwift'
 pod 'SugarRecord/CoreData'
 # push 动画
 pod 'TransitionTreasury', '~> 3.0.4'
+
+# 空数据
+pod 'DZNEmptyDataSet'
+# 菊花
+pod 'PKHUD'
 end
 

@@ -27,7 +27,13 @@ struct VideoItemModel {
      
      - returns: VideoItemModel
      */
-    init(videoTitle: String, videoImageURL: String, videoTime: String, videoID: String, videoDescription: String, videoURL: String, videoPlayNumber: String){
+    init(videoTitle: String,
+         videoImageURL: String,
+         videoTime: String,
+         videoID: String,
+         videoDescription: String,
+         videoURL: String,
+         videoPlayNumber: String){
         self.videoTitle = videoTitle
         self.videoImageURL = videoImageURL
         self.videoTime = videoTime
@@ -43,8 +49,7 @@ struct VideoItemModel {
      
      - returns:
      */
-    init(VideoData: AnyObject) {
-        let videoJSONData = JSON(VideoData)
+    init(videoJSONData: JSON) {
         videoTitle = videoJSONData["higoVideoName"].stringValue
         videoImageURL = videoJSONData["higoVideoPicUrl"].stringValue
         videoTime = videoJSONData["higoVideoDate"].stringValue

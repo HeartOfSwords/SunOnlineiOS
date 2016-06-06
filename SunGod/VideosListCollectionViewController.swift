@@ -11,6 +11,7 @@ import SlideMenuControllerSwift
 import MJRefresh
 import SnapKit
 import Haneke
+import SwiftyJSON
 
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
@@ -18,7 +19,7 @@ let mainScreen = UIScreen.mainScreen().bounds
 /// 视频播放器的高度
 let videoViewHeight = mainScreen.width * (9.0 / 16.0)
 
-class VideosListCollectionViewController: UIViewController  {
+class VideosListCollectionViewController: UIViewController{
     
     private var collectionView: UICollectionView!
     private var videos  = [VideoItemModel]()
@@ -29,6 +30,9 @@ class VideosListCollectionViewController: UIViewController  {
         
         setUpCollectionView()
         setUpNavigation()
+        /// - 从缓存中读取数据
+        cacheData()
+        listenNetWorking()
     }
 }
 
@@ -42,6 +46,7 @@ extension VideosListCollectionViewController {
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.backgroundColor = UIColor.whiteColor()
         let cellNib = UINib(nibName: "VideoCollectionViewCell", bundle: nil)
         collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
@@ -59,10 +64,37 @@ extension VideosListCollectionViewController {
         
     }
     
+    /**
+     下啦刷新从网络中获取数据
+     */
     func pullDownLoad() -> Void {
+        print("下拉获取数据")
+        /**
+         总是从第一页中来获取数据
+         */
+        requestVideos(1) { (videosData) in
+            guard let data = videosData else {
+                /**
+                 如果从网络中没有获取到数据，给用户提示错误信息
+                 */
+                print("获取数据发生了错误")
+                return
+            }
+            /**
+             如果从网络中获取到了信息则对请求到的数据进行解析,同时把获取到的数据进行缓存
+             */
+            self.paseData(data)
+            self.collectionView.mj_header.endRefreshing()
+            /**
+             开始缓存数据,在缓存之前先删除之前的缓存
+             */
+            let cache = Shared.dataCache
+            //移除缓存
+            cache.remove(key: "SunOnlineAllVideo")
+            //添加缓存
+            cache.set(value: data, key: "SunOnlineAllVideo")
+        }
         
-//        requestVideos(1, back: (videos: [VideoItemModel]) -> Void)
-        collectionView.mj_header.endRefreshing()
     }
 
      func pullFooter() -> Void {
@@ -81,7 +113,7 @@ extension VideosListCollectionViewController {
 
         //设置返回按钮的文字为空
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnSwipe = true
         title = "太阳在线"
     }
     
@@ -98,17 +130,66 @@ extension VideosListCollectionViewController {
         let rect = NSString(string:"这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS").boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName:font], context: nil)
         return ceil(rect.height)
     }
-    
-    func requestVideos(page: Int , back: (videos: [VideoItemModel]) -> Void) {
-        
+    /**
+     从网络中获取请求
+     
+     - parameter page: 获取第几页的数据
+     - parameter back: 返回获取到的结果
+     */
+    func requestVideos(page: Int , back: (videosData: NSData?) -> Void) {
+        /**
+         *  通过网络获取视频
+         */
+        NetWorkingManager.Videos.requestData { (data) in
+            back(videosData: data)
+        }
     }
-    
+    /**
+     从缓存中读取数据,仅仅缓存第一页的数据
+     */
     func cacheData() -> Void {
-        let cache = Cache<NSData>(name: "SunOnlineAllVideo")
+        let cache = Shared.dataCache
         cache.fetch(key: "SunOnlineAllVideo").onSuccess { (data) in
-            
+            ///如果有缓存的话就从缓存中直接读取
+            ///对缓存中的数据进行解析
+            self.paseData(data)
         }
         .onFailure { (error) in
+            print("没有缓存")
+            ///如果没有缓存的话从网络中获取,调用 collectionView.mj_header 来进行获取数据
+            self.collectionView.mj_header.beginRefreshing()
+        }
+    }
+    /**
+     对数据进行解析
+     
+     - parameter data: 数据源
+     */
+    func paseData(data:NSData) -> Void {
+        let jsonData = JSON(data:data)
+        
+        guard jsonData != nil else {
+            print("JSONData 是 Null")
+            return
+        }
+
+        var requestVideos = [VideoItemModel]()
+        for (_,subJSON) in jsonData {
+            let oneVideo = VideoItemModel(videoJSONData: subJSON)
+            requestVideos.append(oneVideo)
+        }
+
+        if requestVideos.isEmpty {
+            print("videos is empty")
+        }else{
+            /**
+             把第一次获取到的数据赋值给 页面的数据源
+             */
+            if requestPage == 1 {
+                self.videos = requestVideos
+            }else {
+                self.videos.appendContentsOf(requestVideos)
+            }
             
         }
     }
@@ -175,4 +256,5 @@ extension VideosListCollectionViewController: SlideMenuControllerDelegate {
     func leftWillClose(){}
     func leftDidClose(){}
 }
+
 

@@ -13,9 +13,9 @@ private let playIdentifier = "play"
 
 class UserSeeCacheViewController: UIViewController {
 
-    
     var type = 0
-    var videos = [VideoItemModel]()
+    
+    private var videos = [VideoItemModel]()
     private var collectionView: UICollectionView!
     
     override func viewDidLoad() {

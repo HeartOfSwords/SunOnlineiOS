@@ -3,10 +3,12 @@ PODS:
   - BMPlayer (0.2.0):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
+  - DZNEmptyDataSet (1.8.1)
   - HanekeSwift (0.10.1)
   - Kingfisher (2.4.1)
   - MJRefresh (3.1.0)
   - NVActivityIndicatorView (2.7)
+  - PKHUD (3.1.0)
   - Result (2.0.0)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
@@ -20,9 +22,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.3)
   - BMPlayer (~> 0.2.0)
+  - DZNEmptyDataSet
   - HanekeSwift
   - Kingfisher (~> 2.3)
   - MJRefresh
+  - PKHUD
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
   - SugarRecord/CoreData
@@ -43,10 +47,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
@@ -56,6 +62,6 @@ SPEC CHECKSUMS:
   TransitionTreasury: 7228b7758ba4b742e152a198dbe6ca1e46b43949
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
 
-PODFILE CHECKSUM: d8ab1f6e99ff15c473fddb280249104508803d5c
+PODFILE CHECKSUM: 61c008976a4c64d3352480b26c9f008af7b95b62
 
 COCOAPODS: 1.0.0
