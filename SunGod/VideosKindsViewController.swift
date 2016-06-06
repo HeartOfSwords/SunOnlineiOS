@@ -10,6 +10,7 @@ import UIKit
 import MJRefresh
 import SwiftyJSON
 import PKHUD
+
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -58,6 +59,7 @@ extension VideosKindsViewController {
         }
         
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        collectionView.mj_header.beginRefreshing()
     }
     
     /**

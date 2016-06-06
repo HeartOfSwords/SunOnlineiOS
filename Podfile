@@ -45,5 +45,7 @@ pod 'SugarRecord/CoreData'
 #pod 'DZNEmptyDataSet'
 # 菊花
 pod 'PKHUD'
+# 测试
+pod 'Reveal-iOS-SDK'
 end
 
