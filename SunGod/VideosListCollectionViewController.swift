@@ -12,7 +12,9 @@ import MJRefresh
 import SnapKit
 import Haneke
 import SwiftyJSON
-
+import SwiftyUserDefaults
+import PKHUD
+import Alamofire
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
 let mainScreen = UIScreen.mainScreen().bounds
@@ -33,6 +35,7 @@ class VideosListCollectionViewController: UIViewController{
         /// - 从缓存中读取数据
         cacheData()
         listenNetWorking()
+       
     }
 }
 
@@ -73,6 +76,8 @@ extension VideosListCollectionViewController {
          总是从第一页中来获取数据
          */
         requestVideos(1) { (videosData) in
+            
+            self.requestPage = 1
             guard let data = videosData else {
                 /**
                  如果从网络中没有获取到数据，给用户提示错误信息
@@ -239,12 +244,48 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
-        let videoItem = VideoItemInformationViewController()
-        let item = videos[indexPath.row]
-        videoItem.video = item
-        presentViewController(videoItem, animated: true) {
-            
+        ///在选中 cell 之后对网络状态进行判断 符合用户设置的 话可以进行跳转
+        func presentView() {
+            let videoItem = VideoItemInformationViewController()
+            let item = videos[indexPath.row]
+            videoItem.video = item
+            presentViewController(videoItem, animated: true) {
+                
+            }
         }
+        let net = NetworkReachabilityManager()
+        net?.startListening()
+        net?.listener = {
+            state in
+            switch state {
+            case .Reachable(let net):
+                //有网
+                if net == .EthernetOrWiFi {
+                    //Wi-Fi下进行跳转
+                    presentView()
+                }else {
+                    
+                    if Defaults[.allowSee] {
+                        //如果用户开启了 运营商网络观看视频的话直接跳转
+                        presentView()
+                    }else {
+                        HUD.show(HUDContentType.LabeledSuccess(title: "你在使用WWAN网络", subtitle: "在设置中开启WWAN网络观看视频"))
+                        HUD.hide(afterDelay: NSTimeInterval(1))
+                    }
+                    
+
+                }
+                
+            case .Unknown:
+                HUD.show(HUDContentType.LabeledSuccess(title: "好厉害的网络", subtitle: "你用的什么网络呀"))
+                HUD.hide(afterDelay: NSTimeInterval(1))
+            case .NotReachable:
+                //没有网络
+                HUD.show(HUDContentType.LabeledError(title: "没有网络", subtitle: "亲,该交话费了"))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
+            }
+        }
+        
 
     }
 }

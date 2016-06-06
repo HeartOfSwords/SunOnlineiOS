@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyUserDefaults
-
+import PKHUD
 
 class MeViewController: UITableViewController {
 
@@ -52,11 +52,23 @@ class MeViewController: UITableViewController {
     @IBAction func alloweSee(sender: UISwitch) {
         Defaults[.allowSee] = sender.on
         Defaults.synchronize()
+        if sender.on {
+            HUD.flash(HUDContentType.LabeledSuccess(title: "设置成功", subtitle: "你开启了WWAN网络观看视频"), delay: 1)
+        }else {
+            HUD.flash(HUDContentType.LabeledSuccess(title: "设置成功", subtitle: "你关闭了WWAN网络观看视频"), delay: 1)
+        }
+        
     }
     
     @IBAction func alloewDown(sender: UISwitch) {
         Defaults[.allowDown] = sender.on
         Defaults.synchronize()
+        if sender.on {
+            HUD.flash(HUDContentType.LabeledSuccess(title: "设置成功", subtitle: "你开启了WWAN网络下载视频"), delay: 1)
+        }else {
+            HUD.flash(HUDContentType.LabeledSuccess(title: "设置成功", subtitle: "你关闭了WWAN网络下载视频"), delay: 1)
+        }
+        
     }
     
 }
