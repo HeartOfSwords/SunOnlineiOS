@@ -8,7 +8,7 @@
 import SwiftyJSON
 import Alamofire
 import PKHUD
-let baseURL = "http://119.29.3.138:8080/sunonlineAlpha1/webapi/videos/"
+let baseURL = "http://webapi/videos/"
 
 enum NetWorkingManager {
     
