@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class VideoCollectionViewCell: UICollectionViewCell {
 

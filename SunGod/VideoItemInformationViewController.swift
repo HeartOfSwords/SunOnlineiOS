@@ -306,7 +306,7 @@ extension VideoItemInformationViewController: UITextFieldDelegate {
         let messageKey = one.commiteTime + one.autherID
         /// JSON
         let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
-        
+        ///
         videoRef.updateChildValues([messageKey:value])
         textField.text = ""
         commitValue = ""

@@ -33,7 +33,7 @@ class VideosListCollectionViewController: UIViewController{
         setUpCollectionView()
         setUpNavigation()
         /// - 从缓存中读取数据
-        cacheData()
+//        cacheData()
         listenNetWorking()
        
     }
@@ -57,7 +57,8 @@ extension VideosListCollectionViewController {
         ///collection View 布局
 
         collectionView.snp_makeConstraints { (make) in
-            make.leading.top.trailing.bottom.equalTo(view)
+            make.top.equalTo(2)
+            make.leading.trailing.bottom.equalTo(view)
         }
         
         //添加下拉刷新
@@ -227,15 +228,18 @@ extension VideosListCollectionViewController: UICollectionViewDelegateFlowLayout
 extension VideosListCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return videos.count
+//            return videos.count
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
             
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
-            let item = videos[indexPath.row]
-            cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
+//            let item = videos[indexPath.row]
+//            cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
+//        http://7s1rp2.com1.z0.glb.clouddn.com/1、HTML5音频播放.mp4
+            cell.setUpCell("11111", information: "HiGo", photoURL: "http://7u2j0x.com1.z0.glb.clouddn.com/0820-2.jpg")
             return cell
 
     }
@@ -249,7 +253,8 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
         ///在选中 cell 之后对网络状态进行判断 符合用户设置的 话可以进行跳转
         func presentView() {
             let videoItem = VideoItemInformationViewController()
-            let item = videos[indexPath.row]
+            let item = VideoItemModel(videoTitle: "Title", videoImageURL: "http://7u2j0x.com1.z0.glb.clouddn.com/0820-2.jpg", videoTime: "Time", videoID: "123", videoDescription: "Description", videoURL: "http://7s1rp2.com1.z0.glb.clouddn.com/1.mp4", videoPlayNumber: "123")
+//            let item = videos[indexPath.row]
             videoItem.video = item
             presentViewController(videoItem, animated: true) {
                 
