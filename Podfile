@@ -38,7 +38,8 @@ pod 'Wilddog'
 pod 'SlideMenuControllerSwift'
 # CoreData 操作
 #pod 'SugarRecord/CoreData'
-pod 'SugarRecord/Realm'
+#pod 'SugarRecord/Realm'
+ pod 'RealmSwift'
 # push 动画
 #pod 'TransitionTreasury', '~> 3.0.4'
 
