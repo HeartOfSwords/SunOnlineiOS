@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 import SwiftyJSON
 import PKHUD
-
+import Haneke
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -27,6 +27,7 @@ class VideosKindsViewController: UIViewController {
         setUpView()
         setUpNav()
         setUpCollectionView()
+        requestCacheData()
     }
 }
 
@@ -59,7 +60,6 @@ extension VideosKindsViewController {
         }
         
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
-        collectionView.mj_header.beginRefreshing()
     }
     
     /**
@@ -90,25 +90,61 @@ extension VideosKindsViewController {
                 back(res:false)
                 return
             }
-            /// 获取到数据之后对数据进行进行解析,转化成对应的模型
-            let jsonData = JSON(data:data)["links"]
+
+            self.paseData(data, back: { (res) in
+                back(res:res)
+            })
+            
             /**
-             *  对请求回来的JSON 数组进行遍历
+             开始缓存数据,在缓存之前先删除之前的缓存
              */
-            for (_, subJSON) in jsonData {
-                let kind = VideosKindsModel(VideoData:subJSON)
-                self.kinds.append(kind)
-                
-            }
-            
-            if self.kinds.isEmpty {
-                back(res:false)
-            }else {
-                back(res:true)
-            }
-            
+            let cache = Shared.dataCache
+            //移除缓存
+            cache.remove(key: "SunOnlinekinds")
+            //添加缓存
+            cache.set(value: data, key: "SunOnlinekinds")
         }
     }
+    
+    func requestCacheData() -> Void {
+        let cache = Shared.dataCache
+        cache.fetch(key: "SunOnlinekinds").onSuccess { (data) in
+            ///如果有缓存的话就从缓存中直接读取
+            ///对缓存中的数据进行解析
+            self.paseData(data, back: { (res) in
+                
+            })
+
+            }
+            .onFailure { (error) in
+                
+                ///如果没有缓存的话从网络中获取,调用 collectionView.mj_header 来进行获取数据
+                self.collectionView.mj_header.beginRefreshing()
+        }
+    }
+    
+    func paseData(data:NSData,back:(res: Bool) -> Void) -> Void {
+        /// 获取到数据之后对数据进行进行解析,转化成对应的模型
+        let jsonData = JSON(data:data)["links"]
+        /**
+         *  对请求回来的JSON 数组进行遍历
+         */
+        
+        var kindArray = [VideosKindsModel]()
+        for (_, subJSON) in jsonData {
+            let kind = VideosKindsModel(VideoData:subJSON)
+            kindArray.append(kind)
+            
+        }
+        
+        if kindArray.isEmpty {
+            back(res:false)
+        }else {
+            self.kinds = kindArray
+            back(res:true)
+        }
+    }
+
 }
 
 

@@ -111,12 +111,10 @@ extension VideosListCollectionViewController {
     
     func setUpNavigation() {
         
-        if self is VideosKingsListViewController {
-            //如果是 VideosKingsListViewController 的话则不给他添加左上角的侧滑按钮
-        }else {
-            ///添加左上角的侧滑按钮
-            addLeftBarButtonWithImage(UIImage(named: leftMenuImageName)!)
-        }
+
+        ///添加左上角的侧滑按钮
+        addLeftBarButtonWithImage(UIImage(named: leftMenuImageName)!)
+        
 
         //设置返回按钮的文字为空
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)

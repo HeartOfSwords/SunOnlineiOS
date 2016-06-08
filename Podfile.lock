@@ -13,11 +13,17 @@ PODS:
   - PopMenu (2.4):
     - pop
     - XHRealTimeBlur
+  - Realm (0.102.1):
+    - Realm/Headers (= 0.102.1)
+  - Realm/Headers (0.102.1)
+  - RealmSwift (0.102.1):
+    - Realm (= 0.102.1)
   - Result (2.0.0)
   - Reveal-iOS-SDK (1.6.2)
   - SlideMenuControllerSwift (2.1.1)
   - SnapKit (0.15.0)
-  - SugarRecord/CoreData (2.2.8):
+  - SugarRecord/Realm (2.2.8):
+    - RealmSwift (~> 0.102.1)
     - Result (~> 2.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
@@ -36,7 +42,7 @@ DEPENDENCIES:
   - Reveal-iOS-SDK
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
-  - SugarRecord/CoreData
+  - SugarRecord/Realm
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SwiftyUserDefaults
   - Wilddog
@@ -61,6 +67,8 @@ SPEC CHECKSUMS:
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PopMenu: 26b97baeaf250070f4f61b93727ca86d127d7bc5
+  Realm: 5254be610db3e5024879684717bf038990bb59ec
+  RealmSwift: 3e24e6bcf56d98ccc134f4909e00839b81a659af
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SlideMenuControllerSwift: 82ada9b04e03538c84d034cf1c09e5849c0113f7
@@ -71,6 +79,6 @@ SPEC CHECKSUMS:
   Wilddog: c59eb9b450c74091276b8bf09170f35dfab50d2d
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
-PODFILE CHECKSUM: 1bca11599b0fa363896712749bf7f74a9dd9da9e
+PODFILE CHECKSUM: e9d416b1d289156452096a98b889d7ddcc886d70
 
 COCOAPODS: 1.0.0

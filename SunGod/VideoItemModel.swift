@@ -7,6 +7,7 @@
 //
 
 import SwiftyJSON
+import RealmSwift
 
 struct VideoItemModel {
     var videoTitle: String
@@ -50,12 +51,12 @@ struct VideoItemModel {
      - returns:
      */
     init(videoJSONData: JSON) {
-        videoTitle = videoJSONData["title"].stringValue
-        videoImageURL = videoJSONData["higoVideoPicUrl"].stringValue
-        videoTime = videoJSONData["higoVideoDate"].stringValue
-        videoPlayNumber = videoJSONData["higoVideoPlayedNumber"].stringValue
-        videoDescription = videoJSONData["higoVideoIntro"].stringValue
-        videoURL = videoJSONData["higoVideoUrl"].stringValue
-        videoID = videoJSONData["higoVideoId"].stringValue
+        videoTitle = videoJSONData["videoName"].stringValue
+        videoImageURL = videoJSONData["videoPicUrl"].stringValue
+        videoTime = videoJSONData["videoDate"].stringValue
+        videoPlayNumber = videoJSONData["videoPlayedNumber"].stringValue
+        videoDescription = videoJSONData["videoIntro"].stringValue
+        videoURL = videoJSONData["videoUrl"].stringValue
+        videoID = videoJSONData["videoId"].stringValue
     }
 }

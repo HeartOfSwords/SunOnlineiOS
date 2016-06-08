@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SlideMenuControllerSwift
 import MJRefresh
 import SnapKit
 import Haneke
@@ -16,7 +15,7 @@ import SwiftyUserDefaults
 import PKHUD
 import Alamofire
 
-private let reuseIdentifier = "videoListItem1"
+private let reuseIdentifier1 = "videoListItem"
 
 class VideosKingsListViewController: UIViewController{
     
@@ -32,7 +31,7 @@ class VideosKingsListViewController: UIViewController{
         setUpCollectionView()
         setUpNavigation()
         /// - 从缓存中读取数据
-//        cacheData()
+        cacheData()
         
         
     }
@@ -51,7 +50,7 @@ extension VideosKingsListViewController {
         
         collectionView.backgroundColor = UIColor.whiteColor()
         let cellNib = UINib(nibName: "VideoCollectionViewCell", bundle: nil)
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: reuseIdentifier1)
         view.addSubview(collectionView)
         ///collection View 布局
         
@@ -135,6 +134,7 @@ extension VideosKingsListViewController {
             let jsonData = JSON(data:data)["links"]
             
             let ref = baseURL + jsonData[0,"href"].stringValue
+            
             Alamofire.request(.GET, ref).responseJSON(completionHandler: { (res) in
                 back(videosData: res.data)
             })
@@ -163,7 +163,7 @@ extension VideosKingsListViewController {
      - parameter data: 数据源
      */
     func paseData(data:NSData) -> Void {
-        let jsonData = JSON(data:data)["links"]
+        let jsonData = JSON(data:data)
         
         guard jsonData != nil else {
             HUD.show(HUDContentType.LabeledError(title: "发生错误", subtitle: "原谅我"))
@@ -186,8 +186,10 @@ extension VideosKingsListViewController {
              */
             if requestPage == 1 {
                 self.videos = requestVideos
+                self.collectionView.reloadData()
             }else {
                 self.videos.appendContentsOf(requestVideos)
+                self.collectionView.reloadData()
             }
             
         }
@@ -224,8 +226,7 @@ extension VideosKingsListViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier1, forIndexPath: indexPath) as! VideoCollectionViewCell
         let item = videos[indexPath.row]
         cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
   
@@ -267,8 +268,6 @@ extension VideosKingsListViewController: UICollectionViewDelegate {
                         HUD.show(HUDContentType.LabeledSuccess(title: "你在使用WWAN网络", subtitle: "在设置中开启WWAN网络观看视频"))
                         HUD.hide(afterDelay: NSTimeInterval(1))
                     }
-                    
-                    
                 }
                 
             case .Unknown:
