@@ -11,6 +11,8 @@ import MJRefresh
 import SwiftyJSON
 import PKHUD
 import Haneke
+
+
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -29,6 +31,8 @@ class VideosKindsViewController: UIViewController {
         setUpCollectionView()
         requestCacheData()
     }
+    
+
 }
 
 extension VideosKindsViewController {
@@ -153,6 +157,7 @@ extension VideosKindsViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cv = VideosKingsListViewController()
         cv.kind = kinds[indexPath.row]
+        print(cv.kind.allVideosURL)
         navigationController?.pushViewController(cv, animated: true)
     }
 

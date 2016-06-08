@@ -28,7 +28,7 @@ class VideoItemInformationViewController: UIViewController {
     private let timeLabel = UILabel()
     private let seeNumberLabel = UILabel()
     
-    private let videoCommitTableView = UITableView()
+
     private let commitTextView = UITextField()
     private let userImage = UIImageView()
     private let sendButton = UIButton()
@@ -53,8 +53,6 @@ extension VideoItemInformationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         view.backgroundColor = UIColor.whiteColor()
         setUpVideoPlayer()
         setUpView()
@@ -64,27 +62,27 @@ extension VideoItemInformationViewController {
 //        setUpImage()
 //        setUpText()
 //        setUpSendButton()
-//        setUpTableView()
-//        setUpWilldog()
         setupValue()
         
     }
-    //隐藏 StatusBar
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-
+        
         player.pause(allowAutoPlay: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         // 使用手势返回的时候，调用下面方法
         player.autoPlay()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = true
     }
 }
 
@@ -96,32 +94,32 @@ extension VideoItemInformationViewController {
 
     }
     
-    func setUpWilldog() -> Void {
-        WilddogManager.wilddogLogin()
-        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
-        
-        //监听节点的变化
-        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
-            guard let value = shot.value else {return}
-            let dataJSON = JSON(value)
-            for (_,value) in dataJSON {
-            let teo = WilddogCommiteModel(
-                autherName: value["autherName"].stringValue,
-                autherID:  value["autherID"].stringValue,
-                commiteTime: value["commiteTime"].stringValue,
-                commiteValue: value["commiteValue"].stringValue,
-                autherImageURL: value["imageURL"].stringValue
-                )
-                
-                self.commits.append(teo)
-                
-                self.videoCommitTableView.reloadData()
-            }
-            
-            }) { (error) in
-                
-        }
-    }
+//    func setUpWilldog() -> Void {
+//        WilddogManager.wilddogLogin()
+//        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
+//        
+//        //监听节点的变化
+//        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
+//            guard let value = shot.value else {return}
+//            let dataJSON = JSON(value)
+//            for (_,value) in dataJSON {
+//            let teo = WilddogCommiteModel(
+//                autherName: value["autherName"].stringValue,
+//                autherID:  value["autherID"].stringValue,
+//                commiteTime: value["commiteTime"].stringValue,
+//                commiteValue: value["commiteValue"].stringValue,
+//                autherImageURL: value["imageURL"].stringValue
+//                )
+//                
+//                self.commits.append(teo)
+//                
+//                self.videoCommitTableView.reloadData()
+//            }
+//            
+//            }) { (error) in
+//                
+//        }
+//    }
     
     func setUpVideoPlayer() {
         
@@ -180,7 +178,9 @@ extension VideoItemInformationViewController {
     
     func setUpLabel() -> Void {
         
-        videoInformationLabel.font = UIFont.systemFontOfSize(14)
+        videoTitleLabel.font = UIFont.boldSystemFontOfSize(18)
+        
+        videoInformationLabel.font = UIFont.italicSystemFontOfSize(14)
         videoInformationLabel.numberOfLines = 0
         
         view.addSubview(videoTitleLabel)
@@ -285,19 +285,7 @@ extension VideoItemInformationViewController {
         }
     }
     
-    func setUpTableView() -> Void {
-        
-        view.addSubview(videoCommitTableView)
-        videoCommitTableView.estimatedRowHeight = 88
-        videoCommitTableView.rowHeight = UITableViewAutomaticDimension
-        videoCommitTableView.delegate = self
-        videoCommitTableView.dataSource = self
-        videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
-//        videoCommitTableView.snp_makeConstraints { (make) in
-//            make.top.equalTo(userImage.snp_bottom).offset(10)
-//            make.leading.trailing.bottom.equalTo(self.view)
-//        }
-    }
+
     
     func setupValue() -> Void {
         videoTitleLabel.text = video.videoTitle
@@ -321,6 +309,27 @@ extension VideoItemInformationViewController {
         downButton.setImage(UIImage(named: "care"), forState: .Normal)
         delyButton.setImage(UIImage(named: "care"), forState: .Normal)
     }
+    
+    /**
+     下载视频
+     */
+    func downVideo() {
+        DownVideo.down(video.videoURL) { (down) in
+            print(down)
+        }
+    }
+    /**
+     收藏视频
+     */
+    func careVideo() {
+        
+    }
+    /**
+     留言
+     */
+    func commit()  {
+        
+    }
     /**
      分享视频
      
@@ -342,7 +351,7 @@ extension VideoItemInformationViewController {
         MonkeyKing.registerAccount(account)
         
         
-        func shareVideo(url: String = "http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html") {
+        func shareVideo(url: String = video.videoURL) {
             let info =  MonkeyKing.Info(
                 title: "Timeline Video, \(NSUUID().UUIDString)",
                 description: "Description Video, \(NSUUID().UUIDString)",
@@ -374,46 +383,30 @@ extension VideoItemInformationViewController {
 
 
 
-//MARK: UITableViewDelegate
-extension VideoItemInformationViewController: UITableViewDelegate{
 
-}
-//MARK: UITableViewDataSource
-extension VideoItemInformationViewController: UITableViewDataSource {
-    
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commits.count
-    }
-    
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath) as! CommitTableViewCell
-        let indexCommit = commits[indexPath.row]
-        cell.configCell(imageURL: indexCommit.autherImageURL, commitDate: indexCommit.commiteTime, userName: indexCommit.autherName, commitValue: indexCommit.commiteValue)
-        return cell
-    }
-}
+
 
 extension VideoItemInformationViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        commitValue = textField.text!
-        
-        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
-        
-        /// 添加新的留言
-        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: commitValue, autherImageURL: "")
-        /// 生成一个唯一的 Key 值
-        let messageKey = one.commiteTime + one.autherID
-        /// JSON
-        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
-        ///
-        videoRef.updateChildValues([messageKey:value])
-        textField.text = ""
-        commitValue = ""
-        commits = []
-        return true
-    }
+//    
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        commitValue = textField.text!
+//        
+//        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
+//        
+//        /// 添加新的留言
+//        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: commitValue, autherImageURL: "")
+//        /// 生成一个唯一的 Key 值
+//        let messageKey = one.commiteTime + one.autherID
+//        /// JSON
+//        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
+//        ///
+//        videoRef.updateChildValues([messageKey:value])
+//        textField.text = ""
+//        commitValue = ""
+//        commits = []
+//        return true
+//    }
 }
 
 
