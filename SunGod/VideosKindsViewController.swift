@@ -91,14 +91,16 @@ extension VideosKindsViewController {
                 return
             }
             /// 获取到数据之后对数据进行进行解析,转化成对应的模型
-            let jsonData = JSON(data:data)
+            let jsonData = JSON(data:data)["links"]
             /**
              *  对请求回来的JSON 数组进行遍历
              */
             for (_, subJSON) in jsonData {
                 let kind = VideosKindsModel(VideoData:subJSON)
                 self.kinds.append(kind)
+                
             }
+            
             if self.kinds.isEmpty {
                 back(res:false)
             }else {
@@ -114,7 +116,7 @@ extension VideosKindsViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cv = VideosKingsListViewController()
-        cv.title = kinds[indexPath.row].name
+        cv.kind = kinds[indexPath.row]
         navigationController?.pushViewController(cv, animated: true)
     }
 

@@ -50,7 +50,7 @@ struct VideoItemModel {
      - returns:
      */
     init(videoJSONData: JSON) {
-        videoTitle = videoJSONData["higoVideoName"].stringValue
+        videoTitle = videoJSONData["title"].stringValue
         videoImageURL = videoJSONData["higoVideoPicUrl"].stringValue
         videoTime = videoJSONData["higoVideoDate"].stringValue
         videoPlayNumber = videoJSONData["higoVideoPlayedNumber"].stringValue

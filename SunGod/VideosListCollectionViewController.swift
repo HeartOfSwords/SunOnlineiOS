@@ -253,7 +253,7 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
         ///在选中 cell 之后对网络状态进行判断 符合用户设置的 话可以进行跳转
         func presentView() {
             let videoItem = VideoItemInformationViewController()
-            let item = VideoItemModel(videoTitle: "Title", videoImageURL: "http://7u2j0x.com1.z0.glb.clouddn.com/0820-2.jpg", videoTime: "Time", videoID: "123", videoDescription: "Description", videoURL: "http://7s1rp2.com1.z0.glb.clouddn.com/1.mp4", videoPlayNumber: "123")
+            let item = VideoItemModel(videoTitle: "Title", videoImageURL: "http://7u2j0x.com1.z0.glb.clouddn.com/0820-2.jpg", videoTime: "Time", videoID: "123", videoDescription: "这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS这里是视频的描述，我是视频的描述。太原理工大学，太阳在线，Swift，iOS", videoURL: "http://7s1rp2.com1.z0.glb.clouddn.com/1.mp4", videoPlayNumber: "123")
 //            let item = videos[indexPath.row]
             videoItem.video = item
             presentViewController(videoItem, animated: true) {

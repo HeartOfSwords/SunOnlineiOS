@@ -21,6 +21,7 @@
 		41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ABB0A11CD048BF00DF728A /* AppDelegate.swift */; };
 		41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0A81CD048BF00DF728A /* Assets.xcassets */; };
 		41ABB0AC1CD048BF00DF728A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */; };
+		41B3AD181D06C40D000DAE82 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B3AD171D06C40D000DAE82 /* Configs.swift */; };
 		41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB67841CE08D0000467584 /* VideoItemModel.swift */; };
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
 		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
@@ -60,6 +61,7 @@
 		41ABB0A81CD048BF00DF728A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41ABB0AB1CD048BF00DF728A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41ABB0AD1CD048BF00DF728A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		41B3AD171D06C40D000DAE82 /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		41BB67841CE08D0000467584 /* VideoItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemModel.swift; sourceTree = "<group>"; };
 		41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosListCollectionViewController.swift; sourceTree = "<group>"; };
 		41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKingsListViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
 				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
+				41B3AD171D06C40D000DAE82 /* Configs.swift */,
 				41ABB0AD1CD048BF00DF728A /* Info.plist */,
 				ABEFFA631CFA8E1300CE323A /* SunGod-Bridging-Header.h */,
 			);
@@ -417,6 +420,7 @@
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
 				AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */,
 				AB8583511CFBDFD10032BC0E /* UserPhotoTableViewCell.swift in Sources */,
+				41B3AD181D06C40D000DAE82 /* Configs.swift in Sources */,
 				ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */,
 				41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */,
 				AB85834D1CFBDC9D0032BC0E /* MeSettingViewController.swift in Sources */,

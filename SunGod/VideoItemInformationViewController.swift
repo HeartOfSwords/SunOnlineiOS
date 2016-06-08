@@ -10,7 +10,8 @@ import UIKit
 import SwiftyJSON
 import BMPlayer
 import NVActivityIndicatorView
-
+import MonkeyKing
+import PopMenu
 private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
@@ -20,18 +21,24 @@ class VideoItemInformationViewController: UIViewController {
     private var player:BMPlayer!
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
-    private let videoCommitTableView = UITableView()
-    private let commitTextView = UITextField()
-    private let userImage = UIImageView()
-    
-    private let sendButton = UIButton()
-    
     private let storeButton = UIButton()
     private let shareButton = UIButton()
     private let downButton = UIButton()
     private let delyButton = UIButton()
+    private let timeLabel = UILabel()
+    private let seeNumberLabel = UILabel()
     
-    var videoID = "123"
+    private let videoCommitTableView = UITableView()
+    private let commitTextView = UITextField()
+    private let userImage = UIImageView()
+    private let sendButton = UIButton()
+    
+    
+    let wechatmenItem = MenuItem(title: "微信", iconName: "care", index: 0)
+    let weiboMenItem = MenuItem(title: "微博", iconName: "care", index: 1)
+    let qqMenitem = MenuItem(title: "QQ", iconName: "care", index: 2)
+    var popMenu: PopMenu!
+    
     var commits = [WilddogCommiteModel]()
     var commitValue = ""
     
@@ -54,11 +61,12 @@ extension VideoItemInformationViewController {
         setUpNav()
         setUpLabel()
         setUpButtons()
-        setUpImage()
-        setUpText()
-        setUpSendButton()
-        setUpTableView()
-        setUpWilldog()
+//        setUpImage()
+//        setUpText()
+//        setUpSendButton()
+//        setUpTableView()
+//        setUpWilldog()
+        setupValue()
         
     }
     //隐藏 StatusBar
@@ -90,7 +98,7 @@ extension VideoItemInformationViewController {
     
     func setUpWilldog() -> Void {
         WilddogManager.wilddogLogin()
-        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
+        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
         
         //监听节点的变化
         videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
@@ -151,35 +159,76 @@ extension VideoItemInformationViewController {
     
     func setUpView() {
         view.backgroundColor = UIColor.whiteColor()
+        popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem])
+        popMenu.menuAnimationType = .Sina
+        popMenu.perRowItemCount = 3
+        popMenu.didSelectedItemCompletion = {
+            menuItem in
+            switch menuItem.index {
+            case 0:
+                self.shareWeChat()
+                
+            case 1:
+                self.shareWeiBo()
+            case 2:
+                self.shareQQ()
+            default:
+                break
+            }
+        }
     }
     
     func setUpLabel() -> Void {
+        
+        videoInformationLabel.font = UIFont.systemFontOfSize(14)
+        videoInformationLabel.numberOfLines = 0
+        
         view.addSubview(videoTitleLabel)
         view.addSubview(videoInformationLabel)
+        view.addSubview(seeNumberLabel)
+        view.addSubview(timeLabel)
         
         videoTitleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(player.snp_bottom).offset(8)
-            make.leading.trailing.equalTo(self.view).offset(8)
+            make.top.equalTo(player.snp_bottom).offset(18)
+            make.leading.equalTo(self.view).offset(8)
+            make.trailing.equalTo(-8)
         }
         
         videoInformationLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(videoTitleLabel.snp_bottom).offset(8)
-            make.leading.trailing.equalTo(self.view).offset(8)
+            make.top.equalTo(videoTitleLabel.snp_bottom).offset(18)
+            make.leading.equalTo(self.view).offset(8)
+            make.trailing.equalTo(-8)
         }
         
+        seeNumberLabel.snp_makeConstraints { (make) in
+            make.leading.equalTo(videoInformationLabel.snp_leading)
+            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(18)
+        }
+        
+        
+        timeLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(seeNumberLabel.snp_top)
+            make.leading.equalTo(self.seeNumberLabel.snp_trailing).offset(30)
+        }
+        
+
 
     }
     
     func setUpButtons() -> Void {
+        
         view.addSubview(storeButton)
         view.addSubview(shareButton)
         view.addSubview(downButton)
         view.addSubview(delyButton)
         
+        let width = (mainScreen.size.width - (8 * 5) ) / 4
         storeButton.snp_makeConstraints { (make) in
             
-            make.width.height.equalTo(25)
-            make.top.equalTo(videoInformationLabel.snp_bottom).offset(18)
+            make.width.equalTo(width)
+            make.height.equalTo(44)
+//            make.bottom.equalTo(-8)
+            make.top.equalTo(seeNumberLabel.snp_bottom).offset(18)
             make.trailing.equalTo(shareButton.snp_leading).offset(-8)
         }
         
@@ -201,7 +250,7 @@ extension VideoItemInformationViewController {
             make.top.equalTo(storeButton.snp_top)
         }
         
-
+        shareButton.addTarget(self, action: #selector(shareToWechat(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
     }
     
@@ -253,6 +302,8 @@ extension VideoItemInformationViewController {
     func setupValue() -> Void {
         videoTitleLabel.text = video.videoTitle
         videoInformationLabel.text = video.videoDescription
+        seeNumberLabel.text = video.videoPlayNumber
+        timeLabel.text = video.videoTime
         
         sendButton.setTitle("发送", forState: UIControlState.Highlighted)
         sendButton.backgroundColor = UIColor.blueColor()
@@ -264,10 +315,60 @@ extension VideoItemInformationViewController {
         
         userImage.backgroundColor = UIColor.blueColor()
         
-        storeButton.backgroundColor = UIColor.blueColor()
-        shareButton.backgroundColor = UIColor.blueColor()
-        downButton.backgroundColor = UIColor.blueColor()
-        delyButton.backgroundColor = UIColor.blueColor()
+        
+        storeButton.setImage(UIImage(named: "care"), forState: .Normal)
+        shareButton.setImage(UIImage(named: "care"), forState: .Normal)
+        downButton.setImage(UIImage(named: "care"), forState: .Normal)
+        delyButton.setImage(UIImage(named: "care"), forState: .Normal)
+    }
+    /**
+     分享视频
+     
+     - parameter button: button
+     
+     */
+
+    
+    func shareToWechat(button:UIButton) -> Void {
+        popMenu.showMenuAtView(self.view)
+    }
+    
+    //MARK: 分享到 微信 朋友圈
+    /**
+     分享到 微信 朋友圈
+     */
+    private func shareWeChat() {
+        let account = MonkeyKing.Account.WeChat(appID: Configs.Wechat.appID, appKey: Configs.Wechat.appKey)
+        MonkeyKing.registerAccount(account)
+        
+        
+        func shareVideo(url: String = "http://v.youku.com/v_show/id_XNTUxNDY1NDY4.html") {
+            let info =  MonkeyKing.Info(
+                title: "Timeline Video, \(NSUUID().UUIDString)",
+                description: "Description Video, \(NSUUID().UUIDString)",
+                thumbnail: UIImage(named: "rabbit"),
+                media: .Video(NSURL(string: url)!)
+            )
+            
+            let message = MonkeyKing.Message.WeChat(.Timeline(info: info))
+            
+            MonkeyKing.shareMessage(message) { result in
+                print("result: \(result)")
+            }
+            
+        }
+        
+        shareVideo()
+    }
+    /**
+     分享到朋友圈
+     */
+    private func shareWeiBo() {
+        print("微博")
+    }
+    
+    private func shareQQ() {
+        print("QQ")
     }
 }
 
@@ -298,7 +399,7 @@ extension VideoItemInformationViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         commitValue = textField.text!
         
-        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
+        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
         
         /// 添加新的留言
         let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: commitValue, autherImageURL: "")

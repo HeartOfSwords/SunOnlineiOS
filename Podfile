@@ -47,5 +47,8 @@ pod 'SugarRecord/CoreData'
 pod 'PKHUD'
 # 测试
 pod 'Reveal-iOS-SDK'
+# 分享
+pod 'MonkeyKing', '~> 0.9.2'
+pod 'PopMenu'
 end
 
