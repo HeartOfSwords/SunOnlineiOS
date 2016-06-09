@@ -21,11 +21,12 @@ class LeftMenuViewController: UIViewController {
     lazy var imageView = UIImageView()
     lazy var titleLabel = UILabel()
     lazy var nameLabel = UILabel()
-    let menutitle = ["推荐","分类","Me","设置"]
+    let menutitle = ["推荐","栏目","设置"]
     
     lazy var mainViewController: UINavigationController = UINavigationController(rootViewController: VideosListCollectionViewController())
     lazy var videoKindsViewController: UIViewController = UINavigationController(rootViewController: VideosKindsViewController())
-    lazy var meViewController: UIViewController = UINavigationController(rootViewController: MeViewController())
+    lazy var meViewController = UIStoryboard(name: "Me", bundle: nil).instantiateInitialViewController() as! UINavigationController
+    
     lazy var settingViewController: UIViewController = UINavigationController(rootViewController: SettingViewController())
     
     override func viewDidLoad() {
@@ -124,12 +125,9 @@ extension LeftMenuViewController: UITableViewDelegate {
         case 1:
             //分类
             slideMenuController()?.changeMainViewController(videoKindsViewController, close: true)
-        case 2:
+        default:
             //Me
             slideMenuController()?.changeMainViewController(meViewController, close: true)
-        default:
-            //设置
-            slideMenuController()?.changeMainViewController(settingViewController, close: true)
         }
     }
 }

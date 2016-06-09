@@ -8,7 +8,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-
+import MonkeyKing
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(NSHomeDirectory())
         return true
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        if MonkeyKing.handleOpenURL(url) {
+            return true
+        }
+        
+        return false
+    }
+
 }
 
 private extension AppDelegate {

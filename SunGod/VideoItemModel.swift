@@ -7,50 +7,127 @@
 //
 
 import SwiftyJSON
+import RealmSwift
 
-struct VideoItemModel {
-    var videoTitle: String
-    var videoImageURL: String
-    var videoTime: String
-    var videoID: String
-    var videoDescription: String
-    var videoURL: String
-    var videoPlayNumber: String
-    /**
-     通过值来进行初始化
-     
-     - parameter videoTitle:       videoTitle
-     - parameter videoImageURL:    videoImageURL
-     - parameter videoTime:        videoTime
-     - parameter videoSeeNumber:   videoSeeNumber
-     - parameter videoDescription: videoDescription
-     
-     - returns: VideoItemModel
-     */
-    init(videoTitle: String, videoImageURL: String, videoTime: String, videoID: String, videoDescription: String, videoURL: String, videoPlayNumber: String){
-        self.videoTitle = videoTitle
-        self.videoImageURL = videoImageURL
-        self.videoTime = videoTime
-        self.videoID = videoID
-        self.videoDescription = videoDescription
-        self.videoURL = videoURL
-        self.videoPlayNumber = videoPlayNumber
+/// Realm 的单例
+private class RealmData {
+    static let share = RealmData()
+    private init(){}
+    ///初始化一个Realm时，仅需要在一个线程中之行一个这个初始化函数
+    let realm = try! Realm()
+}
+
+class VideoItemModel: Object {
+    dynamic var videoTitle: String = ""
+    dynamic var videoImageURL: String = ""
+    dynamic var videoTime: String = ""
+    dynamic var videoID: String = ""
+    dynamic var videoDescription: String = ""
+    dynamic var videoURL: String = ""
+    dynamic var videoPlayNumber: String = ""
+    
+    convenience  init(videoJSONData: JSON) {
+        self.init()
+        videoTitle = videoJSONData["videoName"].stringValue
+        videoImageURL = videoJSONData["videoPicUrl"].stringValue
+        videoTime = videoJSONData["videoDate"].stringValue
+        videoPlayNumber = videoJSONData["videoPlayedNumber"].stringValue
+        videoDescription = videoJSONData["videoIntro"].stringValue
+        videoURL = videoJSONData["videoUrl"].stringValue
+        videoID = videoJSONData["videoId"].stringValue
     }
-    /**
-     通过获取服务器的数据来初始化一个 Video Model
-     
-     - parameter VideoData: Video Data
-     
-     - returns:
-     */
-    init(VideoData: AnyObject) {
-        let videoJSONData = JSON(VideoData)
-        videoTitle = videoJSONData["higoVideoName"].stringValue
-        videoImageURL = videoJSONData["higoVideoPicUrl"].stringValue
-        videoTime = videoJSONData["higoVideoDate"].stringValue
-        videoPlayNumber = videoJSONData["higoVideoPlayedNumber"].stringValue
-        videoDescription = videoJSONData["higoVideoIntro"].stringValue
-        videoURL = videoJSONData["higoVideoUrl"].stringValue
-        videoID = videoJSONData["higoVideoId"].stringValue
+    
+   override static func primaryKey() -> String? { return "videoID" }
+    
+    class func saveVideoItemModel(video:VideoItemModel,back:(res: Bool) -> Void) {
+        let flag = false
+        do {
+            try RealmData.share.realm.write {
+                RealmData.share.realm.add(video, update: true)
+            }
+            back(res: !flag)
+        }catch {
+            back(res: flag)
+        }
+        
     }
+    
+    class func deleteVideoItemModel(videoID: String, back:(res: Bool) -> Void) {
+        let flag = false
+        do {
+            try RealmData.share.realm.write({
+                let item = RealmData.share.realm.objects(VideoItemModel).filter(NSPredicate(format: "videoID = %@", videoID)).first
+                RealmData.share.realm.delete(item!)
+            })
+            back(res: !flag)
+        }catch {
+            back(res: flag)
+        }
+    }
+    
+    class func selectVideoItemModel() -> [VideoItemModel] {
+        var resData = [VideoItemModel]()
+        let res = RealmData.share.realm.objects(VideoItemModel)
+        res.forEach { (item) in
+            resData.append(item)
+        }
+        return resData
+    }
+}
+/// 关注的 视频
+class CareVideoItem: VideoItemModel {
+    
+    convenience  init(videoJSONData: VideoItemModel) {
+        self.init()
+        videoTitle = videoJSONData.videoTitle
+        videoImageURL = videoJSONData.videoImageURL
+        videoTime = videoJSONData.videoTime
+        videoPlayNumber = videoJSONData.videoPlayNumber
+        videoDescription = videoJSONData.videoDescription
+        videoURL = videoJSONData.videoURL
+        videoID = videoJSONData.videoID
+    }
+    
+    class func save(video:CareVideoItem,back:(res: Bool) -> Void) {
+        let flag = false
+        do {
+            try RealmData.share.realm.write {
+                RealmData.share.realm.add(video, update: true)
+            }
+            back(res: !flag)
+        }catch {
+            back(res: flag)
+        }
+
+    }
+    
+    class func delete(videoID: String, back:(res: Bool) -> Void) {
+        let flag = false
+        do {
+            try RealmData.share.realm.write({
+                let item = RealmData.share.realm.objects(CareVideoItem).filter(NSPredicate(format: "videoID = %@", videoID)).first
+                RealmData.share.realm.delete(item!)
+            })
+            back(res: !flag)
+        }catch {
+            back(res: flag)
+        }
+    }
+    
+    class func select() -> [CareVideoItem] {
+        var resData = [CareVideoItem]()
+        let res = RealmData.share.realm.objects(CareVideoItem)
+        res.forEach { (item) in
+            resData.append(item)
+        }
+       return resData
+    }
+}
+/// 下载的视频
+class DownVideoItem: VideoItemModel {
+    dynamic var homeURL: String = ""
+}
+/// 稍后看视频
+class DeleyVideo: VideoItemModel {
+    
 }

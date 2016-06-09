@@ -28,7 +28,7 @@ pod 'Kingfisher', '~> 2.3'
 #加密
 #pod 'CryptoSwift'
 #缓存
-#pod 'HanekeSwift'
+pod 'HanekeSwift'
 #野狗
 pod 'Wilddog'
 #  七牛
@@ -37,8 +37,20 @@ pod 'Wilddog'
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
 # CoreData 操作
-pod 'SugarRecord/CoreData'
+#pod 'SugarRecord/CoreData'
+#pod 'SugarRecord/Realm'
+ pod 'RealmSwift'
+# push 动画
+#pod 'TransitionTreasury', '~> 3.0.4'
 
-#pod 'SlackTextViewController'
+# 空数据
+#pod 'DZNEmptyDataSet'
+# 菊花
+pod 'PKHUD'
+# 测试
+pod 'Reveal-iOS-SDK'
+# 分享
+pod 'MonkeyKing', '~> 0.9.2'
+pod 'PopMenu'
 end
 

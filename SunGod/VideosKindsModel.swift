@@ -42,9 +42,9 @@ struct VideosKindsModel {
     init(VideoData: JSON) {
         
         name = VideoData["title"].stringValue
-        des = VideoData["title"].stringValue
+        des = VideoData["introduceMessage"].stringValue
         allVideosURL = baseURL + VideoData["href"].stringValue
-        imageURL = VideoData["title"].stringValue
+        imageURL = VideoData["priUrl"].stringValue
     }
     /**
      通过网络获取数据来生成一个 VideosKindsModel 数组

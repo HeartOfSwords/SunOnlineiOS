@@ -10,29 +10,33 @@ import UIKit
 import SwiftyJSON
 import BMPlayer
 import NVActivityIndicatorView
+import MonkeyKing
+import PopMenu
+import PKHUD
 
 private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
 
+    var video: VideoItemModel!
+    
     private var player:BMPlayer!
-    
-
-    
     private let videoTitleLabel = UILabel()
     private let videoInformationLabel = UILabel()
-    private let videoCommitTableView = UITableView()
-    private let commitTextView = UITextField()
-    private let userImage = UIImageView()
-    
-    private let sendButton = UIButton()
-    
     private let storeButton = UIButton()
     private let shareButton = UIButton()
     private let downButton = UIButton()
     private let delyButton = UIButton()
+    private let timeLabel = UILabel()
+    private let seeNumberLabel = UILabel()
+
     
-    var videoID = "123"
+        /// 分享界面的按钮
+    let wechatmenItem = MenuItem(title: "微信", iconName: "care", index: 0)
+    let weiboMenItem = MenuItem(title: "微博", iconName: "care", index: 1)
+    let qqMenitem = MenuItem(title: "QQ", iconName: "care", index: 2)
+    var popMenu: PopMenu!
+    
     var commits = [WilddogCommiteModel]()
     var commitValue = ""
     
@@ -47,74 +51,70 @@ extension VideoItemInformationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         view.backgroundColor = UIColor.whiteColor()
         setUpVideoPlayer()
         setUpView()
         setUpNav()
         setUpLabel()
         setUpButtons()
-        setUpImage()
-        setUpText()
-        setUpSendButton()
-        setUpTableView()
-        setUpWilldog()
+
+        setupValue()
         
     }
-    //隐藏 StatusBar
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-
-//        player.pause(allowAutoPlay: true)
+        
+        player.pause(allowAutoPlay: true)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
         // 使用手势返回的时候，调用下面方法
-//        player.autoPlay()
+        player.autoPlay()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = true
     }
 }
 
-//MRAK: Function
+////MRAK: Function
 extension VideoItemInformationViewController {
-    
-    
+  
     func setUpNav() {
 
     }
-    
-    func setUpWilldog() -> Void {
-        WilddogManager.wilddogLogin()
-        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
-        
-        //监听节点的变化
-        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
-            guard let value = shot.value else {return}
-            let dataJSON = JSON(value)
-            for (_,value) in dataJSON {
-            let teo = WilddogCommiteModel(
-                autherName: value["autherName"].stringValue,
-                autherID:  value["autherID"].stringValue,
-                commiteTime: value["commiteTime"].stringValue,
-                commiteValue: value["commiteValue"].stringValue,
-                autherImageURL: value["imageURL"].stringValue
-                )
-                
-                self.commits.append(teo)
-                
-                self.videoCommitTableView.reloadData()
-            }
-            
-            }) { (error) in
-                
-        }
-    }
+//
+////    func setUpWilldog() -> Void {
+////        WilddogManager.wilddogLogin()
+////        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
+////        
+////        //监听节点的变化
+////        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
+////            guard let value = shot.value else {return}
+////            let dataJSON = JSON(value)
+////            for (_,value) in dataJSON {
+////            let teo = WilddogCommiteModel(
+////                autherName: value["autherName"].stringValue,
+////                autherID:  value["autherID"].stringValue,
+////                commiteTime: value["commiteTime"].stringValue,
+////                commiteValue: value["commiteValue"].stringValue,
+////                autherImageURL: value["imageURL"].stringValue
+////                )
+////                
+////                self.commits.append(teo)
+////                
+////                self.videoCommitTableView.reloadData()
+////            }
+////            
+////            }) { (error) in
+////                
+////        }
+////    }
     
     func setUpVideoPlayer() {
         
@@ -136,52 +136,101 @@ extension VideoItemInformationViewController {
         }
         
         player.backBlock = { [unowned self] in
-            self.commitTextView.resignFirstResponder()
+            
             self.dismissViewControllerAnimated(true, completion: {
                 
             })
         }
         
         //配置视频播放资源
-        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: "http://7s1rp2.com1.z0.glb.clouddn.com/1%E3%80%81HTML5%E9%9F%B3%E9%A2%91%E6%92%AD%E6%94%BE.mp4")!, definitionName: "超清")
-        let item = BMPlayerItem(title: "视频的Title", resource: [videoResource], cover: "http://7u2j0x.com1.z0.glb.clouddn.com/61b207a9jw1euys0v320ej20zk0bwwg7.jpg")
+        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "超清")
+        let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoURL)
         player.playWithPlayerItem(item)
         
 
     }
-    
+
     func setUpView() {
         view.backgroundColor = UIColor.whiteColor()
+        popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem])
+        popMenu.menuAnimationType = .Sina
+        popMenu.perRowItemCount = 3
+        /**
+         *  分享界面 按钮点击之后的操作
+         */
+        popMenu.didSelectedItemCompletion = {
+            menuItem in
+            switch menuItem.index {
+            case 0:
+                self.shareWeChat()
+                
+            case 1:
+                self.shareWeiBo()
+            case 2:
+                self.shareQQ()
+            default:
+                break
+            }
+        }
+        
+        /**
+         记录播放
+         */
+        
+        VideoItemModel.saveVideoItemModel(video) { (res) in
+            //保存之后的动作
+        }
     }
     
     func setUpLabel() -> Void {
+        
+        videoTitleLabel.font = UIFont.boldSystemFontOfSize(18)
+        
+        videoInformationLabel.font = UIFont.italicSystemFontOfSize(14)
+        videoInformationLabel.numberOfLines = 0
+        
         view.addSubview(videoTitleLabel)
         view.addSubview(videoInformationLabel)
+        view.addSubview(seeNumberLabel)
+        view.addSubview(timeLabel)
         
         videoTitleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(player.snp_bottom).offset(8)
-            make.leading.trailing.equalTo(self.view).offset(8)
+            make.top.equalTo(player.snp_bottom).offset(18)
+            make.leading.equalTo(self.view).offset(8)
+            make.trailing.equalTo(-8)
         }
         
         videoInformationLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(videoTitleLabel.snp_bottom).offset(8)
-            make.leading.trailing.equalTo(self.view).offset(8)
+            make.top.equalTo(videoTitleLabel.snp_bottom).offset(18)
+            make.leading.equalTo(self.view).offset(8)
+            make.trailing.equalTo(-8)
         }
         
-        videoTitleLabel.text = "这里是视频的标题"
-        videoInformationLabel.text = "这里是视频的详细内容"
+        seeNumberLabel.snp_makeConstraints { (make) in
+            make.leading.equalTo(videoInformationLabel.snp_leading)
+            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(18)
+        }
+        
+        
+        timeLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(seeNumberLabel.snp_top)
+            make.leading.equalTo(self.seeNumberLabel.snp_trailing).offset(30)
+        }
     }
-    
+
     func setUpButtons() -> Void {
+        
         view.addSubview(storeButton)
         view.addSubview(shareButton)
         view.addSubview(downButton)
         view.addSubview(delyButton)
         
+        let width = (mainScreen.size.width - (8 * 5) ) / 4
         storeButton.snp_makeConstraints { (make) in
             
-            make.width.height.equalTo(25)
-            make.top.equalTo(videoInformationLabel.snp_bottom).offset(18)
+            make.width.equalTo(width)
+            make.height.equalTo(44)
+            make.top.equalTo(seeNumberLabel.snp_bottom).offset(18)
             make.trailing.equalTo(shareButton.snp_leading).offset(-8)
         }
         
@@ -203,107 +252,107 @@ extension VideoItemInformationViewController {
             make.top.equalTo(storeButton.snp_top)
         }
         
-        storeButton.backgroundColor = UIColor.blueColor()
-        shareButton.backgroundColor = UIColor.blueColor()
-        downButton.backgroundColor = UIColor.blueColor()
-        delyButton.backgroundColor = UIColor.blueColor()
+        shareButton.addTarget(self, action: #selector(shareToWechat(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        downButton.addTarget(self, action: #selector(downVideo), forControlEvents: .TouchUpInside)
+        storeButton.addTarget(self, action: #selector(careVideo), forControlEvents: .TouchUpInside)
+        delyButton.addTarget(self, action: #selector(commit), forControlEvents: .TouchUpInside)
 
     }
     
-    func setUpImage() -> Void {
-        view.addSubview(userImage)
-        userImage.snp_makeConstraints { (make) in
-            make.top.equalTo(self.storeButton.snp_bottom).offset(18)
-            make.leading.equalTo(self.view).offset(8)
-            make.height.width.equalTo(25)
-        }
+    func setupValue() -> Void {
+        videoTitleLabel.text = video.videoTitle
+        videoInformationLabel.text = video.videoDescription
+        seeNumberLabel.text = video.videoPlayNumber
+        timeLabel.text = video.videoTime
         
-        userImage.backgroundColor = UIColor.blueColor()
+        storeButton.setImage(UIImage(named: "care"), forState: .Normal)
+        shareButton.setImage(UIImage(named: "care"), forState: .Normal)
+        downButton.setImage(UIImage(named: "care"), forState: .Normal)
+        delyButton.setImage(UIImage(named: "care"), forState: .Normal)
+    }
+//    MARK:下载视频
+    /**
+     下载视频 , 将下载放在特定的线程中来进行下载
+     */
+    func downVideo() {
+        print("下载视频")
+        DownVideo.down(video.videoURL) { (down) in
+            print(down)
+        }
+    }
+    /**
+     收藏视频
+     */
+    func careVideo() {
+        let careVideo = CareVideoItem(videoJSONData: video)
+        
+        CareVideoItem.save(careVideo) { (res) in
+            if res {
+                HUD.show(HUDContentType.LabeledSuccess(title: "收藏成功", subtitle: ""))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
+            }else {
+                HUD.show(HUDContentType.LabeledError(title: "收藏失败", subtitle: "What"))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
+            }
+        }
+    }
+    /**
+     留言
+     */
+    func commit()  {
+        print("留言")
+    }
+    /**
+     分享视频
+     
+     - parameter button: button
+     
+     */
+
+    
+    func shareToWechat(button:UIButton) -> Void {
+        popMenu.showMenuAtView(self.view)
     }
     
-    func setUpText() -> Void {
-        view.addSubview(commitTextView)
-        commitTextView.snp_makeConstraints { (make) in
-            make.top.equalTo(userImage.snp_top)
-            make.leading.equalTo(self.userImage.snp_trailing).offset(8)
-            make.height.equalTo(userImage.snp_height)
-        }
-        commitTextView.delegate = self
-        commitTextView.returnKeyType = .Send
-        commitTextView.enablesReturnKeyAutomatically = true
-        commitTextView.placeholder = "写下你的评论"
-    }
-    
-    func setUpSendButton() -> Void {
-        view.addSubview(sendButton)
-        sendButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(commitTextView.snp_trailing).offset(8)
-            make.top.equalTo(userImage.snp_top)
-            make.trailing.equalTo(self.view).offset(-8)
-            make.height.width.equalTo(userImage)
-        }
-        
-        sendButton.setTitle("发送", forState: UIControlState.Highlighted)
-        sendButton.backgroundColor = UIColor.blueColor()
-    }
-    
-    func setUpTableView() -> Void {
-        
-        view.addSubview(videoCommitTableView)
-        videoCommitTableView.estimatedRowHeight = 88
-        videoCommitTableView.rowHeight = UITableViewAutomaticDimension
-        videoCommitTableView.delegate = self
-        videoCommitTableView.dataSource = self
-        videoCommitTableView.registerNib(UINib(nibName: "CommitTableViewCell",bundle: nil), forCellReuseIdentifier: commitCellIdentifier)
-//        videoCommitTableView.snp_makeConstraints { (make) in
-//            make.top.equalTo(userImage.snp_bottom).offset(10)
-//            make.leading.trailing.bottom.equalTo(self.view)
+    //MARK: 分享到 微信 朋友圈
+    /**
+     分享到 微信 朋友圈
+     */
+    private func shareWeChat() {
+        let account = MonkeyKing.Account.WeChat(appID: Configs.Wechat.appID, appKey: Configs.Wechat.appKey)
+        MonkeyKing.registerAccount(account)
+//
+//        
+//        func shareVideo(url: String = video.videoURL) {
+//            let info =  MonkeyKing.Info(
+//                title: "Timeline Video, \(NSUUID().UUIDString)",
+//                description: "Description Video, \(NSUUID().UUIDString)",
+//                thumbnail: UIImage(named: "rabbit"),
+//                media: .Video(NSURL(string: url)!)
+//            )
+//            
+//            let message = MonkeyKing.Message.WeChat(.Timeline(info: info))
+//            
+//            MonkeyKing.shareMessage(message) { result in
+//                print("result: \(result)")
+//            }
+//            
 //        }
+//        
+//        shareVideo()
     }
-}
-
-
-
-//MARK: UITableViewDelegate
-extension VideoItemInformationViewController: UITableViewDelegate{
-
-}
-//MARK: UITableViewDataSource
-extension VideoItemInformationViewController: UITableViewDataSource {
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commits.count
+    /**
+     分享到朋友圈
+     */
+    private func shareWeiBo() {
+        print("微博")
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(commitCellIdentifier, forIndexPath: indexPath) as! CommitTableViewCell
-        let indexCommit = commits[indexPath.row]
-        cell.configCell(imageURL: indexCommit.autherImageURL, commitDate: indexCommit.commiteTime, userName: indexCommit.autherName, commitValue: indexCommit.commiteValue)
-        return cell
+    private func shareQQ() {
+        print("QQ")
     }
 }
 
-extension VideoItemInformationViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        commitValue = textField.text!
-        
-        let videoRef = WilddogManager.ref.childByAppendingPath(videoID)
-        
-        /// 添加新的留言
-        let one = WilddogCommiteModel(autherName: "杨晓磊", autherID: "123", commiteTime: String(NSDate()), commiteValue: commitValue, autherImageURL: "")
-        /// 生成一个唯一的 Key 值
-        let messageKey = one.commiteTime + one.autherID
-        /// JSON
-        let value = ["autherID":one.autherID,"autherName":one.autherName,"comiteTime":one.commiteTime,"commiteValue":one.commiteValue,"imageURL":one.autherImageURL]
-        
-        videoRef.updateChildValues([messageKey:value])
-        textField.text = ""
-        commitValue = ""
-        commits = []
-        return true
-    }
-}
 
 
 
