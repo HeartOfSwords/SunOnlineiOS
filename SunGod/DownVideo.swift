@@ -17,8 +17,8 @@ class DownVideo {
             let doc = document.URLByAppendingPathComponent("com.taiyangzx.videos",isDirectory: true)
             try! fileManger.createDirectoryAtURL(doc, withIntermediateDirectories: true, attributes: nil)
             let down = doc.URLByAppendingPathComponent(Dataurl)
-            back(down:down)
             return down
+           
         }
     }
 }

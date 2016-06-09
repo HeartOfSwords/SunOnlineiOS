@@ -55,7 +55,7 @@ extension VideosKingsListViewController {
         ///collection View 布局
         
         collectionView.snp_makeConstraints { (make) in
-            make.top.equalTo(2)
+            make.top.equalTo(0)
             make.leading.trailing.bottom.equalTo(view)
         }
         
@@ -152,7 +152,7 @@ extension VideosKingsListViewController {
             self.paseData(data)
             }
             .onFailure { (error) in
-                print("error")
+               
                 ///如果没有缓存的话从网络中获取,调用 collectionView.mj_header 来进行获取数据
                 self.collectionView.mj_header.beginRefreshing()
         }

@@ -47,10 +47,6 @@ extension VideosKindsViewController {
     
     func setUpCollectionView() -> Void {
         let layout = UICollectionViewFlowLayout()
-        let width = (mainScreen.width - 2) / 2
-        layout.itemSize = CGSize(width: width, height: width)
-        layout.minimumInteritemSpacing = 2
-        layout.minimumLineSpacing = 2
         collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -157,7 +153,7 @@ extension VideosKindsViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cv = VideosKingsListViewController()
         cv.kind = kinds[indexPath.row]
-        print(cv.kind.allVideosURL)
+        
         navigationController?.pushViewController(cv, animated: true)
     }
 
@@ -174,5 +170,26 @@ extension VideosKindsViewController: UICollectionViewDataSource {
         let item = kinds[indexPath.row]
         cell.setUpCell(item.name, photoURL: item.imageURL)
         return cell
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension VideosKindsViewController: UICollectionViewDelegateFlowLayout {
+    
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        /**
+         collection item 的大小
+         
+         - parameter width:  宽度为屏幕宽度
+         - parameter height: 高度为屏幕的 9 ／16
+         
+         - returns: 返回size
+         */
+        return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
     }
 }
