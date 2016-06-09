@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import Alamofire
+import PKHUD
+import SwiftyUserDefaults
 
 private let playIdentifier = "videoListItem"
 
@@ -65,7 +67,59 @@ extension UserSeeCacheViewController {
 }
 
 extension UserSeeCacheViewController: UICollectionViewDelegate {
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        /// 选中 cell 之后进行跳转
+        ///在选中 cell 之后对网络状态进行判断 符合用户设置的 话可以进行跳转
+        let videoItem = VideoItemInformationViewController()
+        func presentView() {
+            if type == 0 {
+                let item = videos[indexPath.row]
+                videoItem.video = item
+            }else if type == 1 {
+                let item = careVideos[indexPath.row]
+                videoItem.video = item as VideoItemModel
+            }else{
+                let item = videos[indexPath.row]
+                videoItem.video = item
+            }
+            
+            presentViewController(videoItem, animated: true) {
+                
+            }
+        }
+        let net = NetworkReachabilityManager()
+        net?.startListening()
+        net?.listener = {
+            state in
+            switch state {
+            case .Reachable(let net):
+                //有网
+                if net == .EthernetOrWiFi {
+                    //Wi-Fi下进行跳转
+                    presentView()
+                }else {
+                    
+                    if Defaults[.allowSee] {
+                        //如果用户开启了 运营商网络观看视频的话直接跳转
+                        presentView()
+                    }else {
+                        HUD.show(HUDContentType.LabeledSuccess(title: "你在使用WWAN网络", subtitle: "在设置中开启WWAN网络观看视频"))
+                        HUD.hide(afterDelay: NSTimeInterval(1))
+                    }
+                }
+                
+            case .Unknown:
+                HUD.show(HUDContentType.LabeledSuccess(title: "好厉害的网络", subtitle: "你用的什么网络呀"))
+                HUD.hide(afterDelay: NSTimeInterval(1))
+            case .NotReachable:
+                //没有网络
+                HUD.show(HUDContentType.LabeledError(title: "没有网络", subtitle: "亲,该交话费了"))
+                HUD.hide(afterDelay: NSTimeInterval(1.5))
+            }
+        }
+        
+        
+    }
 }
 
 extension UserSeeCacheViewController: UICollectionViewDataSource {
