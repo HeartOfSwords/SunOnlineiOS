@@ -73,11 +73,14 @@ extension UserSeeCacheViewController: UICollectionViewDelegate {
         let videoItem = VideoItemInformationViewController()
         func presentView() {
             if type == 0 {
+                
                 let item = videos[indexPath.row]
                 videoItem.video = item
             }else if type == 1 {
                 let item = careVideos[indexPath.row]
-                videoItem.video = item as VideoItemModel
+                let item2 = VideoItemModel(videoJSONData: item)
+                
+                videoItem.video = item2
             }else{
                 let item = videos[indexPath.row]
                 videoItem.video = item
@@ -142,12 +145,15 @@ extension UserSeeCacheViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(playIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
         if type == 0 {
+            //离线缓存
             let item = videos[indexPath.row]
             cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
         }else if type == 1 {
+            //我的收藏
             let item = careVideos[indexPath.row]
             cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
         }else{
+            //播放记录
             let item = videos[indexPath.row]
             cell.setUpCell(item.videoTime, information: item.videoTitle, photoURL: item.videoImageURL)
         }

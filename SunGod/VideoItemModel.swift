@@ -37,6 +37,17 @@ class VideoItemModel: Object {
         videoID = videoJSONData["videoId"].stringValue
     }
     
+    convenience  init(videoJSONData: CareVideoItem) {
+        self.init()
+        videoTitle = videoJSONData.videoTitle
+        videoImageURL = videoJSONData.videoImageURL
+        videoTime = videoJSONData.videoTime
+        videoPlayNumber = videoJSONData.videoPlayNumber
+        videoDescription = videoJSONData.videoDescription
+        videoURL = videoJSONData.videoURL
+        videoID = videoJSONData.videoID
+    }
+    
    override static func primaryKey() -> String? { return "videoID" }
     
     class func saveVideoItemModel(video:VideoItemModel,back:(res: Bool) -> Void) {
