@@ -62,7 +62,7 @@ extension VideosListCollectionViewController {
         }
         
         //添加下拉刷新
-
+        
         collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
         collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
         
