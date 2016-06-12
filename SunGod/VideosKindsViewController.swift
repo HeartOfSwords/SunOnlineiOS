@@ -126,6 +126,7 @@ extension VideosKindsViewController {
     func paseData(data:NSData,back:(res: Bool) -> Void) -> Void {
         /// 获取到数据之后对数据进行进行解析,转化成对应的模型
         let jsonData = JSON(data:data)["links"]
+        
         /**
          *  对请求回来的JSON 数组进行遍历
          */
