@@ -61,8 +61,18 @@ extension VideosKingsListViewController {
         
         //添加下拉刷新
         
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
-        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        let collectionHeadView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        collectionHeadView.lastUpdatedTimeLabel.hidden = true
+        collectionHeadView.setTitle("下拉刷新", forState: MJRefreshState.Idle)
+        collectionHeadView.setTitle("松开立刻刷新", forState: MJRefreshState.Pulling)
+        collectionHeadView.setTitle("正在刷新", forState: MJRefreshState.Refreshing)
+        collectionView.mj_header = collectionHeadView
+        let collectionFootView = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        collectionFootView.setTitle("加载更多", forState: MJRefreshState.Idle)
+        collectionFootView.setTitle("点击或上拉加载更多", forState: MJRefreshState.Pulling)
+        collectionFootView.setTitle("正在加载...", forState: MJRefreshState.Refreshing)
+        collectionFootView.setTitle("没有更多数据", forState: MJRefreshState.NoMoreData)
+        collectionView.mj_footer = collectionFootView
         
     }
     

@@ -95,7 +95,7 @@ extension VideosKindsViewController {
                 back(res:false)
                 return
             }
-
+            
             self.paseData(data, back: { (res) in
                 back(res:res)
             })
@@ -117,7 +117,7 @@ extension VideosKindsViewController {
             ///如果有缓存的话就从缓存中直接读取
             ///对缓存中的数据进行解析
             self.paseData(data, back: { (res) in
-                
+                print("从缓存中获取数据")
             })
 
             }
