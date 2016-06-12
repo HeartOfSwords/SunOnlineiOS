@@ -59,7 +59,12 @@ extension VideosKindsViewController {
             make.edges.equalTo(self.view)
         }
         
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        let collectionHeadView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        collectionHeadView.lastUpdatedTimeLabel.hidden = true
+        collectionHeadView.setTitle("下拉刷新", forState: MJRefreshState.Idle)
+        collectionHeadView.setTitle("松开立刻刷新", forState: MJRefreshState.Pulling)
+        collectionHeadView.setTitle("正在刷新", forState: MJRefreshState.Refreshing)
+        collectionView.mj_header = collectionHeadView
     }
     
     /**
