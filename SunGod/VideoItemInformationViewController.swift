@@ -395,7 +395,7 @@ extension VideoItemInformationViewController {
      下载视频 , 将下载放在特定的线程中来进行下载
      */
     func downVideo() {
-        print("下载视频")
+        
         DownVideo.down(video.videoURL) { (down) in
             print(down)
         }
@@ -420,7 +420,9 @@ extension VideoItemInformationViewController {
      留言
      */
     func commit()  {
-        print("留言")
+        presentViewController(ComiteViewController(), animated: true) { 
+            
+        }
         player.pause()
     }
     /**

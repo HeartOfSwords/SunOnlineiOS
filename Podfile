@@ -51,5 +51,7 @@ pod 'Reveal-iOS-SDK'
 pod 'MonkeyKing', '~> 0.9.2'
 pod 'PopMenu'
 pod 'Gifu'
+#留言
+pod 'SlackTextViewController'
 end
 

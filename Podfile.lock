@@ -6,7 +6,7 @@ PODS:
   - Gifu (1.2.1)
   - HanekeSwift (0.10.1)
   - Kingfisher (2.4.1)
-  - MJRefresh (3.1.2)
+  - MJRefresh (3.1.3)
   - MonkeyKing (0.9.2)
   - NVActivityIndicatorView (2.7)
   - PKHUD (3.1.0)
@@ -20,6 +20,7 @@ PODS:
   - RealmSwift (1.0.0):
     - Realm (= 1.0.0)
   - Reveal-iOS-SDK (1.6.2)
+  - SlackTextViewController (1.9.3)
   - SlideMenuControllerSwift (2.2.0)
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - PopMenu
   - RealmSwift
   - Reveal-iOS-SDK
+  - SlackTextViewController
   - SlideMenuControllerSwift
   - SnapKit (~> 0.15.0)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
@@ -60,7 +62,7 @@ SPEC CHECKSUMS:
   Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
-  MJRefresh: 51bf93370625e1888978921347b8f99654cf4996
+  MJRefresh: e9005c294dd8a3d08cc7c50eea2b5016673f29c4
   MonkeyKing: 2cf420f9202a51714734374c97d96cf496e7ae2b
   NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
@@ -69,6 +71,7 @@ SPEC CHECKSUMS:
   Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
   RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  SlackTextViewController: bd2a34c188d4f7dec93cf42388f38551263fac82
   SlideMenuControllerSwift: 16dac00b1aaad153e64fffb5d6969ab31ad88372
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
@@ -76,6 +79,6 @@ SPEC CHECKSUMS:
   Wilddog: 553a831c68795d43a3408a5180ea21a7da4a4a49
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
-PODFILE CHECKSUM: 59fd1b62a18a09c8aed6e0c9c13b96a60eaf1b72
+PODFILE CHECKSUM: f0d6e16b51980e4c8321117eed9c2ee625daac07
 
 COCOAPODS: 1.0.0
