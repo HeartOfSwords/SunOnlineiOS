@@ -59,7 +59,7 @@ extension VideoItemInformationViewController {
         setUpNav()
         setUpLabel()
         setUpButtons()
-        setupAnotherVideoView()
+//        setupAnotherVideoView()
         setupValue()
         
     }
@@ -76,6 +76,7 @@ extension VideoItemInformationViewController {
         super.viewWillAppear(animated)
         // 使用手势返回的时候，调用下面方法
         player.autoPlay()
+//        view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -125,6 +126,8 @@ extension VideoItemInformationViewController {
         BMPlayerConf.shouldAutoPlay = true
         // 主体颜色，默认白色
         BMPlayerConf.tintColor = UIColor.whiteColor()
+        // 显示慢放和镜像按钮
+//        BMPlayerConf.slowAndMirror = true
         // 顶部返回和标题显示选项，默认.Always，可选.HorizantalOnly、.None
         BMPlayerConf.topBarShowInCase = .Always
         // 加载效果，更多请见：https://github.com/ninjaprox/NVActivityIndicatorView
@@ -145,13 +148,13 @@ extension VideoItemInformationViewController {
         }
         
         //配置视频播放资源
-        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "超清")
+        let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "太阳在线")
         let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoURL)
         player.playWithPlayerItem(item)
     }
 
     func setUpView() {
-        view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
+        view.backgroundColor = UIColor.whiteColor()
         popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem])
         popMenu.menuAnimationType = .Sina
         popMenu.perRowItemCount = 3
@@ -219,7 +222,7 @@ extension VideoItemInformationViewController {
         image0.snp_makeConstraints { (make) in
             make.width.equalTo(17)
             make.height.equalTo(10)
-            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(8)
+            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(6)
             make.leading.equalTo(videoInformationLabel.snp_leading)
         }
         
@@ -230,12 +233,13 @@ extension VideoItemInformationViewController {
         
         image1.snp_makeConstraints { (make) in
             make.top.equalTo(image0.snp_top)
-            make.leading.equalTo(seeNumberLabel.snp_trailing).offset(30)
-            make.width.height.equalTo(15)
+            make.trailing.equalTo(timeLabel.snp_leading).offset(-10)
+//            make.leading.equalTo(seeNumberLabel.snp_trailing).offset(30)
+            make.width.height.equalTo(10)
         }
         timeLabel.snp_makeConstraints { (make) in
-            make.leading.equalTo(image1.snp_trailing).offset(10)
             make.bottom.equalTo(image1.snp_bottom)
+            make.trailing.equalTo(view.snp_trailing).offset(-8)
         }
     }
 
@@ -268,11 +272,12 @@ extension VideoItemInformationViewController {
         view.addSubview(label3)
         
         let width = 18
+        let padding = (mainScreen.size.width - 18 * 6) / 3
         storeButton.snp_makeConstraints { (make) in
             
             make.width.equalTo(width)
             make.height.equalTo(width)
-            make.top.equalTo(seeNumberLabel.snp_bottom).offset(8)
+            make.top.equalTo(seeNumberLabel.snp_bottom).offset(12)
             make.leading.equalTo(18)
             
         }
@@ -286,7 +291,7 @@ extension VideoItemInformationViewController {
         shareButton.snp_makeConstraints { (make) in
             make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
-            make.leading.equalTo(storeButton.snp_trailing).offset(28)
+            make.leading.equalTo(storeButton.snp_trailing).offset(padding)
         }
         
         label1.snp_makeConstraints { (make) in
@@ -298,7 +303,7 @@ extension VideoItemInformationViewController {
         downButton.snp_makeConstraints { (make) in
             make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
-            make.leading.equalTo(shareButton.snp_trailing).offset(28)
+            make.leading.equalTo(shareButton.snp_trailing).offset(padding)
         }
         
         label2.snp_makeConstraints { (make) in
@@ -308,7 +313,7 @@ extension VideoItemInformationViewController {
         }
         
         delyButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(downButton.snp_trailing).offset(28)
+            make.leading.equalTo(downButton.snp_trailing).offset(padding)
             make.width.height.equalTo(storeButton)
             make.top.equalTo(storeButton.snp_top)
         }

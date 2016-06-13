@@ -34,7 +34,7 @@ class VideosListCollectionViewController: UIViewController{
         setUpNavigation()
         /// - 从缓存中读取数据
 //        cacheData()
-        listenNetWorking()
+//        listenNetWorking()
        
     }
 }
