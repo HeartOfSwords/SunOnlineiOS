@@ -10,7 +10,7 @@ import UIKit
 
 private let imageidentifier = "imagePhoto"
 private let nameidentifier = "namephoto"
-
+/// 编辑个人信息的界面
 class MeSettingViewController: UIViewController {
 
     

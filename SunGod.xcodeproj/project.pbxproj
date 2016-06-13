@@ -32,6 +32,8 @@
 		AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */; };
 		AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */; };
 		AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583571CFBE6B10032BC0E /* UserDefaults.swift */; };
+		AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */; };
+		AB99CC051D0D0EFB00D630B8 /* VideoItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */; };
 		ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */; };
 		ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16E1D057F000040D0D9 /* LogViewController.swift */; };
 		ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */; };
@@ -70,6 +72,8 @@
 		AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
 		AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
 		AB8583571CFBE6B10032BC0E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemTableViewCell.swift; sourceTree = "<group>"; };
+		AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoItemTableViewCell.xib; sourceTree = "<group>"; };
 		ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownVideo.swift; sourceTree = "<group>"; };
 		ABCCD16E1D057F000040D0D9 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSeeCacheViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				410B7E201CF30588002EDF77 /* VideoKindsCollectionViewCell.swift */,
 				410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */,
 				AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */,
+				AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */,
+				AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
 				ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */,
 				AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */,
+				AB99CC051D0D0EFB00D630B8 /* VideoItemTableViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +405,7 @@
 				ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */,
 				AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
+				AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */,
 				ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,

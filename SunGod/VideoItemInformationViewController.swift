@@ -146,8 +146,6 @@ extension VideoItemInformationViewController {
         let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "超清")
         let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoURL)
         player.playWithPlayerItem(item)
-        
-
     }
 
     func setUpView() {
@@ -163,7 +161,6 @@ extension VideoItemInformationViewController {
             switch menuItem.index {
             case 0:
                 self.shareWeChat()
-                
             case 1:
                 self.shareWeiBo()
             case 2:
@@ -321,35 +318,28 @@ extension VideoItemInformationViewController {
     private func shareWeChat() {
         let account = MonkeyKing.Account.WeChat(appID: Configs.Wechat.appID, appKey: Configs.Wechat.appKey)
         MonkeyKing.registerAccount(account)
-//
-//        
-//        func shareVideo(url: String = video.videoURL) {
-//            let info =  MonkeyKing.Info(
-//                title: "Timeline Video, \(NSUUID().UUIDString)",
-//                description: "Description Video, \(NSUUID().UUIDString)",
-//                thumbnail: UIImage(named: "rabbit"),
-//                media: .Video(NSURL(string: url)!)
-//            )
-//            
-//            let message = MonkeyKing.Message.WeChat(.Timeline(info: info))
-//            
-//            MonkeyKing.shareMessage(message) { result in
-//                print("result: \(result)")
-//            }
-//            
-//        }
-//        
-//        shareVideo()
+        shareVideo(self.video.videoURL)
     }
-    /**
-     分享到朋友圈
-     */
+
     private func shareWeiBo() {
         print("微博")
     }
     
     private func shareQQ() {
         print("QQ")
+    }
+    
+    private func shareVideo(url: String) {
+        let info = MonkeyKing.Info(
+        title: "Video Title",
+        description: "description",
+        thumbnail: UIImage(named: ""),
+        media: .Video(NSURL(string:url)!)
+        )
+        let message = MonkeyKing.Message.WeChat(.Timeline(info:info))
+        MonkeyKing.shareMessage(message) { (result) in
+            print("result: \(result)")
+        }
     }
 }
 

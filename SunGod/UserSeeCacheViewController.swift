@@ -10,21 +10,21 @@ import UIKit
 import Alamofire
 import PKHUD
 import SwiftyUserDefaults
+import SnapKit
 
-private let playIdentifier = "videoListItem"
 
+private let tableCellID = "VideotableviewcellItem"
 class UserSeeCacheViewController: UIViewController {
 
     var type = 0
     
     private var videos = [VideoItemModel]()
     private var careVideos = [CareVideoItem]()
-    private var collectionView: UICollectionView!
-    
+    private var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        setUpCollectionView()
+        setUpTableView()
     }
     
     
@@ -33,7 +33,8 @@ class UserSeeCacheViewController: UIViewController {
 // MARK: Function
 extension UserSeeCacheViewController {
    private func setUpView() {
-        view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.whiteColor()
+    
         switch type {
         case 0:
             title = "离线缓存"
@@ -46,28 +47,31 @@ extension UserSeeCacheViewController {
         }
     }
     
-    
-    func setUpCollectionView() {
-        
-        let layout = UICollectionViewFlowLayout()
-        
-        collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor.whiteColor()
-        let cellNib = UINib(nibName: "VideoCollectionViewCell", bundle: nil)
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: playIdentifier)
-        view.addSubview(collectionView)
-        ///collection View 布局
-        collectionView.snp_makeConstraints { (make) in
-            make.leading.trailing.bottom.equalTo(view)
-            make.top.equalTo(2)
+    func setUpTableView() -> Void {
+        tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .None
+        let cellNib = UINib(nibName: "VideoItemTableViewCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: tableCellID)
+        view.addSubview(tableView)
+        tableView.snp_makeConstraints { (make) in
+            make.edges.equalTo(view)
         }
     }
+
+    
 }
 
-extension UserSeeCacheViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+extension UserSeeCacheViewController: UITableViewDelegate {
+    
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return mainScreen.size.width * (9.0 / 16.0)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         /// 选中 cell 之后进行跳转
         ///在选中 cell 之后对网络状态进行判断 符合用户设置的 话可以进行跳转
         let videoItem = VideoItemInformationViewController()
@@ -120,19 +124,41 @@ extension UserSeeCacheViewController: UICollectionViewDelegate {
                 HUD.hide(afterDelay: NSTimeInterval(1.5))
             }
         }
-        
-        
     }
 }
 
-extension UserSeeCacheViewController: UICollectionViewDataSource {
+extension UserSeeCacheViewController: UITableViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
+        
+        if editingStyle == .Delete {
+            //删除
+            switch type {
+            case 0:
+//                title = "离线缓存"
+                let item = videos[indexPath.row]
+                VideoItemModel.deleteVideoItemModel(item.videoID, back: { (res) in
+                    
+                })
+            case 1:
+//                title = "我的收藏"
+                let item = careVideos[indexPath.row]
+                CareVideoItem.delete(item.videoID, back: { (res) in
+                    
+                })
+            default:
+//                title = "播放记录"
+                videos = VideoItemModel.selectVideoItemModel()
+            }
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if type == 0 {
             return self.videos.count
         }else if type == 1 {
@@ -142,8 +168,9 @@ extension UserSeeCacheViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(playIdentifier, forIndexPath: indexPath) as! VideoCollectionViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableCellID, forIndexPath: indexPath) as! VideoItemTableViewCell
         if type == 0 {
             //离线缓存
             let item = videos[indexPath.row]
@@ -161,23 +188,4 @@ extension UserSeeCacheViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: UICollectionViewDelegateFlowLayout
-extension UserSeeCacheViewController: UICollectionViewDelegateFlowLayout {
-    
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        /**
-         collection item 的大小
-         
-         - parameter width:  宽度为屏幕宽度
-         - parameter height: 高度为屏幕的 9 ／16
-         
-         - returns: 返回size
-         */
-        return CGSize(width:view.frame.width, height: (view.frame.width) * (9.0 / 16))
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 2
-    }
-}
+
