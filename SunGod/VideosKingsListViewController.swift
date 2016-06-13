@@ -16,7 +16,7 @@ import PKHUD
 import Alamofire
 
 private let reuseIdentifier1 = "videoListItem"
-
+//栏目下的所有视频
 class VideosKingsListViewController: UIViewController{
     
     private var collectionView: UICollectionView!
@@ -256,6 +256,7 @@ extension VideosKingsListViewController: UICollectionViewDelegate {
             let videoItem = VideoItemInformationViewController()
             let item = videos[indexPath.row]
             videoItem.video = item
+            videoItem.anotherVideo = videos.last
             presentViewController(videoItem, animated: true) {
                 
             }

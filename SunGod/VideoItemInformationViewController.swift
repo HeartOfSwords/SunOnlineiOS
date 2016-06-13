@@ -13,12 +13,14 @@ import NVActivityIndicatorView
 import MonkeyKing
 import PopMenu
 import PKHUD
+import Kingfisher
 
 private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
 
     var video: VideoItemModel!
+    var anotherVideo: VideoItemModel!
     
     private var player:BMPlayer!
     private let videoTitleLabel = UILabel()
@@ -29,7 +31,7 @@ class VideoItemInformationViewController: UIViewController {
     private let delyButton = UIButton()
     private let timeLabel = UILabel()
     private let seeNumberLabel = UILabel()
-
+    private let antoherViewVideo = UIView()
     
         /// 分享界面的按钮
     let wechatmenItem = MenuItem(title: "微信", iconName: "care", index: 0)
@@ -57,7 +59,7 @@ extension VideoItemInformationViewController {
         setUpNav()
         setUpLabel()
         setUpButtons()
-
+        setupAnotherVideoView()
         setupValue()
         
     }
@@ -203,13 +205,13 @@ extension VideoItemInformationViewController {
         view.addSubview(timeLabel)
         
         videoTitleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(player.snp_bottom).offset(18)
+            make.top.equalTo(player.snp_bottom).offset(8)
             make.leading.equalTo(self.view).offset(8)
             make.trailing.equalTo(-8)
         }
         
         videoInformationLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(videoTitleLabel.snp_bottom).offset(18)
+            make.top.equalTo(videoTitleLabel.snp_bottom).offset(8)
             make.leading.equalTo(self.view).offset(8)
             make.trailing.equalTo(-8)
         }
@@ -217,7 +219,7 @@ extension VideoItemInformationViewController {
         image0.snp_makeConstraints { (make) in
             make.width.equalTo(17)
             make.height.equalTo(10)
-            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(18)
+            make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(8)
             make.leading.equalTo(videoInformationLabel.snp_leading)
         }
         
@@ -270,7 +272,7 @@ extension VideoItemInformationViewController {
             
             make.width.equalTo(width)
             make.height.equalTo(width)
-            make.top.equalTo(seeNumberLabel.snp_bottom).offset(28)
+            make.top.equalTo(seeNumberLabel.snp_bottom).offset(8)
             make.leading.equalTo(18)
             
         }
@@ -322,6 +324,42 @@ extension VideoItemInformationViewController {
         storeButton.addTarget(self, action: #selector(careVideo), forControlEvents: .TouchUpInside)
         delyButton.addTarget(self, action: #selector(commit), forControlEvents: .TouchUpInside)
 
+    }
+    
+    func setupAnotherVideoView() -> Void {
+        
+        view.addSubview(antoherViewVideo)
+        antoherViewVideo.snp_makeConstraints { (make) in
+            make.top.equalTo(delyButton.snp_bottom).offset(20)
+            make.leading.equalTo(view)
+            make.trailing.equalTo(view)
+            make.height.equalTo(videoViewHeight)
+        }
+        
+        let anotherImage = UIImageView()
+        let title = UILabel()
+        let time = UILabel()
+        
+        antoherViewVideo.addSubview(anotherImage)
+        antoherViewVideo.addSubview(title)
+        antoherViewVideo.addSubview(time)
+        
+        anotherImage.snp_makeConstraints { (make) in
+            make.edges.equalTo(antoherViewVideo)
+        }
+        
+        title.snp_makeConstraints { (make) in
+            make.center.equalTo(antoherViewVideo.snp_center)
+        }
+        
+        time.snp_makeConstraints { (make) in
+            make.bottom.equalTo(antoherViewVideo.snp_bottom).offset(-8)
+            make.trailing.equalTo(antoherViewVideo.snp_trailing).offset(-8)
+        }
+        
+        anotherImage.kf_setImageWithURL(NSURL(string: self.anotherVideo.videoImageURL)!, placeholderImage: nil)
+        title.text = anotherVideo.videoTitle
+        time.text = anotherVideo.videoTime
     }
     
     func setupValue() -> Void {

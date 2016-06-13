@@ -262,6 +262,7 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
             let videoItem = VideoItemInformationViewController()
             let item = videos[indexPath.row]
             videoItem.video = item
+            videoItem.anotherVideo = videos.last
             presentViewController(videoItem, animated: true) {
                 
             }
