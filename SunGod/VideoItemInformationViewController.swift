@@ -14,7 +14,7 @@ import MonkeyKing
 import PopMenu
 import PKHUD
 import Kingfisher
-
+import Gifu
 private let commitCellIdentifier = "commitCell"
 
 class VideoItemInformationViewController: UIViewController {
@@ -32,7 +32,7 @@ class VideoItemInformationViewController: UIViewController {
     private let timeLabel = UILabel()
     private let seeNumberLabel = UILabel()
     private let antoherViewVideo = UIView()
-    
+    private let gifImageView: AnimatableImageView = AnimatableImageView()
         /// 分享界面的按钮
     let wechatmenItem = MenuItem(title: "微信", iconName: "care", index: 0)
     let weiboMenItem = MenuItem(title: "微博", iconName: "care", index: 1)
@@ -60,6 +60,7 @@ extension VideoItemInformationViewController {
         setUpLabel()
         setUpButtons()
 //        setupAnotherVideoView()
+        setUpGIF()
         setupValue()
         
     }
@@ -331,6 +332,17 @@ extension VideoItemInformationViewController {
 
     }
     
+    func setUpGIF() -> Void {
+        view.addSubview(gifImageView)
+        gifImageView.snp_makeConstraints { (make) in
+            make.top.equalTo(delyButton.snp_bottom).offset(20)
+            make.leading.equalTo(view)
+            make.trailing.equalTo(view)
+            make.height.equalTo(videoViewHeight)
+        }
+        gifImageView.animateWithImage(named: "mugen.gif")
+    }
+    
     func setupAnotherVideoView() -> Void {
         
         view.addSubview(antoherViewVideo)
@@ -409,6 +421,7 @@ extension VideoItemInformationViewController {
      */
     func commit()  {
         print("留言")
+        player.pause()
     }
     /**
      分享视频
@@ -419,6 +432,7 @@ extension VideoItemInformationViewController {
 
     
     func shareToWechat(button:UIButton) -> Void {
+        player.pause()
         popMenu.showMenuAtView(self.view)
     }
     

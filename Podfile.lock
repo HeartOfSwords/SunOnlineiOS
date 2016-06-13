@@ -3,7 +3,7 @@ PODS:
   - BMPlayer (0.2.5):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
-  - FLAnimatedImage (1.0.12)
+  - Gifu (1.2.1)
   - HanekeSwift (0.10.1)
   - Kingfisher (2.4.1)
   - MJRefresh (3.1.2)
@@ -30,7 +30,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.3)
   - BMPlayer (~> 0.2.0)
-  - FLAnimatedImage (~> 1.0)
+  - Gifu
   - HanekeSwift
   - Kingfisher (~> 2.3)
   - MJRefresh
@@ -57,7 +57,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   BMPlayer: 0108effc55aed86a0315bbe5b3f9679cbc23fc5e
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MJRefresh: 51bf93370625e1888978921347b8f99654cf4996
@@ -76,6 +76,6 @@ SPEC CHECKSUMS:
   Wilddog: 553a831c68795d43a3408a5180ea21a7da4a4a49
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
-PODFILE CHECKSUM: a6fe51229f1396084a01e7ce4f0ff858b77a4de8
+PODFILE CHECKSUM: 59fd1b62a18a09c8aed6e0c9c13b96a60eaf1b72
 
 COCOAPODS: 1.0.0

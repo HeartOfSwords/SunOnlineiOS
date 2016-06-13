@@ -50,6 +50,6 @@ pod 'Reveal-iOS-SDK'
 # 分享
 pod 'MonkeyKing', '~> 0.9.2'
 pod 'PopMenu'
-pod 'FLAnimatedImage', '~> 1.0'
+pod 'Gifu'
 end
 
