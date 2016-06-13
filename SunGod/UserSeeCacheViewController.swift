@@ -149,11 +149,20 @@ extension UserSeeCacheViewController: UITableViewDataSource {
 //                title = "我的收藏"
                 let item = careVideos[indexPath.row]
                 CareVideoItem.delete(item.videoID, back: { (res) in
-                    
+                    if res {
+                        self.careVideos.removeAtIndex(indexPath.row)
+                        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+                    }
                 })
             default:
 //                title = "播放记录"
-                videos = VideoItemModel.selectVideoItemModel()
+                let item = videos[indexPath.row]
+                VideoItemModel.deleteVideoItemModel(item.videoID, back: { (res) in
+                    if res {
+                        self.videos.removeAtIndex(indexPath.row)
+                        self.tableView.reloadData()
+                    }
+                })
             }
         }
     }

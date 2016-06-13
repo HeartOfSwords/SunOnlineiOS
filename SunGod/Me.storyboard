@@ -60,14 +60,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L5h-C6-Ug3">
-                                                    <rect key="frame" x="10" y="0.0" width="43" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下载" translatesAutoresizingMaskIntoConstraints="NO" id="L5h-C6-Ug3">
+                                                    <rect key="frame" x="10" y="8" width="27.5" height="27.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="L5h-C6-Ug3" secondAttribute="height" multiplier="1:1" id="ncg-Yx-sxt"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="离线缓存" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKB-Nb-uHs">
-                                                    <rect key="frame" x="61" y="11" width="68" height="21"/>
+                                                    <rect key="frame" x="45.5" y="11.5" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -76,9 +76,9 @@
                                             <constraints>
                                                 <constraint firstItem="vKB-Nb-uHs" firstAttribute="centerY" secondItem="L5h-C6-Ug3" secondAttribute="centerY" id="NcP-ye-wnS"/>
                                                 <constraint firstItem="vKB-Nb-uHs" firstAttribute="leading" secondItem="L5h-C6-Ug3" secondAttribute="trailing" constant="8" id="RJO-L5-5J0"/>
-                                                <constraint firstAttribute="bottom" secondItem="L5h-C6-Ug3" secondAttribute="bottom" id="W0g-ew-J6I"/>
+                                                <constraint firstAttribute="bottom" secondItem="L5h-C6-Ug3" secondAttribute="bottom" constant="8" id="W0g-ew-J6I"/>
                                                 <constraint firstItem="L5h-C6-Ug3" firstAttribute="leading" secondItem="cd5-a9-ssS" secondAttribute="leading" constant="10" id="ZUW-zc-NzQ"/>
-                                                <constraint firstItem="L5h-C6-Ug3" firstAttribute="top" secondItem="cd5-a9-ssS" secondAttribute="top" id="Zz5-GW-9GE"/>
+                                                <constraint firstItem="L5h-C6-Ug3" firstAttribute="top" secondItem="cd5-a9-ssS" secondAttribute="top" constant="8" id="Zz5-GW-9GE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -92,14 +92,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I2i-P4-KXg">
-                                                    <rect key="frame" x="10" y="0.0" width="43" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="收藏" translatesAutoresizingMaskIntoConstraints="NO" id="I2i-P4-KXg">
+                                                    <rect key="frame" x="10" y="8" width="27.5" height="27.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="I2i-P4-KXg" secondAttribute="height" multiplier="1:1" id="Zcu-X5-6js"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的收藏" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-Gc-qqx">
-                                                    <rect key="frame" x="61" y="11" width="68" height="21"/>
+                                                    <rect key="frame" x="45.5" y="11.5" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -107,10 +107,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="qUS-Gc-qqx" firstAttribute="leading" secondItem="I2i-P4-KXg" secondAttribute="trailing" constant="8" id="9Re-5b-E5c"/>
-                                                <constraint firstAttribute="bottom" secondItem="I2i-P4-KXg" secondAttribute="bottom" id="Vp2-p0-xEH"/>
+                                                <constraint firstAttribute="bottom" secondItem="I2i-P4-KXg" secondAttribute="bottom" constant="8" id="Vp2-p0-xEH"/>
                                                 <constraint firstItem="qUS-Gc-qqx" firstAttribute="centerY" secondItem="I2i-P4-KXg" secondAttribute="centerY" id="Xpc-6d-tsr"/>
                                                 <constraint firstItem="I2i-P4-KXg" firstAttribute="leading" secondItem="Agg-1x-FKm" secondAttribute="leading" constant="10" id="nxl-Vc-r2v"/>
-                                                <constraint firstItem="I2i-P4-KXg" firstAttribute="top" secondItem="Agg-1x-FKm" secondAttribute="top" id="xi9-lS-qDs"/>
+                                                <constraint firstItem="I2i-P4-KXg" firstAttribute="top" secondItem="Agg-1x-FKm" secondAttribute="top" constant="8" id="xi9-lS-qDs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -124,14 +124,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahq-aY-2Op">
-                                                    <rect key="frame" x="10" y="0.0" width="43" height="43"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="记录" translatesAutoresizingMaskIntoConstraints="NO" id="ahq-aY-2Op">
+                                                    <rect key="frame" x="10" y="8" width="27.5" height="27.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ahq-aY-2Op" secondAttribute="height" multiplier="1:1" id="gDD-FN-WrS"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hx5-sl-OPT">
-                                                    <rect key="frame" x="61" y="11" width="68" height="21"/>
+                                                    <rect key="frame" x="45.5" y="11.5" width="68" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -140,8 +140,8 @@
                                             <constraints>
                                                 <constraint firstItem="hx5-sl-OPT" firstAttribute="leading" secondItem="ahq-aY-2Op" secondAttribute="trailing" constant="8" id="8fD-37-krK"/>
                                                 <constraint firstItem="hx5-sl-OPT" firstAttribute="centerY" secondItem="ahq-aY-2Op" secondAttribute="centerY" id="SYb-oP-r1W"/>
-                                                <constraint firstItem="ahq-aY-2Op" firstAttribute="top" secondItem="8Kz-KK-lNd" secondAttribute="top" id="jKI-Ul-5c9"/>
-                                                <constraint firstAttribute="bottom" secondItem="ahq-aY-2Op" secondAttribute="bottom" id="kYA-1V-gzC"/>
+                                                <constraint firstItem="ahq-aY-2Op" firstAttribute="top" secondItem="8Kz-KK-lNd" secondAttribute="top" constant="8" id="jKI-Ul-5c9"/>
+                                                <constraint firstAttribute="bottom" secondItem="ahq-aY-2Op" secondAttribute="bottom" constant="8" id="kYA-1V-gzC"/>
                                                 <constraint firstItem="ahq-aY-2Op" firstAttribute="leading" secondItem="8Kz-KK-lNd" secondAttribute="leading" constant="10" id="yI0-z3-S8I"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -421,6 +421,11 @@
             <point key="canvasLocation" x="650" y="-132"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="下载" width="208" height="213"/>
+        <image name="收藏" width="177" height="162"/>
+        <image name="记录" width="176" height="197"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wPh-bo-Rby"/>
     </inferredMetricsTieBreakers>

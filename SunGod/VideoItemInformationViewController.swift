@@ -149,7 +149,7 @@ extension VideoItemInformationViewController {
     }
 
     func setUpView() {
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
         popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem])
         popMenu.menuAnimationType = .Sina
         popMenu.perRowItemCount = 3
@@ -181,10 +181,21 @@ extension VideoItemInformationViewController {
     
     func setUpLabel() -> Void {
         
+        
+        let image0 = UIImageView()
+        let image1 = UIImageView()
+        image0.image = UIImage(named: "眼睛-1")
+        image1.image = UIImage(named: "记录")
+        view.addSubview(image0)
+        view.addSubview(image1)
+        
         videoTitleLabel.font = UIFont.boldSystemFontOfSize(18)
         
-        videoInformationLabel.font = UIFont.italicSystemFontOfSize(14)
+        videoInformationLabel.font = UIFont.italicSystemFontOfSize(12)
         videoInformationLabel.numberOfLines = 0
+        
+        seeNumberLabel.font = UIFont.systemFontOfSize(10)
+        timeLabel.font = UIFont.systemFontOfSize(10)
         
         view.addSubview(videoTitleLabel)
         view.addSubview(videoInformationLabel)
@@ -203,15 +214,26 @@ extension VideoItemInformationViewController {
             make.trailing.equalTo(-8)
         }
         
-        seeNumberLabel.snp_makeConstraints { (make) in
-            make.leading.equalTo(videoInformationLabel.snp_leading)
+        image0.snp_makeConstraints { (make) in
+            make.width.equalTo(17)
+            make.height.equalTo(10)
             make.top.equalTo(self.videoInformationLabel.snp_bottom).offset(18)
+            make.leading.equalTo(videoInformationLabel.snp_leading)
         }
         
+        seeNumberLabel.snp_makeConstraints { (make) in
+            make.leading.equalTo(image0.snp_trailing).offset(10)
+            make.bottom.equalTo(image0.snp_bottom)
+        }
         
+        image1.snp_makeConstraints { (make) in
+            make.top.equalTo(image0.snp_top)
+            make.leading.equalTo(seeNumberLabel.snp_trailing).offset(30)
+            make.width.height.equalTo(15)
+        }
         timeLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(seeNumberLabel.snp_top)
-            make.leading.equalTo(self.seeNumberLabel.snp_trailing).offset(30)
+            make.leading.equalTo(image1.snp_trailing).offset(10)
+            make.bottom.equalTo(image1.snp_bottom)
         }
     }
 
@@ -221,32 +243,78 @@ extension VideoItemInformationViewController {
         view.addSubview(shareButton)
         view.addSubview(downButton)
         view.addSubview(delyButton)
+        let fontSize:CGFloat = 8
+        let label0 = UILabel()
+        label0.textAlignment = .Center
+        label0.font = UIFont.systemFontOfSize(fontSize)
+        label0.text = "收藏"
+        let label1 = UILabel()
+        label1.textAlignment = .Center
+        label1.font = UIFont.systemFontOfSize(fontSize)
+        label1.text = "分享"
+        let label2 = UILabel()
+        label2.textAlignment = .Center
+        label2.font = UIFont.systemFontOfSize(fontSize)
+        label2.text = "下载"
+        let label3 = UILabel()
+        label3.textAlignment = .Center
+        label3.font = UIFont.systemFontOfSize(fontSize)
+        label3.text = "评论"
+        view.addSubview(label0)
+        view.addSubview(label1)
+        view.addSubview(label2)
+        view.addSubview(label3)
         
-        let width = (mainScreen.size.width - (8 * 5) ) / 4
+        let width = 18
         storeButton.snp_makeConstraints { (make) in
             
             make.width.equalTo(width)
-            make.height.equalTo(44)
-            make.top.equalTo(seeNumberLabel.snp_bottom).offset(18)
-            make.trailing.equalTo(shareButton.snp_leading).offset(-8)
+            make.height.equalTo(width)
+            make.top.equalTo(seeNumberLabel.snp_bottom).offset(28)
+            make.leading.equalTo(18)
+            
+        }
+        
+        label0.snp_makeConstraints { (make) in
+            make.width.equalTo(width)
+            make.top.equalTo(storeButton.snp_bottom)
+            make.leading.equalTo(storeButton.snp_leading)
         }
         
         shareButton.snp_makeConstraints { (make) in
             make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
-            make.trailing.equalTo(downButton.snp_leading).offset(-8)
+            make.leading.equalTo(storeButton.snp_trailing).offset(28)
+        }
+        
+        label1.snp_makeConstraints { (make) in
+            make.width.equalTo(width)
+            make.top.equalTo(shareButton.snp_bottom)
+            make.leading.equalTo(shareButton.snp_leading)
         }
         
         downButton.snp_makeConstraints { (make) in
             make.top.equalTo(storeButton.snp_top)
             make.width.height.equalTo(storeButton)
-            make.trailing.equalTo(delyButton.snp_leading).offset(-8)
+            make.leading.equalTo(shareButton.snp_trailing).offset(28)
+        }
+        
+        label2.snp_makeConstraints { (make) in
+            make.width.equalTo(width)
+            make.top.equalTo(downButton.snp_bottom)
+            make.leading.equalTo(downButton.snp_leading)
         }
         
         delyButton.snp_makeConstraints { (make) in
-            make.trailing.equalTo(self.view).offset(-8)
+            make.leading.equalTo(downButton.snp_trailing).offset(28)
             make.width.height.equalTo(storeButton)
             make.top.equalTo(storeButton.snp_top)
+        }
+        
+        label3.snp_makeConstraints { (make) in
+            make.width.equalTo(width)
+            make.top.equalTo(delyButton.snp_bottom)
+            make.leading.equalTo(delyButton.snp_leading)
         }
         
         shareButton.addTarget(self, action: #selector(shareToWechat(_:)), forControlEvents: UIControlEvents.TouchUpInside)
@@ -262,10 +330,10 @@ extension VideoItemInformationViewController {
         seeNumberLabel.text = video.videoPlayNumber
         timeLabel.text = video.videoTime
         
-        storeButton.setImage(UIImage(named: "care"), forState: .Normal)
-        shareButton.setImage(UIImage(named: "care"), forState: .Normal)
-        downButton.setImage(UIImage(named: "care"), forState: .Normal)
-        delyButton.setImage(UIImage(named: "care"), forState: .Normal)
+        storeButton.setImage(UIImage(named: "收藏"), forState: .Normal)
+        shareButton.setImage(UIImage(named: "分享"), forState: .Normal)
+        downButton.setImage(UIImage(named: "下载"), forState: .Normal)
+        delyButton.setImage(UIImage(named: "评论"), forState: .Normal)
     }
 //    MARK:下载视频
     /**
