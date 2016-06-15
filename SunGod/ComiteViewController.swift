@@ -6,8 +6,11 @@
 //  Copyright © 2016年 太阳在线. All rights reserved.
 //
 
-import SlackTextViewController
+import UIKit
 
-class ComiteViewController:SLKTextViewController {
+class ComiteViewController:UIViewController {
+    
+    
+
     
 }

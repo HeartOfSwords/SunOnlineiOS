@@ -150,7 +150,7 @@ extension VideoItemInformationViewController {
         
         //配置视频播放资源
         let videoResource = BMPlayerItemDefinitionItem(url: NSURL(string: self.video.videoURL)!, definitionName: "太阳在线")
-        let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoURL)
+        let item = BMPlayerItem(title: self.video.videoTitle, resource: [videoResource], cover: self.video.videoImageURL)
         player.playWithPlayerItem(item)
     }
 
