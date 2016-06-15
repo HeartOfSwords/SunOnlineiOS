@@ -308,7 +308,7 @@
 				TargetAttributes = {
 					41ABB09D1CD048BF00DF728A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = M5MH8P3F39;
+						DevelopmentTeam = 5L2VYS9EW8;
 					};
 				};
 			};
@@ -538,7 +538,7 @@
 				INFOPLIST_FILE = SunGod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyangzx.SunGod;
+				PRODUCT_BUNDLE_IDENTIFIER = vip.sunonline.SunGod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SunGod/SunGod-Bridging-Header.h";
@@ -557,7 +557,7 @@
 				INFOPLIST_FILE = SunGod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyangzx.SunGod;
+				PRODUCT_BUNDLE_IDENTIFIER = vip.sunonline.SunGod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SunGod/SunGod-Bridging-Header.h";
