@@ -34,9 +34,10 @@ class VideoItemInformationViewController: UIViewController {
     private let antoherViewVideo = UIView()
     private let gifImageView: AnimatableImageView = AnimatableImageView()
         /// 分享界面的按钮
-    let wechatmenItem = MenuItem(title: "微信", iconName: "care", index: 0)
+    let wechatmenItem = MenuItem(title: "微信 朋友圈", iconName: "care", index: 0)
     let weiboMenItem = MenuItem(title: "微博", iconName: "care", index: 1)
-    let qqMenitem = MenuItem(title: "QQ", iconName: "care", index: 2)
+    let qqMenitem = MenuItem(title: "QQ 好友", iconName: "care", index: 2)
+    let qqTimeLint = MenuItem(title: "QQ 空间", iconName: "care", index: 3)
     var popMenu: PopMenu!
     
     var commits = [WilddogCommiteModel]()
@@ -69,7 +70,6 @@ extension VideoItemInformationViewController {
     }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
         player.pause(allowAutoPlay: true)
     }
     
@@ -156,7 +156,8 @@ extension VideoItemInformationViewController {
 
     func setUpView() {
         view.backgroundColor = UIColor.whiteColor()
-        popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem])
+        //MARK: 分享按钮
+        popMenu = PopMenu(frame: CGRectMake(0, 0, mainScreen.size.width, mainScreen.size.height), items: [wechatmenItem,weiboMenItem,qqMenitem,qqTimeLint])
         popMenu.menuAnimationType = .Sina
         popMenu.perRowItemCount = 3
         /**
@@ -171,6 +172,8 @@ extension VideoItemInformationViewController {
                 self.shareWeiBo()
             case 2:
                 self.shareQQ()
+            case 3:
+                self.shareQQDataLing()
             default:
                 break
             }
@@ -434,8 +437,8 @@ extension VideoItemInformationViewController {
 
     
     func shareToWechat(button:UIButton) -> Void {
-        player.pause()
         popMenu.showMenuAtView(self.view)
+        
     }
     
     //MARK: 分享到 微信 朋友圈
@@ -443,31 +446,83 @@ extension VideoItemInformationViewController {
      分享到 微信 朋友圈
      */
     private func shareWeChat() {
+
         let account = MonkeyKing.Account.WeChat(appID: Configs.Wechat.appID, appKey: Configs.Wechat.appKey)
         MonkeyKing.registerAccount(account)
-        shareVideo(self.video.videoURL)
-    }
-
-    private func shareWeiBo() {
-        print("微博")
-    }
-    
-    private func shareQQ() {
-        print("QQ")
-    }
-    
-    private func shareVideo(url: String) {
         let info = MonkeyKing.Info(
-        title: "Video Title",
-        description: "description",
-        thumbnail: UIImage(named: ""),
-        media: .Video(NSURL(string:url)!)
+            title: video.videoTitle,
+            description: video.videoDescription,
+            thumbnail: UIImage(named: ""),
+            media: .Video(NSURL(string:video.videoURL)!)
         )
         let message = MonkeyKing.Message.WeChat(.Timeline(info:info))
         MonkeyKing.shareMessage(message) { (result) in
             print("result: \(result)")
         }
+        
     }
+        /**
+         分享到微博
+         */
+    private func shareWeiBo() {
+        
+        let account = MonkeyKing.Account.Weibo(appID: Configs.Weibo.appID, appKey: Configs.Weibo.appKey, redirectURL: Configs.Weibo.redirectURL)
+        MonkeyKing.registerAccount(account)
+        var accesstoken: String?
+        if !account.isAppInstalled {
+            MonkeyKing.OAuth(.Weibo, completionHandler: { (dic, response, error) in
+                if let json = dic, accessToken = json["access_token"] as? String {
+                    accesstoken = accessToken
+                    print("dictionary\(dic) error \(error)")
+                }
+            })
+        }
+        
+        let message = MonkeyKing.Message.Weibo(MonkeyKing.Message.WeiboSubtype.Default(info: (
+            title: video.videoTitle,
+            description: video.videoDescription,
+            thumbnail: nil,
+            media: MonkeyKing.Media.URL(NSURL(string: video.videoURL)!)),
+            accessToken: accesstoken))
+        MonkeyKing.shareMessage(message) { (result) in
+            print("result:\(result)")
+        }
+        
+    }
+    /**
+     分享到QQ好友
+     */
+    private func shareQQ() {
+        let account = MonkeyKing.Account.QQ(appID: Configs.QQ.appID)
+        MonkeyKing.registerAccount(account)
+        let info = MonkeyKing.Info(
+        title: video.videoTitle,
+        description: video.videoDescription,
+        thumbnail: nil,
+        media: .Video(NSURL(string:video.videoURL)!))
+        let messsage = MonkeyKing.Message.QQ(.Friends(info: info))
+        MonkeyKing.shareMessage(messsage) { (result) in
+            
+        }
+    }
+    /**
+     分享到微信好友
+     */
+    private func shareQQDataLing() {
+        let account = MonkeyKing.Account.WeChat(appID: Configs.Wechat.appID, appKey: Configs.Wechat.appKey)
+        MonkeyKing.registerAccount(account)
+        let info = MonkeyKing.Info(
+            title: video.videoTitle,
+            description: video.videoDescription,
+            thumbnail: UIImage(named: ""),
+            media: .Video(NSURL(string:video.videoURL)!)
+        )
+        let message = MonkeyKing.Message.WeChat(.Session(info:info))
+        MonkeyKing.shareMessage(message) { (result) in
+            print("result: \(result)")
+        }
+    }
+    
 }
 
 
