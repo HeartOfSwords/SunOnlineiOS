@@ -16,7 +16,7 @@ import PKHUD
 import Alamofire
 
 private let reuseIdentifier1 = "videoListItem"
-
+//栏目下的所有视频
 class VideosKingsListViewController: UIViewController{
     
     private var collectionView: UICollectionView!
@@ -98,6 +98,7 @@ extension VideosKingsListViewController {
             /**
              如果从网络中获取到了信息则对请求到的数据进行解析,同时把获取到的数据进行缓存
              */
+            
             self.paseData(data)
             self.collectionView.mj_header.endRefreshing()
             /**
@@ -105,9 +106,9 @@ extension VideosKingsListViewController {
              */
             let cache = Shared.dataCache
             //移除缓存
-            cache.remove(key: "SunOnlinekindsVideo")
+            cache.remove(key: self.kind.name)
             //添加缓存
-            cache.set(value: data, key: "SunOnlinekindsVideo")
+            cache.set(value: data, key: self.kind.name)
         }
         
     }
@@ -156,7 +157,7 @@ extension VideosKingsListViewController {
      */
     func cacheData() -> Void {
         let cache = Shared.dataCache
-        cache.fetch(key: "SunOnlinekindsVideo").onSuccess { (data) in
+        cache.fetch(key: kind.name).onSuccess { (data) in
             ///如果有缓存的话就从缓存中直接读取
             ///对缓存中的数据进行解析
             self.paseData(data)
@@ -255,6 +256,7 @@ extension VideosKingsListViewController: UICollectionViewDelegate {
             let videoItem = VideoItemInformationViewController()
             let item = videos[indexPath.row]
             videoItem.video = item
+            videoItem.anotherVideo = videos.last
             presentViewController(videoItem, animated: true) {
                 
             }

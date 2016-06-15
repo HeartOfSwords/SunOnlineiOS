@@ -34,7 +34,7 @@ class VideosListCollectionViewController: UIViewController{
         setUpNavigation()
         /// - 从缓存中读取数据
 //        cacheData()
-        listenNetWorking()
+//        listenNetWorking()
        
     }
 }
@@ -262,6 +262,7 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
             let videoItem = VideoItemInformationViewController()
             let item = videos[indexPath.row]
             videoItem.video = item
+            videoItem.anotherVideo = videos.last
             presentViewController(videoItem, animated: true) {
                 
             }

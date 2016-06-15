@@ -12,7 +12,7 @@ import SwiftyJSON
 import PKHUD
 import Haneke
 
-
+//栏目
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -135,12 +135,10 @@ extension VideosKindsViewController {
         /**
          *  对请求回来的JSON 数组进行遍历
          */
-        
         var kindArray = [VideosKindsModel]()
         for (_, subJSON) in jsonData {
             let kind = VideosKindsModel(VideoData:subJSON)
             kindArray.append(kind)
-            
         }
         
         if kindArray.isEmpty {

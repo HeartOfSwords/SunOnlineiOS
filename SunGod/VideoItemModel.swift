@@ -138,7 +138,3 @@ class CareVideoItem: VideoItemModel {
 class DownVideoItem: VideoItemModel {
     dynamic var homeURL: String = ""
 }
-/// 稍后看视频
-class DeleyVideo: VideoItemModel {
-    
-}
