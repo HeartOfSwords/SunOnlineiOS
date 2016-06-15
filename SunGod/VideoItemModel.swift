@@ -48,7 +48,7 @@ class VideoItemModel: Object {
         videoID = videoJSONData.videoID
     }
     
-   override static func primaryKey() -> String? { return "videoID" }
+   override static func primaryKey() -> String? { return "videoTitle" }
     
     class func saveVideoItemModel(video:VideoItemModel,back:(res: Bool) -> Void) {
         let flag = false
