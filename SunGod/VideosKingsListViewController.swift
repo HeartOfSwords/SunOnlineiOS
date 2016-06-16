@@ -32,8 +32,6 @@ class VideosKingsListViewController: UIViewController{
         setUpNavigation()
         /// - 从缓存中读取数据
         cacheData()
-        
-        
     }
 }
 

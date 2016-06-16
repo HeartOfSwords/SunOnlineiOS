@@ -5,8 +5,13 @@ PODS:
     - SnapKit
   - Gifu (1.2.1)
   - HanekeSwift (0.10.1)
+  - Ji (1.2.0):
+    - Ji/Ji (= 1.2.0)
+  - Ji/Ji (1.2.0):
+    - Ji/Ji-libxml
+  - Ji/Ji-libxml (1.2.0)
   - Kingfisher (2.4.1)
-  - MJRefresh (3.1.5)
+  - MJRefresh (3.1.7)
   - MonkeyKing (0.9.2)
   - NVActivityIndicatorView (2.8)
   - PKHUD (3.1.0)
@@ -25,7 +30,7 @@ PODS:
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
-  - Wilddog (1.0.3)
+  - Wilddog (1.0.4)
   - XHRealTimeBlur (1.7)
 
 DEPENDENCIES:
@@ -33,6 +38,7 @@ DEPENDENCIES:
   - BMPlayer (~> 0.2.0)
   - Gifu
   - HanekeSwift
+  - Ji (~> 1.2.0)
   - Kingfisher (~> 2.3)
   - MJRefresh
   - MonkeyKing (~> 0.9.2)
@@ -61,8 +67,9 @@ SPEC CHECKSUMS:
   BMPlayer: 0108effc55aed86a0315bbe5b3f9679cbc23fc5e
   Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
-  MJRefresh: 53f348def11abbb5f8e1eaf15c39df742d543677
+  MJRefresh: f67f0750d57a4e4ae433da549359ca53b52cdc7d
   MonkeyKing: 2cf420f9202a51714734374c97d96cf496e7ae2b
   NVActivityIndicatorView: 6aba1dbbd893f615a9452c9e66ae46473e1ce092
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
@@ -76,9 +83,9 @@ SPEC CHECKSUMS:
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
-  Wilddog: 553a831c68795d43a3408a5180ea21a7da4a4a49
+  Wilddog: f609fa2589c880d6487d02b032ee1b7daa429898
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
-PODFILE CHECKSUM: f0d6e16b51980e4c8321117eed9c2ee625daac07
+PODFILE CHECKSUM: 33a552daf3cd264360ed5c456aaf1c4272cf9e51
 
 COCOAPODS: 1.0.0
