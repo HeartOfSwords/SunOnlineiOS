@@ -39,6 +39,9 @@
 		ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16E1D057F000040D0D9 /* LogViewController.swift */; };
 		ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */; };
 		ABD19BAF1D12D45A00ECC649 /* AboutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */; };
+		ABD19BB21D13037200ECC649 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */; };
+		ABD19BB31D13037200ECC649 /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */; };
+		ABD19BB61D1308F900ECC649 /* AboutMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */; };
 		ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */; };
 		ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */; };
 		ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */; };
@@ -81,6 +84,9 @@
 		ABCCD16E1D057F000040D0D9 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMoreViewController.swift; sourceTree = "<group>"; };
 		ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSeeCacheViewController.swift; sourceTree = "<group>"; };
 		ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				410B7E1E1CF301AE002EDF77 /* SettingViewController.swift */,
+				ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */,
+				ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */,
+				ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */,
 				ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */,
 				ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */,
 			);
@@ -351,6 +360,7 @@
 				AB99CC051D0D0EFB00D630B8 /* VideoItemTableViewCell.xib in Resources */,
 				ABD19BAF1D12D45A00ECC649 /* AboutCollectionViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
+				ABD19BB31D13037200ECC649 /* HeaderCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */,
+				ABD19BB61D1308F900ECC649 /* AboutMoreViewController.swift in Sources */,
 				AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */,
@@ -428,6 +439,7 @@
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
 				410B7E171CF2FD53002EDF77 /* VideosKindsViewController.swift in Sources */,
 				ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */,
+				ABD19BB21D13037200ECC649 /* HeaderCollectionReusableView.swift in Sources */,
 				ABEFFA6D1CFA97B100CE323A /* VideosKindsModel.swift in Sources */,
 				414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */,
 				410B7E221CF30588002EDF77 /* VideoKindsCollectionViewCell.swift in Sources */,

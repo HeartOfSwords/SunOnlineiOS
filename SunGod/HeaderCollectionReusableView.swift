@@ -1,5 +1,5 @@
 //
-//  AboutCollectionViewCell.swift
+//  HeaderCollectionReusableView.swift
 //  SunGod
 //
 //  Created by xiaolei on 16/6/16.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AboutCollectionViewCell: UICollectionViewCell {
+class HeaderCollectionReusableView: UICollectionReusableView {
+    @IBOutlet weak var title: UILabel!
 
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var photo: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+    
 }
