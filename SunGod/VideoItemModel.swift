@@ -10,7 +10,7 @@ import SwiftyJSON
 import RealmSwift
 
 /// Realm 的单例
-private class RealmData {
+class RealmData {
     static let share = RealmData()
     private init(){}
     ///初始化一个Realm时，仅需要在一个线程中之行一个这个初始化函数

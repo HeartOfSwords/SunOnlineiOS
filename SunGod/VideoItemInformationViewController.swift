@@ -90,33 +90,6 @@ extension VideoItemInformationViewController {
     func setUpNav() {
 
     }
-//
-////    func setUpWilldog() -> Void {
-////        WilddogManager.wilddogLogin()
-////        let videoRef = WilddogManager.ref.childByAppendingPath(video.videoID)
-////        
-////        //监听节点的变化
-////        videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
-////            guard let value = shot.value else {return}
-////            let dataJSON = JSON(value)
-////            for (_,value) in dataJSON {
-////            let teo = WilddogCommiteModel(
-////                autherName: value["autherName"].stringValue,
-////                autherID:  value["autherID"].stringValue,
-////                commiteTime: value["commiteTime"].stringValue,
-////                commiteValue: value["commiteValue"].stringValue,
-////                autherImageURL: value["imageURL"].stringValue
-////                )
-////                
-////                self.commits.append(teo)
-////                
-////                self.videoCommitTableView.reloadData()
-////            }
-////            
-////            }) { (error) in
-////                
-////        }
-////    }
     
     func setUpVideoPlayer() {
         

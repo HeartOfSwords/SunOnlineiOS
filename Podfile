@@ -54,6 +54,6 @@ pod 'Gifu'
 
 pod 'Ji', '~> 1.2.0'
 #留言
-pod 'SlackTextViewController'
+pod 'JSQMessagesViewController'
 end
 
