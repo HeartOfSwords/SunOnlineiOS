@@ -147,7 +147,7 @@
 			name = "栏目";
 			sourceTree = "<group>";
 		};
-		410B7E1A1CF300A7002EDF77 /* ME */ = {
+		410B7E1A1CF300A7002EDF77 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
 				AB23F0091D051A3D00CC93D0 /* Me.storyboard */,
@@ -156,7 +156,7 @@
 				ABCCD16E1D057F000040D0D9 /* LogViewController.swift */,
 				ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */,
 			);
-			name = ME;
+			name = "设置";
 			sourceTree = "<group>";
 		};
 		410B7E1B1CF300AE002EDF77 /* 关于我们 */ = {
@@ -186,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				410B7E1B1CF300AE002EDF77 /* 关于我们 */,
-				410B7E1A1CF300A7002EDF77 /* ME */,
+				410B7E1A1CF300A7002EDF77 /* 设置 */,
 				410B7E191CF30095002EDF77 /* 栏目 */,
 				410B7E181CF30085002EDF77 /* 推荐 */,
 				414B31A71CE193540011173D /* VideoItemInformationViewController.swift */,

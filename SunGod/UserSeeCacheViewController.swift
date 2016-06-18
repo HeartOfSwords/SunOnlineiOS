@@ -159,8 +159,9 @@ extension UserSeeCacheViewController: UITableViewDataSource {
                 let item = videos[indexPath.row]
                 VideoItemModel.deleteVideoItemModel(item.videoID, back: { (res) in
                     if res {
+                        
                         self.videos.removeAtIndex(indexPath.row)
-                        self.tableView.reloadData()
+                        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
                     }
                 })
             }
