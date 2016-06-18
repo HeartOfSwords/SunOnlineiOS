@@ -55,7 +55,6 @@ extension VideoItemInformationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
-        UIApplication.sharedApplication().statusBarHidden = true
         setUpVideoPlayer()
         setUpView()
         setUpNav()
