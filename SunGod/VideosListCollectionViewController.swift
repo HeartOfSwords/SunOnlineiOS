@@ -15,6 +15,7 @@ import SwiftyJSON
 import SwiftyUserDefaults
 import PKHUD
 import Alamofire
+
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
 let mainScreen = UIScreen.mainScreen().bounds
