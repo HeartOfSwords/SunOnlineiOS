@@ -33,6 +33,12 @@ class VideosKingsListViewController: UIViewController{
         /// - 从缓存中读取数据
         cacheData()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
 }
 
 

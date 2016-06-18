@@ -62,7 +62,7 @@ extension SettingViewController {
         let baseURL = "http://www.sunonline.vip:8080/sunonlineBeta1/"
         let cache = Shared.dataCache
         guard let daTa = data else {
-            print("error")
+            
             collectionView.mj_header.endRefreshing()
             return
         }
@@ -141,7 +141,7 @@ extension SettingViewController {
         
         collectionView.mj_header.endRefreshing()
         collectionView.reloadData()
-//        waitView.stopAnimation()
+        cache.remove(key: "aboutUs")
         cache.set(value: daTa, key: "aboutUs")
     }
     
@@ -197,14 +197,14 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: width * (9 / 16) )
         }else if section == 1 {
             let width = mainScreen.size.width
-            return CGSize(width: width * 0.8 , height: width * 0.8)
+            return CGSize(width: width * 0.8 , height: width * 0.8 + 46)
         }else if section == sectionTitle.count - 1 {
             let width = mainScreen.size.width
             return CGSize(width: width * 0.8, height: width * 0.8 )
         }
         else {
             let width = mainScreen.size.width - 2
-            return CGSize(width: width / 2, height: width / 2 + 20)
+            return CGSize(width: width / 2, height: width / 2 + 46)
         }
     }
     

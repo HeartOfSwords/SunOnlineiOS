@@ -32,6 +32,14 @@ class VideosKindsViewController: UIViewController {
         requestCacheData()
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+
 
 }
 

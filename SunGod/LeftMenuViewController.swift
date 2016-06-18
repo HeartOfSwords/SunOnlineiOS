@@ -38,6 +38,7 @@ class LeftMenuViewController: UIViewController {
         setUpTableView()
         setNeedsStatusBarAppearanceUpdate()
     }
+    
 }
 
 

@@ -37,6 +37,12 @@ class VideosListCollectionViewController: UIViewController{
 //        listenNetWorking()
        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
 }
 
 

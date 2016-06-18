@@ -80,10 +80,7 @@ extension VideoItemInformationViewController {
 //        view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        UIApplication.sharedApplication().statusBarHidden = true
-    }
+
 }
 
 ////MRAK: Function
