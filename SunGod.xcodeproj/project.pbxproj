@@ -24,6 +24,8 @@
 		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
 		41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1261CF3FB650045119E /* WilldogManger.swift */; };
 		AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */; };
+		AB0C61411D152FAE008C0691 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C61401D152FAE008C0691 /* ChatModel.swift */; };
+		AB0C61431D15317B008C0691 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C61421D15317B008C0691 /* UserModel.swift */; };
 		AB23F00A1D051A3D00CC93D0 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0091D051A3D00CC93D0 /* Me.storyboard */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
@@ -70,6 +72,8 @@
 		41F4E1261CF3FB650045119E /* WilldogManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilldogManger.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
+		AB0C61401D152FAE008C0691 /* ChatModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		AB0C61421D15317B008C0691 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB23F0091D051A3D00CC93D0 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -246,10 +250,12 @@
 			isa = PBXGroup;
 			children = (
 				41BB67841CE08D0000467584 /* VideoItemModel.swift */,
+				AB0C61421D15317B008C0691 /* UserModel.swift */,
 				AB8583571CFBE6B10032BC0E /* UserDefaults.swift */,
 				ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */,
 				ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */,
 				ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */,
+				AB0C61401D152FAE008C0691 /* ChatModel.swift */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
 				AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */,
+				AB0C61411D152FAE008C0691 /* ChatModel.swift in Sources */,
 				ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
@@ -441,6 +448,7 @@
 				ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */,
 				AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
+				AB0C61431D15317B008C0691 /* UserModel.swift in Sources */,
 				410B7E171CF2FD53002EDF77 /* VideosKindsViewController.swift in Sources */,
 				ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */,
 				ABD19BB21D13037200ECC649 /* HeaderCollectionReusableView.swift in Sources */,
