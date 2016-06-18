@@ -23,11 +23,11 @@ class LeftMenuViewController: UIViewController {
     lazy var nameLabel = UILabel()
     let menutitle = ["推荐","栏目","设置","关于我们"]
     
-    lazy var mainViewController: UINavigationController = UINavigationController(rootViewController: VideosListCollectionViewController())
-    lazy var videoKindsViewController: UIViewController = UINavigationController(rootViewController: VideosKindsViewController())
+    lazy var mainViewController: RootNavigationViewController = RootNavigationViewController(rootViewController: VideosListCollectionViewController())
+    lazy var videoKindsViewController: RootNavigationViewController = RootNavigationViewController(rootViewController: VideosKindsViewController())
     lazy var meViewController = UIStoryboard(name: "Me", bundle: nil).instantiateInitialViewController() as! UINavigationController
     
-    lazy var settingViewController: UIViewController = UINavigationController(rootViewController: SettingViewController())
+    lazy var settingViewController: UIViewController = RootNavigationViewController(rootViewController: SettingViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()

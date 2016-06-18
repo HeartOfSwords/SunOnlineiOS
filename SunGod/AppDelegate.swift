@@ -42,7 +42,8 @@ private extension AppDelegate {
         let mainViewController = VideosListCollectionViewController()
         let leftMenuViewController = LeftMenuViewController()
         ///实例话一个 UI Nav Gation Controller
-        let nav = UINavigationController(rootViewController: mainViewController)
+        let nav = RootNavigationViewController(rootViewController: mainViewController)
+        
         ///初始化一个 RootViewController 侧滑菜单
         SlideMenuOptions.leftViewWidth = mainScreen.width / 3 * 2
         ///菜单出来之后的背景颜色

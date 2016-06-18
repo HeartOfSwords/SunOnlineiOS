@@ -23,6 +23,7 @@
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
 		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
 		41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1261CF3FB650045119E /* WilldogManger.swift */; };
+		AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */; };
 		AB23F00A1D051A3D00CC93D0 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0091D051A3D00CC93D0 /* Me.storyboard */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
@@ -68,6 +69,7 @@
 		41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKingsListViewController.swift; sourceTree = "<group>"; };
 		41F4E1261CF3FB650045119E /* WilldogManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilldogManger.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
 		AB23F0091D051A3D00CC93D0 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
 				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
+				AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */,
 				41B3AD171D06C40D000DAE82 /* Configs.swift */,
 				41ABB0AD1CD048BF00DF728A /* Info.plist */,
 				ABEFFA631CFA8E1300CE323A /* SunGod-Bridging-Header.h */,
@@ -436,6 +439,7 @@
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
 				ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */,
+				AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
 				410B7E171CF2FD53002EDF77 /* VideosKindsViewController.swift in Sources */,
 				ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */,

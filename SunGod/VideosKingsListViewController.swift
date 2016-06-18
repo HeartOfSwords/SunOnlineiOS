@@ -38,7 +38,7 @@ class VideosKingsListViewController: UIViewController{
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarHidden = false
     }
-    
+
 }
 
 
