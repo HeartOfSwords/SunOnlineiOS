@@ -24,7 +24,14 @@ class ComiteViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        user.id = "1234"
+        user.name = "这块显卡有点冷"
         setUpSendUser()
+        setUpWilldog()
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 22, height: 32))
+        button.setTitle("X", forState: .Normal)
+        button.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        inputToolbar.contentView.leftBarButtonItem = button
     }
     
     func addMessageToWilddog(chat:JSQMessage) {
@@ -56,7 +63,7 @@ class ComiteViewController: JSQMessagesViewController {
             let videoRef = WilddogManager.ref.childByAppendingPath(videoIDAndVideoName)
     
             ///监听节点的变化, 获取最新的100  条评论
-            videoRef.queryLimitedToLast(100).observeEventType(.Value, withBlock: { (shot) in
+            videoRef.observeEventType(.ChildAdded, withBlock: { (shot) in
                 guard let value = shot.value else {
                         /// 没有获取到任何的内容
                     return
@@ -103,7 +110,7 @@ extension ComiteViewController {
         let message = messages[indexPath.item]
         switch message.senderId {
         case user.id:
-            return nil
+            return NSAttributedString(string: user.name)
         default:
             guard let senderDisplayName = message.senderDisplayName else {
                 assertionFailure()
@@ -114,8 +121,8 @@ extension ComiteViewController {
     }
     //显示时间
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-        let message = messages[indexPath.item]
-        return NSAttributedString(string: String(message.date))
+//        let message = messages[indexPath.item]
+        return NSAttributedString(string: "")
     }
     //消息主体下边要显示的东西
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
@@ -138,17 +145,19 @@ extension ComiteViewController {
     
     //按下附件按钮的操作
     override func didPressAccessoryButton(sender: UIButton!) {
-        
+        dismissViewControllerAnimated(true) { 
+            
+        }
     }
     // 按下发送按钮的操作
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         //初始化一条消息
         let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         //将消息添加到 messages 数组中
-//        addMessageToWilddog(message)
-        //        messages.append(message)
+        addMessageToWilddog(message)
+//        messages.append(message)
         finishSendingMessageAnimated(true)
-        //        collectionView.reloadData()
+//        collectionView.reloadData()
     }
 }
 

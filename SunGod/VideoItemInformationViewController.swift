@@ -393,7 +393,9 @@ extension VideoItemInformationViewController {
      留言
      */
     func commit()  {
-        presentViewController(ComiteViewController(), animated: true) { 
+        let chat = ComiteViewController()
+        chat.videoIDAndVideoName = video.videoID + video.videoTitle
+        presentViewController(chat, animated: true) {
             
         }
         player.pause()
