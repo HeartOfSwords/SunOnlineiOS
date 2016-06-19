@@ -25,6 +25,11 @@ class UserSeeCacheViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpTableView()
+        DownVideo.share.downVideoRequest.progress { (bytesRead, totalBytesRead, totalBytesExpectedToRead) in
+                        let percent = totalBytesRead * 100 / totalBytesExpectedToRead
+                        print("已经下载 : \(totalBytesRead) 当前进度 \(percent) %")
+                }
+
     }
     
     

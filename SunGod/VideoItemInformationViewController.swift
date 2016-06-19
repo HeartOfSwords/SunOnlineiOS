@@ -368,10 +368,7 @@ extension VideoItemInformationViewController {
      下载视频 , 将下载放在特定的线程中来进行下载
      */
     func downVideo() {
-        
-        DownVideo.down(video.videoURL) { (down) in
-            print(down)
-        }
+        DownVideo.down(video.videoURL)
     }
     /**
      收藏视频
