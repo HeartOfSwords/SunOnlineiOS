@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/// 登陆界面
 class LogViewController: UIViewController {
 
     override func viewDidLoad() {

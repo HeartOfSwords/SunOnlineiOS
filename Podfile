@@ -31,8 +31,6 @@ pod 'Kingfisher', '~> 2.3'
 pod 'HanekeSwift'
 #野狗
 pod 'Wilddog'
-#  七牛
-#pod 'Qiniu', :git => 'https://github.com/qiniu/objc-sdk.git', :branch => 'AFNetworking-3.x'
 
 #侧滑菜单
 pod 'SlideMenuControllerSwift'
@@ -52,5 +50,10 @@ pod 'Reveal-iOS-SDK'
 # 分享
 pod 'MonkeyKing', '~> 0.9.2'
 pod 'PopMenu'
+pod 'Gifu'
+
+pod 'Ji', '~> 1.2.0'
+#留言
+pod 'JSQMessagesViewController'
 end
 

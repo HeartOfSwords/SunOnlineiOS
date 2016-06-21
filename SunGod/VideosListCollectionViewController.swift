@@ -15,6 +15,7 @@ import SwiftyJSON
 import SwiftyUserDefaults
 import PKHUD
 import Alamofire
+
 private let reuseIdentifier = "videoListItem"
 /// 屏幕的宽度
 let mainScreen = UIScreen.mainScreen().bounds
@@ -34,9 +35,15 @@ class VideosListCollectionViewController: UIViewController{
         setUpNavigation()
         /// - 从缓存中读取数据
 //        cacheData()
-        listenNetWorking()
+//        listenNetWorking()
        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    
 }
 
 
@@ -62,9 +69,18 @@ extension VideosListCollectionViewController {
         }
         
         //添加下拉刷新
-
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
-        collectionView.mj_footer = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        let collectionHeadView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownLoad))
+        collectionHeadView.lastUpdatedTimeLabel.hidden = true
+        collectionHeadView.setTitle("下拉刷新", forState: MJRefreshState.Idle)
+        collectionHeadView.setTitle("松开立刻刷新", forState: MJRefreshState.Pulling)
+        collectionHeadView.setTitle("正在刷新", forState: MJRefreshState.Refreshing)
+        collectionView.mj_header = collectionHeadView
+        let collectionFootView = MJRefreshBackStateFooter(refreshingTarget: self, refreshingAction: #selector(pullFooter))
+        collectionFootView.setTitle("加载更多", forState: MJRefreshState.Idle)
+        collectionFootView.setTitle("点击或上拉加载更多", forState: MJRefreshState.Pulling)
+        collectionFootView.setTitle("正在加载...", forState: MJRefreshState.Refreshing)
+        collectionFootView.setTitle("没有更多数据", forState: MJRefreshState.NoMoreData)
+        collectionView.mj_footer = collectionFootView
         
     }
     
@@ -253,6 +269,7 @@ extension VideosListCollectionViewController: UICollectionViewDelegate {
             let videoItem = VideoItemInformationViewController()
             let item = videos[indexPath.row]
             videoItem.video = item
+            videoItem.anotherVideo = videos.last
             presentViewController(videoItem, animated: true) {
                 
             }

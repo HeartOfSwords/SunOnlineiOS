@@ -1,35 +1,47 @@
 PODS:
-  - Alamofire (3.4.0)
-  - BMPlayer (0.2.0):
+  - Alamofire (3.4.1)
+  - BMPlayer (0.2.5):
     - NVActivityIndicatorView (~> 2.6)
     - SnapKit
+  - Gifu (1.2.1)
   - HanekeSwift (0.10.1)
+  - Ji (1.2.0):
+    - Ji/Ji (= 1.2.0)
+  - Ji/Ji (1.2.0):
+    - Ji/Ji-libxml
+  - Ji/Ji-libxml (1.2.0)
+  - JSQMessagesViewController (7.3.3):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - Kingfisher (2.4.1)
-  - MJRefresh (3.1.1)
+  - MJRefresh (3.1.7)
   - MonkeyKing (0.9.2)
-  - NVActivityIndicatorView (2.7)
+  - NVActivityIndicatorView (2.8)
   - PKHUD (3.1.0)
   - pop (1.0.9)
   - PopMenu (2.4):
     - pop
     - XHRealTimeBlur
-  - Realm (1.0.0):
-    - Realm/Headers (= 1.0.0)
-  - Realm/Headers (1.0.0)
-  - RealmSwift (1.0.0):
-    - Realm (= 1.0.0)
+  - Realm (1.0.1):
+    - Realm/Headers (= 1.0.1)
+  - Realm/Headers (1.0.1)
+  - RealmSwift (1.0.1):
+    - Realm (= 1.0.1)
   - Reveal-iOS-SDK (1.6.2)
   - SlideMenuControllerSwift (2.2.0)
   - SnapKit (0.15.0)
   - SwiftyJSON (2.3.2)
   - SwiftyUserDefaults (2.2.0)
-  - Wilddog (1.0.3)
+  - Wilddog (1.0.4)
   - XHRealTimeBlur (1.7)
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
   - BMPlayer (~> 0.2.0)
+  - Gifu
   - HanekeSwift
+  - Ji (~> 1.2.0)
+  - JSQMessagesViewController
   - Kingfisher (~> 2.3)
   - MJRefresh
   - MonkeyKing (~> 0.9.2)
@@ -49,30 +61,34 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   SwiftyJSON:
-    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :commit: 73670b94292b8d8496c398a973f56ac67789ba9f
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  BMPlayer: a7487d16bf9f08f539b3f55730b2dbfb423b5ee9
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  BMPlayer: 0108effc55aed86a0315bbe5b3f9679cbc23fc5e
+  Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
   HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
+  Ji: ddebb22f9ac445db6e884b66f78ea74fb135fdb7
+  JSQMessagesViewController: 0ee3f80237268192a3e8337fd0d787f1a1bf5a7a
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
-  MJRefresh: 70a47c5543b567cdaf70ead5a6e99ce820652eb9
+  MJRefresh: f67f0750d57a4e4ae433da549359ca53b52cdc7d
   MonkeyKing: 2cf420f9202a51714734374c97d96cf496e7ae2b
-  NVActivityIndicatorView: dc80f18fb27ac92f0aa87246cc13dc39ed3e9ee0
+  NVActivityIndicatorView: 6aba1dbbd893f615a9452c9e66ae46473e1ce092
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   PopMenu: 26b97baeaf250070f4f61b93727ca86d127d7bc5
-  Realm: e15cd8e7c11d3e576f628ba0b7cb855269b4991c
-  RealmSwift: 3229306d020d96f83b335f87a0dcbf2cef0e6a2b
+  Realm: 2e15e39d35b08abb529e212ed5d8af107b5236c8
+  RealmSwift: d73ea2af08c3676dbdd5e4b669651a0f492162a4
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SlideMenuControllerSwift: 16dac00b1aaad153e64fffb5d6969ab31ad88372
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   SwiftyUserDefaults: e7c8197a9d4068702e7f2406a968cae413b8de27
-  Wilddog: 553a831c68795d43a3408a5180ea21a7da4a4a49
+  Wilddog: f609fa2589c880d6487d02b032ee1b7daa429898
   XHRealTimeBlur: 661fadd5691ba2d349758e8fd5fbdb499ac55f8c
 
-PODFILE CHECKSUM: dde03aa8f662c828aaa782c2a842277ca8589563
+PODFILE CHECKSUM: a7212601a94e00a2cd0584fbd4ee9ca4b9396f20
 
 COCOAPODS: 1.0.0

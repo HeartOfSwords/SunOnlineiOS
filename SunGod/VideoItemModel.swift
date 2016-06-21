@@ -10,7 +10,7 @@ import SwiftyJSON
 import RealmSwift
 
 /// Realm 的单例
-private class RealmData {
+class RealmData {
     static let share = RealmData()
     private init(){}
     ///初始化一个Realm时，仅需要在一个线程中之行一个这个初始化函数
@@ -37,7 +37,18 @@ class VideoItemModel: Object {
         videoID = videoJSONData["videoId"].stringValue
     }
     
-   override static func primaryKey() -> String? { return "videoID" }
+    convenience  init(videoJSONData: CareVideoItem) {
+        self.init()
+        videoTitle = videoJSONData.videoTitle
+        videoImageURL = videoJSONData.videoImageURL
+        videoTime = videoJSONData.videoTime
+        videoPlayNumber = videoJSONData.videoPlayNumber
+        videoDescription = videoJSONData.videoDescription
+        videoURL = videoJSONData.videoURL
+        videoID = videoJSONData.videoID
+    }
+    
+   override static func primaryKey() -> String? { return "videoTitle" }
     
     class func saveVideoItemModel(video:VideoItemModel,back:(res: Bool) -> Void) {
         let flag = false
@@ -126,8 +137,4 @@ class CareVideoItem: VideoItemModel {
 /// 下载的视频
 class DownVideoItem: VideoItemModel {
     dynamic var homeURL: String = ""
-}
-/// 稍后看视频
-class DeleyVideo: VideoItemModel {
-    
 }

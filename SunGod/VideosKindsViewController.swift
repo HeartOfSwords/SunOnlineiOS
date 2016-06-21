@@ -12,7 +12,7 @@ import SwiftyJSON
 import PKHUD
 import Haneke
 
-
+//栏目
 class VideosKindsViewController: UIViewController {
     
     private var collectionView: UICollectionView!
@@ -32,6 +32,14 @@ class VideosKindsViewController: UIViewController {
         requestCacheData()
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        UIApplication.sharedApplication().statusBarHidden = false
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+
 
 }
 
@@ -59,7 +67,12 @@ extension VideosKindsViewController {
             make.edges.equalTo(self.view)
         }
         
-        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        let collectionHeadView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(pullDownRefresh))
+        collectionHeadView.lastUpdatedTimeLabel.hidden = true
+        collectionHeadView.setTitle("下拉刷新", forState: MJRefreshState.Idle)
+        collectionHeadView.setTitle("松开立刻刷新", forState: MJRefreshState.Pulling)
+        collectionHeadView.setTitle("正在刷新", forState: MJRefreshState.Refreshing)
+        collectionView.mj_header = collectionHeadView
     }
     
     /**
@@ -90,7 +103,7 @@ extension VideosKindsViewController {
                 back(res:false)
                 return
             }
-
+            
             self.paseData(data, back: { (res) in
                 back(res:res)
             })
@@ -112,7 +125,7 @@ extension VideosKindsViewController {
             ///如果有缓存的话就从缓存中直接读取
             ///对缓存中的数据进行解析
             self.paseData(data, back: { (res) in
-                
+                print("从缓存中获取数据")
             })
 
             }
@@ -126,15 +139,14 @@ extension VideosKindsViewController {
     func paseData(data:NSData,back:(res: Bool) -> Void) -> Void {
         /// 获取到数据之后对数据进行进行解析,转化成对应的模型
         let jsonData = JSON(data:data)["links"]
+        
         /**
          *  对请求回来的JSON 数组进行遍历
          */
-        
         var kindArray = [VideosKindsModel]()
         for (_, subJSON) in jsonData {
             let kind = VideosKindsModel(VideoData:subJSON)
             kindArray.append(kind)
-            
         }
         
         if kindArray.isEmpty {

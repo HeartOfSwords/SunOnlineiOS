@@ -56,19 +56,19 @@ func listenNetWorking() -> Void {
             //有网
             if net == .EthernetOrWiFi {
                 HUD.show(HUDContentType.LabeledSuccess(title: "WiFi 网络", subtitle: "放心看"))
-                HUD.hide(afterDelay: NSTimeInterval(1))
+                HUD.hide(afterDelay: NSTimeInterval(0.5))
             }else {
                 HUD.show(HUDContentType.LabeledSuccess(title: "你在使用WWAN网络", subtitle: "小心你的楼被电信运营商收走了"))
-                HUD.hide(afterDelay: NSTimeInterval(1))
+                HUD.hide(afterDelay: NSTimeInterval(0.5))
             }
 
         case .Unknown:
             HUD.show(HUDContentType.LabeledSuccess(title: "好厉害的网络", subtitle: "你用的什么网络呀"))
-            HUD.hide(afterDelay: NSTimeInterval(1))
+            HUD.hide(afterDelay: NSTimeInterval(0.5))
         case .NotReachable:
             //没有网络
             HUD.show(HUDContentType.LabeledError(title: "没有网络", subtitle: "亲,该交话费了"))
-            HUD.hide(afterDelay: NSTimeInterval(1.5))
+            HUD.hide(afterDelay: NSTimeInterval(1))
         }
     }
 }

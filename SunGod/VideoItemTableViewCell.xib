@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideotableviewcellItem" rowHeight="240" id="KGk-i7-Jjw" customClass="VideoItemTableViewCell" customModule="SunGod" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="299" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="299" height="239.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nuz-iN-oRu">
+                        <rect key="frame" x="0.0" y="0.0" width="299" height="239.5"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KET-C5-EQL">
+                        <rect key="frame" x="128" y="109" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-kC-Riq">
+                        <rect key="frame" x="264.5" y="219" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Nuz-iN-oRu" secondAttribute="trailing" id="CHc-cC-BTn"/>
+                    <constraint firstItem="Nuz-iN-oRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QVI-53-QVZ"/>
+                    <constraint firstItem="KET-C5-EQL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qbe-Ov-Swj"/>
+                    <constraint firstItem="Nuz-iN-oRu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SAO-lW-3XC"/>
+                    <constraint firstAttribute="bottom" secondItem="t7b-kC-Riq" secondAttribute="bottom" constant="8" id="nJC-pK-MIA"/>
+                    <constraint firstItem="KET-C5-EQL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="oRO-44-7J7"/>
+                    <constraint firstAttribute="trailing" secondItem="t7b-kC-Riq" secondAttribute="trailing" constant="8" id="qVF-RM-2eS"/>
+                    <constraint firstAttribute="bottom" secondItem="Nuz-iN-oRu" secondAttribute="bottom" id="z9e-aQ-Oox"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="information" destination="KET-C5-EQL" id="zJz-33-UVt"/>
+                <outlet property="photo" destination="Nuz-iN-oRu" id="o5A-Hz-Uqc"/>
+                <outlet property="time" destination="t7b-kC-Riq" id="CEe-hB-YOA"/>
+            </connections>
+            <point key="canvasLocation" x="424.5" y="515"/>
+        </tableViewCell>
+    </objects>
+</document>

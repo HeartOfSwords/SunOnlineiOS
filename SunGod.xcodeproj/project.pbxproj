@@ -23,6 +23,8 @@
 		41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E95FAD1CDB2A78004B23A5 /* VideosListCollectionViewController.swift */; };
 		41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */; };
 		41F4E1271CF3FB650045119E /* WilldogManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F4E1261CF3FB650045119E /* WilldogManger.swift */; };
+		AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */; };
+		AB0C61431D15317B008C0691 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C61421D15317B008C0691 /* UserModel.swift */; };
 		AB23F00A1D051A3D00CC93D0 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB23F0091D051A3D00CC93D0 /* Me.storyboard */; };
 		AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */; };
 		AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */; };
@@ -32,14 +34,21 @@
 		AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */; };
 		AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */; };
 		AB8583581CFBE6B10032BC0E /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8583571CFBE6B10032BC0E /* UserDefaults.swift */; };
+		AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */; };
+		AB99CC051D0D0EFB00D630B8 /* VideoItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */; };
+		AB99CC071D0EF40800D630B8 /* ComiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB99CC061D0EF40800D630B8 /* ComiteViewController.swift */; };
 		ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */; };
 		ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD16E1D057F000040D0D9 /* LogViewController.swift */; };
+		ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */; };
+		ABD19BAF1D12D45A00ECC649 /* AboutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */; };
+		ABD19BB21D13037200ECC649 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */; };
+		ABD19BB31D13037200ECC649 /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */; };
+		ABD19BB61D1308F900ECC649 /* AboutMoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */; };
 		ABEFFA5A1CF6FEC200CE323A /* UserSeeCacheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */; };
 		ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */; };
 		ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */; };
 		ABEFFA6B1CFA939100CE323A /* NetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */; };
 		ABEFFA6D1CFA97B100CE323A /* VideosKindsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */; };
-		ABEFFA6F1CFAFC8800CE323A /* QiNiuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +70,8 @@
 		41F4E1231CF3F5E90045119E /* VideosKingsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKingsListViewController.swift; sourceTree = "<group>"; };
 		41F4E1261CF3FB650045119E /* WilldogManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WilldogManger.swift; sourceTree = "<group>"; };
 		8417D1B6633142F6AA33A989 /* Pods_SunGod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SunGod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
+		AB0C61421D15317B008C0691 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AB23F0091D051A3D00CC93D0 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		AB4051411CEBF8E4004571E4 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -70,15 +81,22 @@
 		AB8583531CFBE1300032BC0E /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
 		AB8583541CFBE1300032BC0E /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
 		AB8583571CFBE6B10032BC0E /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoItemTableViewCell.swift; sourceTree = "<group>"; };
+		AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoItemTableViewCell.xib; sourceTree = "<group>"; };
+		AB99CC061D0EF40800D630B8 /* ComiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComiteViewController.swift; sourceTree = "<group>"; };
 		ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownVideo.swift; sourceTree = "<group>"; };
 		ABCCD16E1D057F000040D0D9 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutCollectionViewCell.xib; sourceTree = "<group>"; };
+		ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMoreViewController.swift; sourceTree = "<group>"; };
 		ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSeeCacheViewController.swift; sourceTree = "<group>"; };
 		ABEFFA5F1CF7DBF700CE323A /* CommitTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTableViewCell.swift; sourceTree = "<group>"; };
 		ABEFFA601CF7DBF700CE323A /* CommitTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommitTableViewCell.xib; sourceTree = "<group>"; };
 		ABEFFA631CFA8E1300CE323A /* SunGod-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SunGod-Bridging-Header.h"; sourceTree = "<group>"; };
 		ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkingManager.swift; sourceTree = "<group>"; };
 		ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosKindsModel.swift; sourceTree = "<group>"; };
-		ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiNiuManager.swift; sourceTree = "<group>"; };
 		BD7F76BAD01D27AD983AB223 /* Pods-SunGod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.debug.xcconfig"; sourceTree = "<group>"; };
 		FC1F80360CDCA48F9CD0B111 /* Pods-SunGod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SunGod.release.xcconfig"; path = "Pods/Target Support Files/Pods-SunGod/Pods-SunGod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +147,7 @@
 			name = "栏目";
 			sourceTree = "<group>";
 		};
-		410B7E1A1CF300A7002EDF77 /* ME */ = {
+		410B7E1A1CF300A7002EDF77 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
 				AB23F0091D051A3D00CC93D0 /* Me.storyboard */,
@@ -138,15 +156,20 @@
 				ABCCD16E1D057F000040D0D9 /* LogViewController.swift */,
 				ABEFFA591CF6FEC200CE323A /* UserSeeCacheViewController.swift */,
 			);
-			name = ME;
+			name = "设置";
 			sourceTree = "<group>";
 		};
-		410B7E1B1CF300AE002EDF77 /* 设置 */ = {
+		410B7E1B1CF300AE002EDF77 /* 关于我们 */ = {
 			isa = PBXGroup;
 			children = (
 				410B7E1E1CF301AE002EDF77 /* SettingViewController.swift */,
+				ABD19BB41D1308F900ECC649 /* AboutMoreViewController.swift */,
+				ABD19BB01D13037200ECC649 /* HeaderCollectionReusableView.swift */,
+				ABD19BB11D13037200ECC649 /* HeaderCollectionReusableView.xib */,
+				ABD19BAC1D12D45A00ECC649 /* AboutCollectionViewCell.swift */,
+				ABD19BAD1D12D45A00ECC649 /* AboutCollectionViewCell.xib */,
 			);
-			name = "设置";
+			name = "关于我们";
 			sourceTree = "<group>";
 		};
 		413A44541CD2FBB400EAEB4B /* C */ = {
@@ -162,8 +185,8 @@
 		413A44551CD2FBCB00EAEB4B /* VideoViewController */ = {
 			isa = PBXGroup;
 			children = (
-				410B7E1B1CF300AE002EDF77 /* 设置 */,
-				410B7E1A1CF300A7002EDF77 /* ME */,
+				410B7E1B1CF300AE002EDF77 /* 关于我们 */,
+				410B7E1A1CF300A7002EDF77 /* 设置 */,
 				410B7E191CF30095002EDF77 /* 栏目 */,
 				410B7E181CF30085002EDF77 /* 推荐 */,
 				414B31A71CE193540011173D /* VideoItemInformationViewController.swift */,
@@ -184,6 +207,9 @@
 				410B7E201CF30588002EDF77 /* VideoKindsCollectionViewCell.swift */,
 				410B7E211CF30588002EDF77 /* VideoKindsCollectionViewCell.xib */,
 				AB40514C1CEC97E1004571E4 /* VideoCollectionViewCell.xib */,
+				AB99CC021D0D0EFB00D630B8 /* VideoItemTableViewCell.swift */,
+				AB99CC031D0D0EFB00D630B8 /* VideoItemTableViewCell.xib */,
+				AB99CC061D0EF40800D630B8 /* ComiteViewController.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -222,8 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				41BB67841CE08D0000467584 /* VideoItemModel.swift */,
+				AB0C61421D15317B008C0691 /* UserModel.swift */,
 				AB8583571CFBE6B10032BC0E /* UserDefaults.swift */,
-				ABEFFA6E1CFAFC8800CE323A /* QiNiuManager.swift */,
 				ABEFFA6C1CFA97B100CE323A /* VideosKindsModel.swift */,
 				ABEFFA6A1CFA939100CE323A /* NetWorkingManager.swift */,
 				ABCCD16C1D0578CB0040D0D9 /* DownVideo.swift */,
@@ -260,6 +286,7 @@
 			children = (
 				41ABB0AA1CD048BF00DF728A /* LaunchScreen.storyboard */,
 				41ABB0A11CD048BF00DF728A /* AppDelegate.swift */,
+				AB0C613E1D1527DE008C0691 /* RootNavigationViewController.swift */,
 				41B3AD171D06C40D000DAE82 /* Configs.swift */,
 				41ABB0AD1CD048BF00DF728A /* Info.plist */,
 				ABEFFA631CFA8E1300CE323A /* SunGod-Bridging-Header.h */,
@@ -302,7 +329,7 @@
 				TargetAttributes = {
 					41ABB09D1CD048BF00DF728A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = M5MH8P3F39;
+						DevelopmentTeam = 5L2VYS9EW8;
 					};
 				};
 			};
@@ -336,7 +363,10 @@
 				AB40514E1CEC97E1004571E4 /* VideoCollectionViewCell.xib in Resources */,
 				ABEFFA621CF7DBF700CE323A /* CommitTableViewCell.xib in Resources */,
 				AB8583561CFBE1300032BC0E /* UserNameTableViewCell.xib in Resources */,
+				AB99CC051D0D0EFB00D630B8 /* VideoItemTableViewCell.xib in Resources */,
+				ABD19BAF1D12D45A00ECC649 /* AboutCollectionViewCell.xib in Resources */,
 				41ABB0A91CD048BF00DF728A /* Assets.xcassets in Resources */,
+				ABD19BB31D13037200ECC649 /* HeaderCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,8 +426,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABEFFA611CF7DBF700CE323A /* CommitTableViewCell.swift in Sources */,
+				ABD19BB61D1308F900ECC649 /* AboutMoreViewController.swift in Sources */,
 				AB8583551CFBE1300032BC0E /* UserNameTableViewCell.swift in Sources */,
 				41F4E1241CF3F5E90045119E /* VideosKingsListViewController.swift in Sources */,
+				AB99CC041D0D0EFB00D630B8 /* VideoItemTableViewCell.swift in Sources */,
 				ABCCD16F1D057F000040D0D9 /* LogViewController.swift in Sources */,
 				410B7E1D1CF300FD002EDF77 /* MeViewController.swift in Sources */,
 				410B7E1F1CF301AE002EDF77 /* SettingViewController.swift in Sources */,
@@ -410,13 +442,17 @@
 				414B31A51CE1892D0011173D /* VideoCollectionViewCell.swift in Sources */,
 				41E95FAF1CDB2A78004B23A5 /* VideosListCollectionViewController.swift in Sources */,
 				ABCCD16D1D0578CB0040D0D9 /* DownVideo.swift in Sources */,
+				AB0C613F1D1527DE008C0691 /* RootNavigationViewController.swift in Sources */,
 				41ABB0A21CD048BF00DF728A /* AppDelegate.swift in Sources */,
+				AB0C61431D15317B008C0691 /* UserModel.swift in Sources */,
 				410B7E171CF2FD53002EDF77 /* VideosKindsViewController.swift in Sources */,
+				ABD19BAE1D12D45A00ECC649 /* AboutCollectionViewCell.swift in Sources */,
+				ABD19BB21D13037200ECC649 /* HeaderCollectionReusableView.swift in Sources */,
 				ABEFFA6D1CFA97B100CE323A /* VideosKindsModel.swift in Sources */,
 				414B31A81CE193540011173D /* VideoItemInformationViewController.swift in Sources */,
 				410B7E221CF30588002EDF77 /* VideoKindsCollectionViewCell.swift in Sources */,
+				AB99CC071D0EF40800D630B8 /* ComiteViewController.swift in Sources */,
 				ABEFFA6B1CFA939100CE323A /* NetWorkingManager.swift in Sources */,
-				ABEFFA6F1CFAFC8800CE323A /* QiNiuManager.swift in Sources */,
 				AB4051421CEBF8E4004571E4 /* LeftMenuViewController.swift in Sources */,
 				41BB67851CE08D0000467584 /* VideoItemModel.swift in Sources */,
 			);
@@ -530,7 +566,7 @@
 				INFOPLIST_FILE = SunGod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyangzx.SunGod;
+				PRODUCT_BUNDLE_IDENTIFIER = vip.sunonline.sunvideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SunGod/SunGod-Bridging-Header.h";
@@ -549,7 +585,7 @@
 				INFOPLIST_FILE = SunGod/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.taiyangzx.SunGod;
+				PRODUCT_BUNDLE_IDENTIFIER = vip.sunonline.sunvideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SunGod/SunGod-Bridging-Header.h";
